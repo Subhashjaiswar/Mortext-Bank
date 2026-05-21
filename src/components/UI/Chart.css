@@ -1,0 +1,111 @@
+.chart-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.chart-svg {
+  display: block;
+  overflow: visible;
+}
+
+.chart-empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  background-color: var(--secondary-light);
+  border-radius: var(--radius-md);
+  border: 1px dashed var(--border);
+}
+
+/* Axis Labels */
+.chart-axis-label {
+  font-family: var(--font-primary);
+  font-size: 10px;
+  font-weight: 600;
+  fill: var(--text-muted);
+  transition: fill var(--transition-fast), font-size var(--transition-fast);
+}
+
+.chart-axis-label-active {
+  fill: var(--text-primary);
+  font-size: 11px;
+}
+
+.chart-axis-label-y {
+  font-family: var(--font-primary);
+  font-size: 9px;
+  font-weight: 500;
+  fill: var(--text-muted);
+}
+
+/* Lines & Fills */
+.chart-gridline {
+  stroke: var(--border);
+  stroke-width: 1;
+  stroke-dasharray: 4, 4;
+}
+
+body.dark-theme .chart-gridline {
+  stroke: #1e293b;
+}
+
+.chart-area-fill {
+  transition: all var(--transition-normal);
+}
+
+.chart-line-stroke {
+  filter: drop-shadow(0px 4px 6px rgba(var(--primary-rgb), 0.15));
+}
+
+.chart-dot {
+  transition: r var(--transition-fast), fill var(--transition-fast);
+}
+
+.chart-dot:hover {
+  r: 7px;
+}
+
+/* Bar columns */
+.chart-bar {
+  transition: transform var(--transition-normal), fill var(--transition-normal), opacity var(--transition-normal);
+  transform-origin: bottom;
+}
+
+.chart-bar:hover {
+  opacity: 0.85;
+}
+
+/* Tooltip popup box */
+.chart-tooltip {
+  background-color: var(--text-primary);
+  color: var(--surface);
+  padding: 8px 12px;
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-lg);
+  pointer-events: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  min-width: 80px;
+  z-index: 10;
+  font-family: var(--font-primary);
+}
+
+body.dark-theme .chart-tooltip {
+  background-color: #ffffff;
+  color: #0f172a;
+}
+
+.tooltip-label {
+  font-size: 0.7rem;
+  opacity: 0.8;
+  font-weight: 500;
+}
+
+.tooltip-value {
+  font-size: 0.85rem;
+  font-weight: 700;
+}

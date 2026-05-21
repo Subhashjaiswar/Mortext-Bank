@@ -1,0 +1,277 @@
+.accounts-page-container {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+/* 1. Account Selection Grid */
+.accounts-selection-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+@media (max-width: 768px) {
+  .accounts-selection-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.account-nav-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 180px;
+  cursor: pointer;
+  border-width: 2px !important;
+}
+
+.account-nav-card.selected {
+  border-color: var(--primary) !important;
+}
+
+.acc-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.acc-card-type {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+.acc-card-balance {
+  font-family: var(--font-display);
+  font-size: 2.2rem;
+  font-weight: 800;
+  margin-bottom: 24px;
+}
+
+.account-nav-card:not(.selected) .acc-card-balance {
+  color: var(--text-primary);
+}
+
+.account-nav-card.selected .acc-card-balance {
+  color: #ffffff;
+}
+
+.acc-card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.8rem;
+  font-weight: 600;
+  opacity: 0.8;
+}
+
+/* 2. Statement Toolbar */
+.ledger-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.toolbar-search-input {
+  position: relative;
+  display: flex;
+  align-items: center;
+  max-width: 380px;
+  width: 100%;
+}
+
+.toolbar-search-input .search-icon {
+  position: absolute;
+  left: 14px;
+  color: var(--text-muted);
+}
+
+.toolbar-field {
+  width: 100%;
+  padding: 12px 16px 12px 42px;
+  font-family: var(--font-primary);
+  font-size: 0.875rem;
+  color: var(--text-primary);
+  background-color: var(--secondary-light);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  outline: none;
+  transition: all var(--transition-fast);
+}
+
+.toolbar-field:focus {
+  border-color: var(--primary);
+  background-color: var(--surface);
+  box-shadow: 0 0 0 4px rgba(var(--primary-rgb), 0.1);
+}
+
+.toolbar-filters {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.filter-dropdown-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.filter-icon {
+  position: absolute;
+  left: 14px;
+  color: var(--text-muted);
+  pointer-events: none;
+}
+
+.toolbar-select {
+  padding: 12px 16px 12px 40px;
+  font-family: var(--font-primary);
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  background-color: var(--secondary-light);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  outline: none;
+  cursor: pointer;
+  appearance: none;
+  transition: all var(--transition-fast);
+}
+
+.toolbar-select:focus {
+  border-color: var(--primary);
+  background-color: var(--surface);
+}
+
+/* 3. Statement Table */
+.statement-table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  margin-bottom: 24px;
+}
+
+.statement-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 0.9rem;
+}
+
+.statement-table th {
+  background-color: var(--secondary-light);
+  padding: 16px 20px;
+  font-weight: 700;
+  color: var(--text-secondary);
+  border-bottom: 1px solid var(--border);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+body.dark-theme .statement-table th {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.statement-table td {
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--border);
+  color: var(--text-primary);
+}
+
+.statement-table tr:last-child td {
+  border-bottom: none;
+}
+
+.statement-table tr:hover td {
+  background-color: rgba(var(--primary-rgb), 0.01);
+}
+
+.tx-date-cell {
+  display: flex;
+  align-items: center;
+  font-weight: 600;
+}
+
+.tx-details-cell {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.tx-name-title {
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.tx-name-desc {
+  font-size: 0.775rem;
+  color: var(--text-muted);
+}
+
+.tx-type-badge {
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.tx-type-badge.credit { color: var(--success); }
+.tx-type-badge.debit { color: var(--text-secondary); }
+
+.tx-amount-badge {
+  font-family: var(--font-display);
+  font-weight: 800;
+}
+
+.tx-amount-badge.credit { color: var(--success); }
+.tx-amount-badge.debit { color: var(--text-primary); }
+
+.table-empty-row {
+  text-align: center;
+  padding: 40px !important;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+/* 4. Pagination */
+.statement-pagination-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.pagination-info {
+  font-size: 0.825rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.pagination-buttons {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.page-numeric-indicator {
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-sm);
+  background-color: var(--primary-light);
+  color: var(--primary);
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+}

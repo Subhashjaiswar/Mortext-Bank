@@ -1,0 +1,435 @@
+.transfer-page-container {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+/* Tab Selectors */
+.transfer-sub-tabs {
+  display: flex;
+  gap: 12px;
+  background-color: var(--secondary-light);
+  padding: 8px;
+  border-radius: var(--radius-lg);
+  align-self: flex-start;
+  flex-wrap: wrap;
+}
+
+body.dark-theme .transfer-sub-tabs {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.sub-tab-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-family: var(--font-primary);
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+  border-radius: var(--radius-md);
+  transition: all var(--transition-fast);
+}
+
+.sub-tab-btn:hover {
+  color: var(--text-primary);
+}
+
+.sub-tab-btn.active {
+  background-color: var(--surface);
+  color: var(--primary);
+  box-shadow: var(--shadow-sm);
+}
+
+body.dark-theme .sub-tab-btn.active {
+  background-color: var(--surface-hover);
+}
+
+/* Layout Grid split */
+.transfer-main-layout {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 24px;
+}
+
+@media (max-width: 900px) {
+  .transfer-main-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+.transfer-form-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.transfer-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.transfer-input-row {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 16px;
+}
+
+.transfer-lbl {
+  font-family: var(--font-primary);
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.beneficiary-header-label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.add-ben-inline-btn {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background: transparent;
+  border: none;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--primary);
+  cursor: pointer;
+}
+
+.add-ben-inline-btn:hover {
+  text-decoration: underline;
+}
+
+.transfer-select-box {
+  padding: 12px 16px;
+  font-family: var(--font-primary);
+  font-size: 0.95rem;
+  color: var(--text-primary);
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  outline: none;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.transfer-select-box:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 4px rgba(var(--primary-rgb), 0.1);
+}
+
+/* QR Code Scan elements */
+.qr-scanners-panel {
+  padding: 32px;
+  border: 2px dashed var(--border);
+  border-radius: var(--radius-md);
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+.qr-unscanned-prompt {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.qr-scan-svg {
+  color: var(--primary);
+}
+
+.qr-unscanned-prompt p {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+  max-width: 320px;
+  line-height: 1.5;
+}
+
+.scanned-merchant-info {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background-color: var(--success-light);
+  border: 1px solid rgba(var(--success-rgb), 0.2);
+  padding: 16px 20px;
+  border-radius: var(--radius-md);
+  text-align: left;
+}
+
+.qr-scanned-icon {
+  color: var(--success);
+}
+
+.scanned-det {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.scanned-det span {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  font-weight: 600;
+}
+
+.scanned-det h4 {
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: var(--text-primary);
+}
+
+/* Shield Guards Guide info */
+.transfer-guide-card {
+  height: max-content;
+}
+
+.shield-metrics-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.shield-item {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--border);
+}
+
+.shield-item.mb-none {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.shield-ok {
+  color: var(--success);
+  margin-top: 2px;
+}
+
+.shield-help {
+  color: var(--primary);
+  margin-top: 2px;
+}
+
+.shield-item h5 {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+}
+
+.shield-item p {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  line-height: 1.4;
+  font-weight: 500;
+}
+
+/* 1. Add Beneficiary Form modal */
+.add-ben-form {
+  display: flex;
+  flex-direction: column;
+}
+
+/* 2. QR Code view finder */
+.qr-scanner-simulator {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  padding: 12px;
+}
+
+.scanner-viewfinder {
+  position: relative;
+  width: 240px;
+  height: 240px;
+  background-color: #0b0f19;
+  border-radius: var(--radius-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.viewfinder-corner {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border: 4px solid var(--primary);
+}
+
+.viewfinder-corner.top-left { top: 16px; left: 16px; border-right: none; border-bottom: none; }
+.viewfinder-corner.top-right { top: 16px; right: 16px; border-left: none; border-bottom: none; }
+.viewfinder-corner.bottom-left { bottom: 16px; left: 16px; border-right: none; border-top: none; }
+.viewfinder-corner.bottom-right { bottom: 16px; right: 16px; border-left: none; border-top: none; }
+
+.floating-qr-svg {
+  color: #ffffff;
+  opacity: 0.8;
+}
+
+.scanning-laser-line {
+  position: absolute;
+  left: 16px;
+  right: 16px;
+  height: 3px;
+  background-color: var(--primary);
+  box-shadow: 0 0 10px var(--primary);
+  animation: laser-bounce 2s ease-in-out infinite;
+}
+
+@keyframes laser-bounce {
+  0%, 100% { top: 20px; }
+  50% { top: 218px; }
+}
+
+.qr-scanner-simulator p {
+  font-size: 0.825rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+  text-align: center;
+}
+
+/* 3. Transaction Confirm screen */
+.tx-confirm-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+
+.confirm-header-amt {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.confirm-header-amt span {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  font-weight: 600;
+}
+
+.confirm-header-amt h1 {
+  font-family: var(--font-display);
+  font-size: 2.6rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  letter-spacing: -0.01em;
+}
+
+.confirm-list-rows {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.confirm-det-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 14px 18px;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.875rem;
+}
+
+.confirm-det-row:last-child {
+  border-bottom: none;
+}
+
+.det-lbl {
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.det-val {
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+/* 4. Success Receipt Modal */
+.tx-success-receipt-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+}
+
+.receipt-success-icon {
+  width: 80px;
+  height: 80px;
+  border-radius: var(--radius-full);
+  background-color: var(--success-light);
+  color: var(--success);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+  box-shadow: 0 0 20px rgba(var(--success-rgb), 0.15);
+}
+
+.tx-success-receipt-wrapper h3 {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+}
+
+.receipt-banner-msg {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+  margin-bottom: 24px;
+}
+
+.receipt-amount-display {
+  font-family: var(--font-display);
+  font-size: 2.4rem;
+  font-weight: 800;
+  color: var(--success);
+  letter-spacing: -0.01em;
+  margin-bottom: 24px;
+}
+
+.receipt-table-details {
+  width: 100%;
+  border-top: 1px dashed var(--border);
+  border-bottom: 1px dashed var(--border);
+  padding: 20px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.receipt-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.825rem;
+}
+
+.receipt-row span {
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.receipt-row strong {
+  color: var(--text-primary);
+}

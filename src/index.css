@@ -1,0 +1,17 @@
+@import './assets/theme.css';
+
+body {
+  margin: 0;
+  font-family: var(--font-primary);
+  background-color: var(--background);
+  color: var(--text-primary);
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+

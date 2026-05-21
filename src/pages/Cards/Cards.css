@@ -1,0 +1,369 @@
+.cards-page-container {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+/* 1. Realistic Virtual Cards Layout */
+.cards-view-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+  width: 100%;
+}
+
+.virtual-cards-carousel {
+  display: flex;
+  gap: 24px;
+  width: 100%;
+  overflow-x: auto;
+  padding: 12px 4px 20px 4px;
+}
+
+/* Base Card Dimensions and Style */
+.virtual-card-wrapper {
+  flex: 0 0 380px;
+  height: 240px;
+  border-radius: var(--radius-lg);
+  position: relative;
+  overflow: hidden;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+  user-select: none;
+  box-shadow: var(--shadow-lg);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+}
+
+@media (max-width: 480px) {
+  .virtual-card-wrapper {
+    flex: 0 0 100%;
+    height: 200px;
+    padding: 16px;
+  }
+}
+
+.virtual-card-wrapper:hover {
+  transform: translateY(-4px) rotate(1deg);
+  box-shadow: var(--shadow-xl);
+}
+
+.virtual-card-wrapper.active-c {
+  transform: translateY(-6px) scale(1.01);
+  box-shadow: 0 20px 35px -5px rgba(15, 23, 42, 0.25);
+  border: 2px solid var(--primary);
+}
+
+/* Gradient Themes for Cards */
+.debit-card-theme {
+  background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 50%, #1d4ed8 100%);
+  color: #ffffff;
+}
+
+.credit-card-theme {
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #020617 100%);
+  color: #ffffff;
+}
+
+/* Glass glare reflection */
+.card-glass-glare {
+  position: absolute;
+  top: -60%;
+  right: -60%;
+  width: 120%;
+  height: 120%;
+  background: linear-gradient(
+    35deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.02) 40%,
+    rgba(255, 255, 255, 0.06) 50%,
+    rgba(255, 255, 255, 0.02) 60%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: rotate(25deg);
+  pointer-events: none;
+}
+
+/* Logo row */
+.v-card-logo-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card-logo-symbol {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.card-logo-brand-text {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.1rem;
+  letter-spacing: -0.01em;
+}
+
+.card-tier-label {
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  background-color: rgba(255, 255, 255, 0.15);
+  padding: 4px 8px;
+  border-radius: var(--radius-xs);
+}
+
+/* Smartchip */
+.card-chip-element {
+  width: 44px;
+  height: 32px;
+  background: linear-gradient(135deg, #e2e8f0 0%, #cbd5e1 50%, #94a3b8 100%);
+  border-radius: var(--radius-xs);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.chip-micro-lines {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-top: 1px dashed rgba(0, 0, 0, 0.15);
+  border-bottom: 1px dashed rgba(0, 0, 0, 0.15);
+}
+
+/* Card Number Display */
+.v-card-number-display {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  word-spacing: 0.1em;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  margin: 12px 0;
+}
+
+@media (max-width: 480px) {
+  .v-card-number-display {
+    font-size: 1.15rem;
+  }
+}
+
+/* Card Footer info */
+.v-card-footer-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.v-card-holder-col,
+.v-card-expiry-col,
+.v-card-cvv-col {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.lbl-txt {
+  font-size: 0.6rem;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.6);
+  letter-spacing: 0.05em;
+}
+
+.val-txt {
+  font-family: var(--font-primary);
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+/* Frozen Stamp overlay */
+.frozen-overlay-stamp {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(15, 23, 42, 0.85);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  color: var(--danger);
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+}
+
+/* Reveal actions panel */
+.reveal-actions-panel {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  border-top: 1px solid var(--border);
+  padding-top: 16px;
+}
+
+.active-card-meta-badge {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* 2. Operations Split Details */
+.cards-operations-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+@media (max-width: 900px) {
+  .cards-operations-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.card-toggles-list {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* Freeze Toggle Row */
+.card-toggle-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--border);
+}
+
+.toggle-meta h5 {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+}
+
+.toggle-meta p {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  line-height: 1.4;
+  font-weight: 500;
+}
+
+.toggle-switch-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.toggle-active-svg {
+  color: var(--danger);
+}
+
+.toggle-inactive-svg {
+  color: var(--text-muted);
+}
+
+/* Slider Limit design */
+.card-slider-limit-block {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.slider-meta-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.meta-titles h5 {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+}
+
+.meta-titles p {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  line-height: 1.4;
+  font-weight: 500;
+}
+
+.slider-limit-indicator {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+}
+
+.spend-slider-bar {
+  width: 100%;
+  height: 6px;
+  background-color: var(--border);
+  border-radius: var(--radius-full);
+  outline: none;
+  cursor: pointer;
+  appearance: none;
+  accent-color: var(--primary);
+}
+
+.spend-slider-bar:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.slider-caps-markers {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  margin-top: 8px;
+}
+
+.frozen-limits-alert {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: var(--danger-light);
+  color: var(--danger);
+  padding: 10px 14px;
+  border-radius: var(--radius-sm);
+  font-size: 0.775rem;
+  font-weight: 600;
+}
+
+/* PIN Forms detail */
+.change-pin-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.pin-double-inputs {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}

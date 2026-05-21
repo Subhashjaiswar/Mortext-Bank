@@ -1,0 +1,35 @@
+.app-layout-wrapper {
+  display: flex;
+  min-height: 100vh;
+  width: 100%;
+}
+
+/* Main content column placement and offset adjustment */
+.main-content-wrapper {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 0;
+  margin-left: var(--sidebar-width);
+  transition: margin-left var(--transition-normal);
+}
+
+.sidebar-collapsed .main-content-wrapper {
+  margin-left: var(--sidebar-collapsed-width);
+}
+
+/* Main Viewport Container */
+.content-viewport {
+  flex: 1;
+  padding: 40px;
+  max-width: 1400px;
+  width: 100%;
+  margin: 0 auto;
+  animation: fadeIn var(--transition-normal) forwards;
+}
+
+@media (max-width: 768px) {
+  .content-viewport {
+    padding: 20px;
+  }
+}

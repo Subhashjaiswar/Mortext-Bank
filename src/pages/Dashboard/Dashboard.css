@@ -1,0 +1,418 @@
+.dashboard-page-container {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+/* 1. Welcome section */
+.dashboard-welcome-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.welcome-texts h2 {
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+  margin-bottom: 4px;
+}
+
+.welcome-texts p {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+/* 2. Top Grid: Balances & Quick Actions */
+.dashboard-top-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 24px;
+}
+
+@media (max-width: 1024px) {
+  .dashboard-top-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.balance-large-display {
+  font-family: var(--font-display);
+  font-size: 3.2rem;
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: -0.02em;
+  margin: 16px 0 24px 0;
+}
+
+.balance-account-badges {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.acc-mini-indicator {
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 8px 14px;
+  border-radius: var(--radius-md);
+  display: flex;
+  gap: 8px;
+}
+
+.acc-type-lbl {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.acc-val-lbl {
+  font-size: 0.8rem;
+  font-weight: 800;
+  color: #ffffff;
+}
+
+/* Quick Action Grid layout */
+.quick-actions-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  height: 100%;
+}
+
+.q-action-item-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 16px;
+  background-color: var(--secondary-light);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.q-action-item-btn:hover {
+  transform: translateY(-2px);
+  background-color: var(--surface-hover);
+  border-color: var(--border-focus);
+}
+
+.q-icon-box {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  box-shadow: var(--shadow-sm);
+}
+
+.bg-primary { background-color: var(--primary); }
+.bg-accent { background-color: var(--accent); }
+.bg-success { background-color: var(--success); }
+.bg-warning { background-color: var(--warning); }
+
+.q-action-item-btn span {
+  font-family: var(--font-primary);
+  font-size: 0.825rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+/* 3. Mid Grid: Expense Analytics Charts */
+.dashboard-mid-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+@media (max-width: 900px) {
+  .dashboard-mid-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.analytics-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.analytics-trend-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.trend-amount {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+
+.trend-amount h3 {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  font-weight: 800;
+}
+
+.trend-pct-up {
+  color: var(--success);
+  font-size: 0.8rem;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.trend-pct-down {
+  color: var(--danger);
+  font-size: 0.8rem;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.trend-desc {
+  font-size: 0.775rem;
+  font-weight: 600;
+}
+
+/* 4. Bottom Grid: Transaction ledger & Notifications */
+.dashboard-bottom-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 24px;
+}
+
+@media (max-width: 1024px) {
+  .dashboard-bottom-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Compact Ledger list */
+.tx-compact-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.tx-compact-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 12px 16px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+  background-color: var(--surface);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.tx-compact-row:hover {
+  transform: translateX(4px);
+  background-color: var(--secondary-light);
+  border-color: var(--border-focus);
+}
+
+.tx-icon-container {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tx-icon-container.credit {
+  background-color: var(--success-light);
+  color: var(--success);
+}
+
+.tx-icon-container.debit {
+  background-color: var(--danger-light);
+  color: var(--danger);
+}
+
+.tx-details-mini {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 0;
+  gap: 4px;
+}
+
+.tx-title-lbl {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.tx-time-lbl {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.tx-amount-display {
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 800;
+}
+
+.tx-amount-display.credit { color: var(--success); }
+.tx-amount-display.debit { color: var(--text-primary); }
+
+/* Alert Notifications widget */
+.notif-badge-bubble {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background-color: var(--danger-light);
+  color: var(--danger);
+  padding: 6px 12px;
+  border-radius: var(--radius-sm);
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.notif-compact-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.notif-compact-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 12px 16px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+  background-color: var(--surface);
+  position: relative;
+}
+
+.notif-compact-row.unread {
+  border-color: rgba(var(--primary-rgb), 0.2);
+  background-color: rgba(var(--primary-rgb), 0.01);
+}
+
+.notif-marker-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: var(--radius-full);
+  background-color: var(--primary);
+  margin-top: 5px;
+}
+
+.notif-compact-row:not(.unread) .notif-marker-dot {
+  background-color: var(--text-muted);
+}
+
+.notif-info-mini {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: 4px;
+}
+
+.notif-header-title {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.notif-body-message {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  line-height: 1.4;
+}
+
+.notif-time-ago {
+  display: flex;
+  align-items: center;
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+/* 5. Transaction Audit Modal Styling */
+.tx-audit-modal-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  width: 100%;
+}
+
+.audit-badge-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.audit-badge-container.credit { color: var(--success); }
+.audit-badge-container.debit { color: var(--text-primary); }
+
+.audit-badge-container h3 {
+  font-family: var(--font-display);
+  font-size: 2.2rem;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+}
+
+.audit-details-grid {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.audit-detail-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 18px;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.875rem;
+}
+
+.audit-detail-row:last-child {
+  border-bottom: none;
+}
+
+.audit-lbl {
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.audit-val {
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.font-mono {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.8rem;
+}

@@ -1,0 +1,328 @@
+.admin-page-container {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+/* 1. Admin Stat aggregates */
+.admin-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+@media (max-width: 900px) {
+  .admin-stats-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.admin-stat-card .card-body {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.stat-icon-wrapper {
+  width: 54px;
+  height: 54px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+}
+
+.stat-icon-wrapper.blue { background-color: var(--primary); }
+.stat-icon-wrapper.green { background-color: var(--success); }
+.stat-icon-wrapper.accent { background-color: var(--accent); }
+
+.stat-content {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.stat-lbl {
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.stat-content h3 {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: var(--text-primary);
+}
+
+/* 2. Split Rows: KYC queue and fraud */
+.admin-mid-split-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 24px;
+}
+
+@media (max-width: 1024px) {
+  .admin-mid-split-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.kyc-approval-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  height: 100%;
+}
+
+.kyc-pending-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 20px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+  background-color: var(--surface);
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.kyc-user-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.u-name-lbl {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.u-email-lbl {
+  font-size: 0.775rem;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.kyc-action-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.awaiting-upload-txt {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.kyc-desk-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 40px;
+  text-align: center;
+}
+
+.shield-ok-svg {
+  color: var(--success);
+}
+
+.kyc-desk-empty p {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+  max-width: 320px;
+  line-height: 1.5;
+}
+
+/* Fraud Alerts */
+.fraud-detection-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.fraud-alert-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 16px;
+  border-radius: var(--radius-md);
+  border: 1px solid transparent;
+}
+
+.fraud-alert-item.critical {
+  background-color: var(--danger-light);
+  border-color: rgba(239, 68, 68, 0.15);
+}
+
+.fraud-alert-item.warning {
+  background-color: var(--warning-light);
+  border-color: rgba(245, 158, 11, 0.15);
+}
+
+.alert-critical-icon { color: var(--danger); }
+.alert-warning-icon { color: var(--warning); }
+
+.alert-details {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.alert-details h5 {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.alert-details p {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  line-height: 1.4;
+  font-weight: 500;
+}
+
+.alert-details span {
+  font-size: 0.725rem;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+/* 3. Bottom Row: User Database Table */
+.admin-table-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.admin-search-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  max-width: 380px;
+  width: 100%;
+}
+
+.admin-search-wrapper .search-icon {
+  position: absolute;
+  left: 14px;
+  color: var(--text-muted);
+}
+
+.admin-search-input-field {
+  width: 100%;
+  padding: 12px 16px 12px 42px;
+  font-family: var(--font-primary);
+  font-size: 0.875rem;
+  color: var(--text-primary);
+  background-color: var(--secondary-light);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  outline: none;
+  transition: all var(--transition-fast);
+}
+
+.admin-search-input-field:focus {
+  border-color: var(--primary);
+  background-color: var(--surface);
+}
+
+.admin-select-filter {
+  padding: 12px 16px;
+  font-family: var(--font-primary);
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  background-color: var(--secondary-light);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  outline: none;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.admin-select-filter:focus {
+  border-color: var(--primary);
+  background-color: var(--surface);
+}
+
+.admin-table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+}
+
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 0.9rem;
+}
+
+.admin-table th {
+  background-color: var(--secondary-light);
+  padding: 16px 20px;
+  font-weight: 700;
+  color: var(--text-secondary);
+  border-bottom: 1px solid var(--border);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+body.dark-theme .admin-table th {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.admin-table td {
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--border);
+  color: var(--text-primary);
+}
+
+.admin-table tr:last-child td {
+  border-bottom: none;
+}
+
+.admin-table tr:hover td {
+  background-color: rgba(var(--primary-rgb), 0.01);
+}
+
+.user-db-profile-cell {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.user-db-name {
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.user-status-dot-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.user-status-dot-label.active { color: var(--success); }
+.user-status-dot-label.blocked { color: var(--danger); }
+
+.user-status-dot-label .dot {
+  width: 8px;
+  height: 8px;
+  border-radius: var(--radius-full);
+}
+
+.user-status-dot-label.active .dot { background-color: var(--success); }
+.user-status-dot-label.blocked .dot { background-color: var(--danger); }

@@ -1,15 +1,10 @@
 import React from 'react';
 import {
-  ArrowRight,
   UserPlus,
-  QrCode,
-  Calendar,
   Send,
   CheckCircle,
   HelpCircle,
-  CreditCard,
-  ScanLine,
-  Smartphone
+  CreditCard
 } from 'lucide-react';
 import { useTransferViewModel } from '../../viewmodels/useTransferViewModel';
 import Card from '../../components/UI/Card';
@@ -64,7 +59,7 @@ const Transfer = () => {
 
   return (
     <div className="transfer-page-container">
-      
+
       {/* Tab Selectors */}
       <div className="transfer-sub-tabs">
         <button
@@ -74,43 +69,17 @@ const Transfer = () => {
           <Send size={18} />
           Direct Bank
         </button>
-        <button
-          className={`sub-tab-btn ${activeSubTab === 'upi' ? 'active' : ''}`}
-          onClick={() => { setActiveSubTab('upi'); resetForm(); }}
-        >
-          <Smartphone size={18} />
-          UPI Address
-        </button>
-        <button
-          className={`sub-tab-btn ${activeSubTab === 'qr' ? 'active' : ''}`}
-          onClick={() => { setActiveSubTab('qr'); resetForm(); }}
-        >
-          <QrCode size={18} />
-          QR Payment
-        </button>
-        <button
-          className={`sub-tab-btn ${activeSubTab === 'schedule' ? 'active' : ''}`}
-          onClick={() => { setActiveSubTab('schedule'); resetForm(); }}
-        >
-          <Calendar size={18} />
-          Schedule Transfer
-        </button>
       </div>
 
       <div className="transfer-main-layout">
         {/* Left Card - Form Fields */}
         <Card
-          title={
-            activeSubTab === 'direct' ? 'Bank Wire Transfer' :
-            activeSubTab === 'upi' ? 'Instant UPI Payment' :
-            activeSubTab === 'qr' ? 'Camera QR Code Scan' :
-            'Scheduled Recurring Transfer'
-          }
+          title="Bank Wire Transfer"
           subtitle="All transactions are secured with 256-bit SSL encryption"
           className="transfer-form-card"
         >
           <form onSubmit={handleInitiateTransfer} className="transfer-form">
-            
+
             {/* 1. Source Account selection */}
             <div className="transfer-input-row">
               <label className="transfer-lbl">Debit Account Source</label>
@@ -156,73 +125,6 @@ const Transfer = () => {
               </div>
             )}
 
-            {/* 3. UPI Address Details */}
-            {activeSubTab === 'upi' && (
-              <Input
-                label="Recipient UPI ID / Address"
-                id="upi-address"
-                placeholder="name@upi or name@okhdfc"
-                value={upiId}
-                onChange={(e) => setUpiId(e.target.value)}
-                icon={Smartphone}
-                required
-              />
-            )}
-
-            {/* 4. QR Code Scanning simulator */}
-            {activeSubTab === 'qr' && (
-              <div className="qr-scanners-panel">
-                {selectedBen ? (
-                  <div className="scanned-merchant-info animate-scale-in">
-                    <QrCode size={32} className="qr-scanned-icon" />
-                    <div className="scanned-det">
-                      <span>Recipient Scanned Merchant</span>
-                      <h4>{selectedBen}</h4>
-                    </div>
-                    <Button variant="outline" size="sm" onClick={() => setSelectedBen('')}>Change QR</Button>
-                  </div>
-                ) : (
-                  <div className="qr-unscanned-prompt">
-                    <ScanLine size={48} className="qr-scan-svg animate-float" />
-                    <p>Scan a merchant's payment QR Code to prepopulate transfer details instantly.</p>
-                    <Button variant="outline" type="button" onClick={() => setShowQrScanner(true)} icon={QrCode}>
-                      Open Simulator QR Scanner
-                    </Button>
-                  </div>
-                )}
-              </div>
-            )}
-
-            {/* 5. Scheduled dates */}
-            {activeSubTab === 'schedule' && (
-              <>
-                <div className="transfer-input-row">
-                  <label className="transfer-lbl">Select Beneficiary</label>
-                  <select
-                    value={selectedBen}
-                    onChange={(e) => setSelectedBen(e.target.value)}
-                    className="transfer-select-box"
-                    required
-                  >
-                    <option value="">Choose Recipient...</option>
-                    {beneficiaries.map(ben => (
-                      <option key={ben.id} value={ben.name}>
-                        {ben.name} ({ben.bankName})
-                      </option>
-                    ))}
-                  </select>
-                </div>
-                <Input
-                  label="Execution Date"
-                  id="schedule-date"
-                  type="date"
-                  value={scheduledDate}
-                  onChange={(e) => setScheduledDate(e.target.value)}
-                  icon={Calendar}
-                  required
-                />
-              </>
-            )}
 
             {/* Amount input */}
             <Input
@@ -328,30 +230,6 @@ const Transfer = () => {
         </div>
       </Modal>
 
-      {/* 2. MODAL: QR Scanner Simulator */}
-      <Modal
-        isOpen={showQrScanner}
-        onClose={() => setShowQrScanner(false)}
-        title="QR Code Camera Scanner"
-        size="sm"
-      >
-        <div className="qr-scanner-simulator">
-          <div className="scanner-viewfinder">
-            <div className="viewfinder-corner top-left"></div>
-            <div className="viewfinder-corner top-right"></div>
-            <div className="viewfinder-corner bottom-left"></div>
-            <div className="viewfinder-corner bottom-right"></div>
-            
-            <QrCode size={120} className="floating-qr-svg animate-float" />
-            <div className="scanning-laser-line"></div>
-          </div>
-          <p>Hover merchant code inside the scanning brackets to load transaction.</p>
-          <Button variant="success" onClick={handleQRScanSuccess} fullWidth>
-            Simulate QR Code Scan Success
-          </Button>
-        </div>
-      </Modal>
-
       {/* 3. MODAL: Transfer Confirmation details */}
       <Modal
         isOpen={showConfirmModal}
@@ -373,7 +251,7 @@ const Transfer = () => {
           <div className="confirm-list-rows">
             <div className="confirm-det-row">
               <span className="det-lbl">To Recipient</span>
-              <span className="det-val">{activeSubTab === 'upi' ? upiId : selectedBen}</span>
+              <span className="det-val">{selectedBen}</span>
             </div>
             <div className="confirm-det-row">
               <span className="det-lbl">Debit Account</span>
@@ -385,12 +263,6 @@ const Transfer = () => {
               <div className="confirm-det-row">
                 <span className="det-lbl">Remarks</span>
                 <span className="det-val">{remarks}</span>
-              </div>
-            )}
-            {activeSubTab === 'schedule' && (
-              <div className="confirm-det-row">
-                <span className="det-lbl">Execution Date</span>
-                <span className="det-val">{scheduledDate}</span>
               </div>
             )}
           </div>
@@ -416,7 +288,7 @@ const Transfer = () => {
             </div>
             <h3>Transfer Successful</h3>
             <p className="receipt-banner-msg">The ledger has successfully executed and settled.</p>
-            
+
             <h2 className="receipt-amount-display">
               ${successReceipt.amount.toLocaleString(undefined, { minimumFractionDigits: 2 })}
             </h2>

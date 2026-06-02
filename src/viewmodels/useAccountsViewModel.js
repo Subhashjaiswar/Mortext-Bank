@@ -23,7 +23,12 @@ export const useAccountsViewModel = () => {
     const fetchAccounts = async () => {
       try {
         const data = await accountService.getAccounts();
-        setAccounts(data.filter(acc => acc.type !== 'current'));
+        const validAccounts = data.filter(acc => acc.type !== 'current');
+        setAccounts(validAccounts);
+        // If the selected ID is the initial mock 'acc-1', update it to a real account ID
+        if (validAccounts.length > 0 && selectedAccId === 'acc-1') {
+          setSelectedAccId(validAccounts[0].id);
+        }
       } catch (err) {
         console.error('Failed to load accounts via accountService', err);
       }

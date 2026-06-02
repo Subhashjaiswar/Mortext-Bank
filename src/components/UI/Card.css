@@ -156,7 +156,7 @@ body.dark-theme .card-glass {
 
 /* Gradient Variant */
 .card-gradient {
-  background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+  background: linear-gradient(135deg, #ccd7eb 0%, #e9edf7 100%);
   border: 1px solid rgba(255, 255, 255, 0.05);
 }
 

@@ -43,39 +43,7 @@ export const AuthProvider = ({ children }) => {
       setKycStatus(mockDb.getKycStatus());
       setKycDocument(mockDb.getKycDocument());
     } else {
-      try {
-        const accs = await accountService.getAccounts();
-        if (accs) setAccounts(accs);
-      } catch (err) {
-        console.error('Failed to sync accounts from API', err);
-      }
-      try {
-        const bens = await transferService.getBeneficiaries();
-        if (bens) setBeneficiaries(bens);
-      } catch (err) {
-        console.error('Failed to sync beneficiaries from API', err);
-      }
-      try {
-        const crds = await cardService.getCards();
-        if (crds) setCards(crds);
-      } catch (err) {
-        console.error('Failed to sync cards from API', err);
-      }
-      try {
-        const txsData = await transactionService.getTransactions(1, 100);
-        if (txsData && Array.isArray(txsData.transactions)) {
-          setTransactions(txsData.transactions);
-        }
-      } catch (err) {
-        console.error('Failed to sync transactions from API', err);
-      }
-      try {
-        setNotifications(mockDb.getNotifications());
-        setAdminUsers(mockDb.getAdminUsers());
-        setKycStatus(mockDb.getKycStatus());
-      } catch (err) {
-        console.error('Failed to sync notifications from API', err);
-      }
+      // Pre-fetching disabled. Pages will fetch their own data.
     }
   };
 

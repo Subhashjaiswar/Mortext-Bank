@@ -2,78 +2,17 @@ package com.sanviitech.mortextBank.service;
 
 import com.sanviitech.mortextBank.entity.Account;
 import com.sanviitech.mortextBank.entity.Transaction;
-import com.sanviitech.mortextBank.entity.User;
-import com.sanviitech.mortextBank.exception.ResourceNotFoundException;
-import com.sanviitech.mortextBank.repository.AccountRepository;
-import com.sanviitech.mortextBank.repository.TransactionRepository;
-import com.sanviitech.mortextBank.repository.UserRepository;
-import com.sanviitech.mortextBank.util.PDFGenerator;
-import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.Authentication;
-import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.List;
 
-@Service
-@RequiredArgsConstructor
-public class AccountService {
-    
-    private final UserRepository userRepository;
-    private final AccountRepository accountRepository;
-    private final TransactionRepository transactionRepository;
-    private final PDFGenerator pdfGenerator;
-    
-    public List<Account> getUserAccounts(Authentication authentication) {
-        User user = userRepository.findByEmail(authentication.getName())
-                .orElseThrow(() -> new ResourceNotFoundException("User", "email", authentication.getName()));
-        return accountRepository.findByUserId(user.getId());
-    }
-    
-    public Account getAccountById(Long accountId, Authentication authentication) {
-        User user = userRepository.findByEmail(authentication.getName())
-                .orElseThrow(() -> new ResourceNotFoundException("User", "email", authentication.getName()));
-        
-        Account account = accountRepository.findById(accountId)
-                .orElseThrow(() -> new ResourceNotFoundException("Account", "id", accountId));
-        
-        if (!account.getUser().getId().equals(user.getId())) {
-            throw new RuntimeException("Unauthorized access to account");
-        }
-        
-        return account;
-    }
-    
-    public List<Transaction> getAccountStatement(Long accountId, Authentication authentication) {
-        Account account = getAccountById(accountId, authentication);
-        return transactionRepository.findByAccountId(accountId);
-    }
-    
-    public List<Transaction> getAccountStatementByDateRange(Long accountId, LocalDateTime startDate, LocalDateTime endDate, Authentication authentication) {
-        Account account = getAccountById(accountId, authentication);
-        return transactionRepository.findByAccountIdAndTransactionDateBetween(accountId, startDate, endDate);
-    }
-    
-    public byte[] downloadStatementPDF(Long accountId, Authentication authentication) throws Exception {
-        Account account = getAccountById(accountId, authentication);
-        List<Transaction> transactions = transactionRepository.findByAccountId(accountId);
-        return pdfGenerator.generateStatement(transactions, account.getAccountNumber(), 
-                account.getUser().getFullName());
-    }
-    
-    public Account getSavingsAccountBalance(Authentication authentication) {
-        User user = userRepository.findByEmail(authentication.getName())
-                .orElseThrow(() -> new ResourceNotFoundException("User", "email", authentication.getName()));
-        
-        return accountRepository.findByUserIdAndAccountType(user.getId(), Account.AccountType.SAVINGS)
-                .orElseThrow(() -> new ResourceNotFoundException("Savings Account", "user_id", user.getId()));
-    }
-    
-    public Account getSavingsAccountBalanceByUserId(Long userId) {
-        User user = userRepository.findById(userId)
-                .orElseThrow(() -> new ResourceNotFoundException("User", "id", userId));
-        
-        return accountRepository.findByUserIdAndAccountType(userId, Account.AccountType.SAVINGS)
-                .orElseThrow(() -> new ResourceNotFoundException("Savings Account", "user_id", userId));
-    }
+public interface AccountService {
+    List<Account> getUserAccounts(Authentication authentication);
+    Account getAccountById(Long accountId, Authentication authentication);
+    List<Transaction> getAccountStatement(Long accountId, Authentication authentication);
+    List<Transaction> getAccountStatementByDateRange(Long accountId, LocalDateTime startDate, LocalDateTime endDate, Authentication authentication);
+    byte[] downloadStatementPDF(Long accountId, Authentication authentication) throws Exception;
+    Account getSavingsAccountBalance(Authentication authentication);
+    Account getSavingsAccountBalanceByUserId(Long userId);
 }

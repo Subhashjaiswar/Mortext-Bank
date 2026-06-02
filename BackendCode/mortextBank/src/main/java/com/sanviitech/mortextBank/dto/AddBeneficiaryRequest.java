@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class AddBeneficiaryRequest {
-    //jsonIgnone for hiden field if you want to hide the field from the response
+
     @NotBlank(message = "Beneficiary name is required")
     @Size(max = 100, message = "Beneficiary name must not exceed 100 characters")
     private String beneficiaryName;

@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useAuth } from '../hooks/useAuth';
 import { useToast } from '../components/UI/Toast';
 import { transferService } from '../services/transferService';
+import { accountService } from '../services/accountService';
 
 export const useTransferViewModel = () => {
   const { accounts: globalAccounts, beneficiaries: globalBeneficiaries, triggerGlobalRefresh } = useAuth();
@@ -40,10 +41,15 @@ export const useTransferViewModel = () => {
 
   const fetchTransferData = async () => {
     try {
-      const bens = await transferService.getBeneficiaries();
-      setBeneficiaries(bens);
+      // Run both fetches concurrently
+      const [bens, accs] = await Promise.all([
+        transferService.getBeneficiaries().catch(() => []),
+        accountService.getAccounts().catch(() => [])
+      ]);
+      if (bens && bens.length > 0) setBeneficiaries(bens);
+      if (accs && accs.length > 0) setAccounts(accs);
     } catch (err) {
-      console.error('Failed to load beneficiaries via transferService', err);
+      console.error('Failed to load transfer data', err);
     }
   };
 

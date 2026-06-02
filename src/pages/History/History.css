@@ -100,7 +100,7 @@
 .history-table {
   width: 100%;
   border-collapse: collapse;
-  text-align: left;
+  text-align: center;
   font-size: 0.9rem;
 }
 
@@ -185,8 +185,13 @@ body.dark-theme .history-table th {
   font-weight: 800;
 }
 
-.h-amount-tag.credit { color: var(--success); }
-.h-amount-tag.debit { color: var(--text-primary); }
+.h-amount-tag.credit {
+  color: var(--success);
+}
+
+.h-amount-tag.debit {
+  color: var(--text-primary);
+}
 
 /* 3. Pagination footer */
 .history-pagination-footer {
@@ -225,8 +230,13 @@ body.dark-theme .history-table th {
 }
 
 @keyframes h-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 .h-loading-text {

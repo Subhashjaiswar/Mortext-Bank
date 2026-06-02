@@ -35,14 +35,16 @@ export const useCardsViewModel = () => {
   const handleToggleFreeze = async () => {
     if (!selectedCard.id) return;
     const isFrozen = selectedCard.status === 'Frozen';
+    const cardType = (selectedCard.type || 'card').toUpperCase();
+    const cardLastFour = (selectedCard.number || '').slice(-4);
     
     try {
       if (isFrozen) {
         await cardService.unfreezeCard(selectedCard.id);
-        toast.success(`Your ${selectedCard.type.toUpperCase()} Card ending in ${selectedCard.number.slice(-4)} has been unfrozen.`);
+        toast.success(`Your ${cardType} Card ending in ${cardLastFour} has been unfrozen.`);
       } else {
         await cardService.freezeCard(selectedCard.id);
-        toast.success(`Your ${selectedCard.type.toUpperCase()} Card ending in ${selectedCard.number.slice(-4)} has been frozen.`);
+        toast.success(`Your ${cardType} Card ending in ${cardLastFour} has been frozen.`);
       }
       fetchCards();
       if (triggerGlobalRefresh) triggerGlobalRefresh(); // Sync global auth context if needed

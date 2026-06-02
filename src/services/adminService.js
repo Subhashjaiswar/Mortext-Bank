@@ -21,7 +21,7 @@ export const adminService = {
       apiClient.logResponse('GET', `/api/admin/users?page=${page}&limit=${limit}`, 200, responseData);
       return responseData;
     }
-    return await apiClient.get(`/admin/users?page=${page}&limit=${limit}`);
+    return await apiClient.get(`/admin/users?page=${page > 0 ? page - 1 : 0}&size=${limit}`);
   },
 
   getUserById: async (userId) => {
@@ -74,7 +74,7 @@ export const adminService = {
       apiClient.logResponse('GET', `/api/admin/transactions?page=${page}&limit=${limit}`, 200, responseData);
       return responseData;
     }
-    return await apiClient.get(`/admin/transactions?page=${page}&limit=${limit}`);
+    return await apiClient.get(`/admin/transactions?page=${page > 0 ? page - 1 : 0}&size=${limit}`);
   },
 
   getTransactionsByStatus: async (status, page = 1, limit = 10) => {
@@ -96,7 +96,7 @@ export const adminService = {
       apiClient.logResponse('GET', `/api/admin/transactions/status/${status}?page=${page}&limit=${limit}`, 200, responseData);
       return responseData;
     }
-    return await apiClient.get(`/admin/transactions/status/${status}?page=${page}&limit=${limit}`);
+    return await apiClient.get(`/admin/transactions/status/${status}?page=${page > 0 ? page - 1 : 0}&size=${limit}`);
   },
 
   markTransactionFraudulent: async (transactionId, reason) => {
@@ -135,7 +135,7 @@ export const adminService = {
       apiClient.logResponse('GET', `/api/admin/kyc?page=${page}&limit=${limit}`, 200, responseData);
       return responseData;
     }
-    return await apiClient.get(`/admin/kyc?page=${page}&limit=${limit}`);
+    return await apiClient.get(`/admin/kyc?page=${page > 0 ? page - 1 : 0}&size=${limit}`);
   },
 
   getPendingKycRequests: async (page = 1, limit = 10) => {
@@ -157,7 +157,7 @@ export const adminService = {
       apiClient.logResponse('GET', `/api/admin/kyc/pending?page=${page}&limit=${limit}`, 200, responseData);
       return responseData;
     }
-    return await apiClient.get(`/admin/kyc/pending?page=${page}&limit=${limit}`);
+    return await apiClient.get(`/admin/kyc/pending?page=${page > 0 ? page - 1 : 0}&size=${limit}`);
   },
 
   approveKyc: async (kycId) => {

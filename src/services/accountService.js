@@ -1,5 +1,6 @@
 import { apiClient } from './apiClient';
 import { mockDb } from './mockDb';
+import { normalizeTransaction, extractTransactionList } from './transactionService';
 
 export const accountService = {
   getAccounts: async () => {
@@ -32,7 +33,9 @@ export const accountService = {
       apiClient.logResponse('GET', `/api/accounts/${accountId}/statement`, 200, statement);
       return statement;
     }
-    return await apiClient.get(`/accounts/${accountId}/statement`);
+    const rawData = await apiClient.get(`/accounts/${accountId}/statement`);
+    const rawList = extractTransactionList(rawData);
+    return rawList.map(normalizeTransaction).filter(Boolean);
   },
 
   getStatementByRange: async (accountId, startDate, endDate) => {
@@ -55,7 +58,9 @@ export const accountService = {
       );
       return filtered;
     }
-    return await apiClient.get(`/accounts/${accountId}/statement/range?startDate=${startDate}&endDate=${endDate}`);
+    const rawData = await apiClient.get(`/accounts/${accountId}/statement/range?startDate=${startDate}&endDate=${endDate}`);
+    const rawList = extractTransactionList(rawData);
+    return rawList.map(normalizeTransaction).filter(Boolean);
   },
 
   downloadStatementAsPdf: async (accountId) => {

@@ -1,5 +1,6 @@
 package com.sanviitech.mortextBank.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -22,6 +23,7 @@ public class Account {
     @Column(unique = true, nullable = false, length = 20)
     private String accountNumber;
     
+    @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
@@ -56,12 +58,15 @@ public class Account {
     @Column(nullable = false)
     private LocalDateTime updatedAt = LocalDateTime.now();
     
+    @JsonIgnore
     @OneToMany(mappedBy = "account", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private java.util.Set<Transaction> transactions = new java.util.HashSet<>();
     
+    @JsonIgnore
     @OneToMany(mappedBy = "account", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private java.util.Set<Card> cards = new java.util.HashSet<>();
     
+    @JsonIgnore
     @OneToMany(mappedBy = "fromAccount", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private java.util.Set<ScheduledTransfer> scheduledTransfers = new java.util.HashSet<>();
     

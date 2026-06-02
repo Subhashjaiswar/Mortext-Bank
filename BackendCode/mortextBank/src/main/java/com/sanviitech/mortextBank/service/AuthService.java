@@ -6,6 +6,7 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.sanviitech.mortextBank.dto.AuthResponse;
 import com.sanviitech.mortextBank.dto.ForgotPasswordRequest;
@@ -13,6 +14,7 @@ import com.sanviitech.mortextBank.dto.LoginRequest;
 import com.sanviitech.mortextBank.dto.OTPVerificationRequest;
 import com.sanviitech.mortextBank.dto.RegisterRequest;
 import com.sanviitech.mortextBank.dto.ResetPasswordRequest;
+import com.sanviitech.mortextBank.entity.Account;
 import com.sanviitech.mortextBank.entity.OTP;
 import com.sanviitech.mortextBank.entity.User;
 import com.sanviitech.mortextBank.exception.BadRequestException;
@@ -38,6 +40,7 @@ public class AuthService {
     private final AuthenticationManager authenticationManager;
     private final EmailService emailService;
     
+    @Transactional
     public AuthResponse register(RegisterRequest request) {
         if (userRepository.existsByEmail(request.getEmail())) {
             throw new BadRequestException("Email already exists");
@@ -49,10 +52,28 @@ public class AuthService {
         user.setSecurityPin(request.getSecurityPin());
         
         user = userRepository.save(user);
+        System.out.println("User saved with ID: " + user.getId());
+        
+        // Create account for the user
+        Account account = new Account();
+        account.setAccountNumber(OTPUtil.generateAccountNumber());
+        account.setUser(user);
+        account.setAccountType(Account.AccountType.SAVINGS);
+        account.setBalance(java.math.BigDecimal.ZERO);
+        account.setAvailableBalance(java.math.BigDecimal.ZERO);
+        account.setAccountName("Savings Account");
+        account.setCurrency("INR");
+        account.setIsActive(true);
+        account.setIsFrozen(false);
+        account.setAccountOpenedAt(java.time.LocalDateTime.now());
+        
+        System.out.println("Saving account with number: " + account.getAccountNumber());
+        account = accountRepository.save(account);
+        System.out.println("Account saved with ID: " + account.getId());
         
         String token = tokenProvider.generateToken(new UsernamePasswordAuthenticationToken(user.getEmail(), null, null));
         
-        return new AuthResponse(token, "Bearer", user.getId(), user.getFullName(), user.getEmail(), "CUSTOMER", null);
+        return new AuthResponse(token, "Bearer", user.getId(), user.getFullName(), user.getEmail(), "CUSTOMER", account.getAccountNumber());
     }
     
     public AuthResponse login(LoginRequest request) {

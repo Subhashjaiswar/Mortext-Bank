@@ -70,4 +70,18 @@ public class AccountController {
         
         return new ResponseEntity<>(pdfBytes, headers, HttpStatus.OK);
     }
+    
+    @GetMapping("/savings/balance")
+    @Operation(summary = "Get savings account balance")
+    public ResponseEntity<ApiResponse<Account>> getSavingsAccountBalance(Authentication authentication) {
+        Account account = accountService.getSavingsAccountBalance(authentication);
+        return ResponseEntity.ok(ApiResponse.success("Savings account balance retrieved successfully", account));
+    }
+    
+    @GetMapping("/savings/balance/{userId}")
+    @Operation(summary = "Get savings account balance by user ID")
+    public ResponseEntity<ApiResponse<Account>> getSavingsAccountBalanceByUserId(@PathVariable Long userId) {
+        Account account = accountService.getSavingsAccountBalanceByUserId(userId);
+        return ResponseEntity.ok(ApiResponse.success("Savings account balance retrieved successfully", account));
+    }
 }

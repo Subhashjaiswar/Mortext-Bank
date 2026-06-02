@@ -30,7 +30,13 @@ export const useDashboardViewModel = () => {
     const fetchDashboard = async () => {
       try {
         const data = await dashboardService.getDashboardData();
-        setDashboardData(data);
+        setDashboardData((prev) => ({
+          ...prev,
+          ...data,
+          accounts: data.accounts || globalAccounts,
+          recentTransactions: data.recentTransactions || globalTransactions.slice(0, 3),
+          notifications: data.notifications || globalNotifications.slice(0, 3),
+        }));
       } catch (err) {
         console.error('Failed to load dashboard statistics via dashboardService', err);
       }

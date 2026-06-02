@@ -1,5 +1,10 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import { mockDb } from '../services/mockDb';
+import { accountService } from '../services/accountService';
+import { transferService } from '../services/transferService';
+import { cardService } from '../services/cardService';
+import { transactionService } from '../services/transactionService';
+import { apiClient } from '../services/apiClient';
 
 const AuthContext = createContext(null);
 
@@ -26,16 +31,52 @@ export const AuthProvider = ({ children }) => {
   const [kycStatus, setKycStatus] = useState('Pending');
   const [kycDocument, setKycDocument] = useState(null);
 
-  // Sync state with mockDb
-  const syncWithDb = () => {
-    setAccounts(mockDb.getAccounts());
-    setBeneficiaries(mockDb.getBeneficiaries());
-    setCards(mockDb.getCards());
-    setTransactions(mockDb.getTransactions());
-    setNotifications(mockDb.getNotifications());
-    setAdminUsers(mockDb.getAdminUsers());
-    setKycStatus(mockDb.getKycStatus());
-    setKycDocument(mockDb.getKycDocument());
+  // Sync state with mockDb or live APIs
+  const syncWithDb = async () => {
+    if (apiClient.isMock()) {
+      setAccounts(mockDb.getAccounts());
+      setBeneficiaries(mockDb.getBeneficiaries());
+      setCards(mockDb.getCards());
+      setTransactions(mockDb.getTransactions());
+      setNotifications(mockDb.getNotifications());
+      setAdminUsers(mockDb.getAdminUsers());
+      setKycStatus(mockDb.getKycStatus());
+      setKycDocument(mockDb.getKycDocument());
+    } else {
+      try {
+        const accs = await accountService.getAccounts();
+        if (accs) setAccounts(accs);
+      } catch (err) {
+        console.error('Failed to sync accounts from API', err);
+      }
+      try {
+        const bens = await transferService.getBeneficiaries();
+        if (bens) setBeneficiaries(bens);
+      } catch (err) {
+        console.error('Failed to sync beneficiaries from API', err);
+      }
+      try {
+        const crds = await cardService.getCards();
+        if (crds) setCards(crds);
+      } catch (err) {
+        console.error('Failed to sync cards from API', err);
+      }
+      try {
+        const txsData = await transactionService.getTransactions(1, 100);
+        if (txsData && Array.isArray(txsData.transactions)) {
+          setTransactions(txsData.transactions);
+        }
+      } catch (err) {
+        console.error('Failed to sync transactions from API', err);
+      }
+      try {
+        setNotifications(mockDb.getNotifications());
+        setAdminUsers(mockDb.getAdminUsers());
+        setKycStatus(mockDb.getKycStatus());
+      } catch (err) {
+        console.error('Failed to sync notifications from API', err);
+      }
+    }
   };
 
   // On mount: sync data and session

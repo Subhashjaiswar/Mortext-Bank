@@ -31,7 +31,7 @@ export const useTransferViewModel = () => {
   // Add Beneficiary form states
   const [benName, setBenName] = useState('');
   const [benAccNo, setBenAccNo] = useState('');
-  const [benBank, setBenBank] = useState('');
+  const [benIfscCode, setBenIfscCode] = useState('');
   const [benNickname, setBenNickname] = useState('');
 
   // UX Status
@@ -65,24 +65,24 @@ export const useTransferViewModel = () => {
 
   const handleAddBeneficiarySubmit = async (e) => {
     e.preventDefault();
-    if (!benName || !benAccNo || !benBank) {
+    if (!benName || !benAccNo || !benIfscCode) {
       toast.error('Please enter all required fields.');
       return;
     }
-    
+
     try {
-      await transferService.addBeneficiary(benName, benAccNo, benBank, benNickname, 'External');
+      await transferService.addBeneficiary(benName, benAccNo, benIfscCode, benNickname);
       setShowAddBenModal(false);
-      
+
       // Auto-select newly added beneficiary
       setSelectedBen(benName);
-      
+
       // Clear fields
       setBenName('');
       setBenAccNo('');
-      setBenBank('');
+      setBenIfscCode('');
       setBenNickname('');
-      
+
       toast.success(`${benName} added as a beneficiary.`);
       fetchTransferData();
       if (triggerGlobalRefresh) triggerGlobalRefresh();
@@ -102,12 +102,12 @@ export const useTransferViewModel = () => {
 
   const handleInitiateTransfer = (e) => {
     e.preventDefault();
-    
+
     if (!amount || parseFloat(amount) <= 0) {
       toast.error('Please enter a valid transfer amount.');
       return;
     }
-    
+
     const sourceAcc = accounts.find((a) => a.id === fromAccount);
     if (sourceAcc && sourceAcc.balance < parseFloat(amount)) {
       toast.error('Insufficient funds in the selected account.');
@@ -135,12 +135,17 @@ export const useTransferViewModel = () => {
   const handleConfirmTransfer = async () => {
     setShowConfirmModal(false);
     setProcessing(true);
-    
+
     try {
       const recipientName = activeSubTab === 'upi' ? upiId : selectedBen;
-      const sourceAcc = accounts.find((a) => a.id === fromAccount);
+      const sourceAcc = accounts.find((a) => a.id === fromAccount || a.accountNumber === fromAccount);
+      const ben = beneficiaries.find(b => (b.beneficiaryName || b.name) === selectedBen);
+
+      const fromAccountNumber = sourceAcc ? (sourceAcc.accountNumber || sourceAcc.id) : '';
+      const toAccountNumber = activeSubTab === 'upi' ? upiId : (ben ? (ben.accountNumber || ben.accountNo) : '');
       const category = activeSubTab === 'schedule' ? 'Bills' : 'Transfer';
-      
+      const transferType = activeSubTab === 'upi' ? 'UPI' : 'BANK_TRANSFER';
+
       if (activeSubTab === 'schedule') {
         // Schedule API Endpoint
         await transferService.scheduleTransfer({
@@ -152,7 +157,13 @@ export const useTransferViewModel = () => {
         });
       } else {
         // Live Transfer API Endpoint
-        await transferService.transferMoney(fromAccount, recipientName, amount, category);
+        await transferService.transferMoney({
+          fromAccountNumber,
+          toAccountNumber,
+          amount: parseFloat(amount),
+          remarks: remarks || category,
+          transferType
+        });
       }
 
       setSuccessReceipt({
@@ -163,7 +174,7 @@ export const useTransferViewModel = () => {
         source: sourceAcc ? sourceAcc.name : 'Savings Account',
         type: activeSubTab
       });
-      
+
       setProcessing(false);
       setShowSuccessModal(true);
       resetForm();
@@ -203,8 +214,8 @@ export const useTransferViewModel = () => {
     setBenName,
     benAccNo,
     setBenAccNo,
-    benBank,
-    setBenBank,
+    benIfscCode,
+    setBenIfscCode,
     benNickname,
     setBenNickname,
     processing,

@@ -60,4 +60,20 @@ public class AccountService {
         return pdfGenerator.generateStatement(transactions, account.getAccountNumber(), 
                 account.getUser().getFullName());
     }
+    
+    public Account getSavingsAccountBalance(Authentication authentication) {
+        User user = userRepository.findByEmail(authentication.getName())
+                .orElseThrow(() -> new ResourceNotFoundException("User", "email", authentication.getName()));
+        
+        return accountRepository.findByUserIdAndAccountType(user.getId(), Account.AccountType.SAVINGS)
+                .orElseThrow(() -> new ResourceNotFoundException("Savings Account", "user_id", user.getId()));
+    }
+    
+    public Account getSavingsAccountBalanceByUserId(Long userId) {
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new ResourceNotFoundException("User", "id", userId));
+        
+        return accountRepository.findByUserIdAndAccountType(userId, Account.AccountType.SAVINGS)
+                .orElseThrow(() -> new ResourceNotFoundException("Savings Account", "user_id", userId));
+    }
 }

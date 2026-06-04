@@ -5,8 +5,8 @@
  */
 
 const SEED_ACCOUNTS = [
-  { id: 'acc-1', name: 'Savings Account', number: '•••• •••• •••• 4892', type: 'savings', balance: 12450.80, status: 'Active' },
-  { id: 'acc-2', name: 'Current Account', number: '•••• •••• •••• 9210', type: 'current', balance: 48290.45, status: 'Active' }
+  { id: '1', name: 'Savings Account', number: '•••• •••• •••• 4892', type: 'savings', balance: 12450.80, status: 'Active' },
+  { id: '2', name: 'Current Account', number: '•••• •••• •••• 9210', type: 'current', balance: 48290.45, status: 'Active' }
 ];
 
 const SEED_BENEFICIARIES = [

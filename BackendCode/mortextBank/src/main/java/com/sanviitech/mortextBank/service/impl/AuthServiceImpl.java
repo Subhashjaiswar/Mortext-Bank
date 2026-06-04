@@ -17,8 +17,8 @@ import com.sanviitech.mortextBank.dto.ResetPasswordRequest;
 import com.sanviitech.mortextBank.entity.Account;
 import com.sanviitech.mortextBank.entity.OTP;
 import com.sanviitech.mortextBank.entity.User;
-import com.sanviitech.mortextBank.exception.BadRequestException;
-import com.sanviitech.mortextBank.exception.ResourceNotFoundException;
+import com.sanviitech.mortextBank.constants.ValidationConstants;
+import com.sanviitech.mortextBank.util.GlobalException;
 import com.sanviitech.mortextBank.repository.AccountRepository;
 import com.sanviitech.mortextBank.repository.OTPRepository;
 import com.sanviitech.mortextBank.repository.UserRepository;
@@ -26,8 +26,12 @@ import com.sanviitech.mortextBank.security.JwtTokenProvider;
 import com.sanviitech.mortextBank.service.AuthService;
 import com.sanviitech.mortextBank.util.EmailService;
 import com.sanviitech.mortextBank.util.OTPUtil;
+import com.sanviitech.mortextBank.validator.EmailValidator;
+import com.sanviitech.mortextBank.validator.NameValidator;
+import com.sanviitech.mortextBank.validator.SecurityPinValidator;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 
 @Service
 @RequiredArgsConstructor
@@ -41,11 +45,35 @@ public class AuthServiceImpl implements AuthService {
     private final AuthenticationManager authenticationManager;
     private final EmailService emailService;
 
+    @Autowired
+    private EmailValidator emailValidator;
+
+    @Autowired
+    private NameValidator nameValidator;
+
+    @Autowired
+    private SecurityPinValidator securityPinValidator;
+
     @Override
     @Transactional
     public AuthResponse register(RegisterRequest request) {
+        String emailError = emailValidator.validate(request.getEmail());
+        if (emailError != null) {
+            throw GlobalException.badRequest(emailError);
+        }
+
+        String nameError = nameValidator.validate(request.getFullName(), "Full name");
+        if (nameError != null) {
+            throw GlobalException.badRequest(nameError);
+        }
+
+        String pinError = securityPinValidator.validate(request.getSecurityPin());
+        if (pinError != null) {
+            throw GlobalException.badRequest(pinError);
+        }
+
         if (userRepository.existsByEmail(request.getEmail())) {
-            throw new BadRequestException("Email already exists");
+            throw GlobalException.badRequest(ValidationConstants.EMAIL_ALREADY_EXISTS);
         }
 
         User user = new User();
@@ -80,11 +108,21 @@ public class AuthServiceImpl implements AuthService {
 
     @Override
     public AuthResponse login(LoginRequest request) {
+        String emailError = emailValidator.validate(request.getEmail());
+        if (emailError != null) {
+            throw GlobalException.badRequest(emailError);
+        }
+
+        String pinError = securityPinValidator.validate(request.getSecurityPin());
+        if (pinError != null) {
+            throw GlobalException.badRequest(pinError);
+        }
+
         User user = userRepository.findByEmail(request.getEmail())
-                .orElseThrow(() -> new ResourceNotFoundException("User", "email", request.getEmail()));
+                .orElseThrow(() -> GlobalException.resourceNotFound("User", "email", request.getEmail()));
 
         if (!user.getSecurityPin().equals(request.getSecurityPin())) {
-            throw new BadRequestException("Invalid security pin");
+            throw GlobalException.badRequest(ValidationConstants.INVALID_SECURITY_PIN);
         }
 
         String token = tokenProvider.generateToken(new UsernamePasswordAuthenticationToken(user.getEmail(), null, null));
@@ -101,7 +139,7 @@ public class AuthServiceImpl implements AuthService {
     @Override
     public void forgotPassword(ForgotPasswordRequest request) {
         User user = userRepository.findByEmail(request.getEmail())
-                .orElseThrow(() -> new ResourceNotFoundException("User", "email", request.getEmail()));
+                .orElseThrow(() -> GlobalException.resourceNotFound("User", "email", request.getEmail()));
 
         String otp = OTPUtil.generateOTP();
         saveOTP(user.getEmail(), "", otp, OTP.OTPType.FORGOT_PASSWORD);
@@ -111,14 +149,14 @@ public class AuthServiceImpl implements AuthService {
     @Override
     public void resetPassword(ResetPasswordRequest request) {
         OTP otp = otpRepository.findByEmailAndOtpCodeAndIsUsedFalse(request.getEmail(), request.getOtp())
-                .orElseThrow(() -> new BadRequestException("Invalid or expired OTP"));
+                .orElseThrow(() -> GlobalException.badRequest(ValidationConstants.INVALID_OR_EXPIRED_OTP));
 
         if (otp.getExpiryTime().isBefore(LocalDateTime.now())) {
-            throw new BadRequestException("OTP has expired");
+            throw GlobalException.badRequest(ValidationConstants.OTP_EXPIRED);
         }
 
         User user = userRepository.findByEmail(otp.getEmail())
-                .orElseThrow(() -> new ResourceNotFoundException("User", "email", otp.getEmail()));
+                .orElseThrow(() -> GlobalException.resourceNotFound("User", "email", otp.getEmail()));
 
         user.setSecurityPin(request.getNewSecurityPin());
         userRepository.save(user);
@@ -130,10 +168,10 @@ public class AuthServiceImpl implements AuthService {
     @Override
     public void verifyOTP(OTPVerificationRequest request) {
         OTP otp = otpRepository.findByEmailAndOtpCodeAndIsUsedFalse(request.getEmail(), request.getOtp())
-                .orElseThrow(() -> new BadRequestException("Invalid or expired OTP"));
+                .orElseThrow(() -> GlobalException.badRequest(ValidationConstants.INVALID_OR_EXPIRED_OTP));
 
         if (otp.getExpiryTime().isBefore(LocalDateTime.now())) {
-            throw new BadRequestException("OTP has expired");
+            throw GlobalException.badRequest(ValidationConstants.OTP_EXPIRED);
         }
 
         otp.setIsUsed(true);

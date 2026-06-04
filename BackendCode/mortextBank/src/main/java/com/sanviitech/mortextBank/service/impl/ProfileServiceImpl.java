@@ -1,15 +1,23 @@
 package com.sanviitech.mortextBank.service.impl;
 
+import com.sanviitech.mortextBank.dto.KYCResponse;
 import com.sanviitech.mortextBank.dto.KYCUploadRequest;
 import com.sanviitech.mortextBank.dto.UpdateProfileRequest;
+import com.sanviitech.mortextBank.dto.UserResponse;
 import com.sanviitech.mortextBank.entity.KYC;
 import com.sanviitech.mortextBank.entity.User;
-import com.sanviitech.mortextBank.exception.BadRequestException;
-import com.sanviitech.mortextBank.exception.ResourceNotFoundException;
+import com.sanviitech.mortextBank.constants.ValidationConstants;
+import com.sanviitech.mortextBank.util.GlobalException;
+import com.sanviitech.mortextBank.mapper.KYCMapper;
+import com.sanviitech.mortextBank.mapper.UserMapper;
 import com.sanviitech.mortextBank.repository.KYCRepository;
 import com.sanviitech.mortextBank.repository.UserRepository;
 import com.sanviitech.mortextBank.service.ProfileService;
+import com.sanviitech.mortextBank.validator.EmailValidator;
+import com.sanviitech.mortextBank.validator.NameValidator;
+import com.sanviitech.mortextBank.validator.SecurityPinValidator;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -21,48 +29,80 @@ public class ProfileServiceImpl implements ProfileService {
     private final UserRepository userRepository;
     private final KYCRepository kycRepository;
     private final PasswordEncoder passwordEncoder;
+    private final UserMapper userMapper;
+    private final KYCMapper kycMapper;
+
+    @Autowired
+    private EmailValidator emailValidator;
+
+    @Autowired
+    private NameValidator nameValidator;
+
+    @Autowired
+    private SecurityPinValidator securityPinValidator;
 
     @Override
-    public User updateProfile(UpdateProfileRequest request, Authentication authentication) {
+    public UserResponse updateProfile(UpdateProfileRequest request, Authentication authentication) {
         User user = userRepository.findByEmail(authentication.getName())
-                .orElseThrow(() -> new ResourceNotFoundException("User", "email", authentication.getName()));
+                .orElseThrow(() -> GlobalException.resourceNotFound("User", "email", authentication.getName()));
 
         if (request.getFullName() != null) {
+            String nameError = nameValidator.validate(request.getFullName(), "Full name");
+            if (nameError != null) {
+                throw GlobalException.badRequest(nameError);
+            }
             user.setFullName(request.getFullName());
         }
         if (request.getEmail() != null && !request.getEmail().equals(user.getEmail())) {
+            String emailError = emailValidator.validate(request.getEmail());
+            if (emailError != null) {
+                throw GlobalException.badRequest(emailError);
+            }
             if (userRepository.existsByEmail(request.getEmail())) {
-                throw new BadRequestException("Email already exists");
+                throw GlobalException.badRequest(ValidationConstants.EMAIL_ALREADY_EXISTS);
             }
             user.setEmail(request.getEmail());
         }
 
-        return userRepository.save(user);
+        User savedUser = userRepository.save(user);
+        return userMapper.toResponse(savedUser);
     }
 
     @Override
-    public User changeSecurityPin(String currentPin, String newPin, Authentication authentication) {
+    public UserResponse changeSecurityPin(String currentPin, String newPin, Authentication authentication) {
+        String currentPinError = securityPinValidator.validate(currentPin);
+        if (currentPinError != null) {
+            throw GlobalException.badRequest(currentPinError);
+        }
+
+        String newPinError = securityPinValidator.validate(newPin);
+        if (newPinError != null) {
+            throw GlobalException.badRequest(newPinError);
+        }
+
         User user = userRepository.findByEmail(authentication.getName())
-                .orElseThrow(() -> new ResourceNotFoundException("User", "email", authentication.getName()));
+                .orElseThrow(() -> GlobalException.resourceNotFound("User", "email", authentication.getName()));
 
         if (!currentPin.equals(user.getSecurityPin())) {
-            throw new BadRequestException("Current security pin is incorrect");
+            throw GlobalException.badRequest(ValidationConstants.CURRENT_SECURITY_PIN_INCORRECT);
         }
 
         user.setSecurityPin(newPin);
-        return userRepository.save(user);
+        User savedUser = userRepository.save(user);
+        return userMapper.toResponse(savedUser);
     }
 
     @Override
-    public User getProfile(Authentication authentication) {
-        return userRepository.findByEmail(authentication.getName())
-                .orElseThrow(() -> new ResourceNotFoundException("User", "email", authentication.getName()));
-    }
-
-    @Override
-    public KYC uploadKYC(KYCUploadRequest request, Authentication authentication) {
+    public UserResponse getProfile(Authentication authentication) {
         User user = userRepository.findByEmail(authentication.getName())
-                .orElseThrow(() -> new ResourceNotFoundException("User", "email", authentication.getName()));
+                .orElseThrow(() -> GlobalException.resourceNotFound("User", "email", authentication.getName()));
+        return userMapper.toResponse(user);
+    }
+
+    @Override
+    public KYCResponse uploadKYC(KYCUploadRequest request, Authentication authentication) {
+        User user = userRepository.findByEmail(authentication.getName())
+                .orElseThrow(() -> GlobalException.resourceNotFound("User", "email", authentication.getName()));
 
         KYC kyc = kycRepository.findByUserId(user.getId()).orElse(new KYC());
 
@@ -85,15 +125,17 @@ public class ProfileServiceImpl implements ProfileService {
         kyc.setNationality(request.getNationality());
         kyc.setStatus(KYC.KYCStatus.PENDING);
 
-        return kycRepository.save(kyc);
+        KYC savedKYC = kycRepository.save(kyc);
+        return kycMapper.toResponse(savedKYC);
     }
 
     @Override
-    public KYC getKYCStatus(Authentication authentication) {
+    public KYCResponse getKYCStatus(Authentication authentication) {
         User user = userRepository.findByEmail(authentication.getName())
-                .orElseThrow(() -> new ResourceNotFoundException("User", "email", authentication.getName()));
+                .orElseThrow(() -> GlobalException.resourceNotFound("User", "email", authentication.getName()));
 
-        return kycRepository.findByUserId(user.getId())
-                .orElseThrow(() -> new ResourceNotFoundException("KYC", "userId", user.getId()));
+        KYC kyc = kycRepository.findByUserId(user.getId())
+                .orElseThrow(() -> GlobalException.resourceNotFound("KYC", "userId", user.getId()));
+        return kycMapper.toResponse(kyc);
     }
 }

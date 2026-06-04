@@ -16,18 +16,14 @@ public class OTPUtil {
     }
     
     public static String generateAccountNumber() {
-        return "SAN" + System.currentTimeMillis() + random.nextInt(100);
+        return String.valueOf(System.currentTimeMillis() + random.nextInt(100));
     }
     
     public static String generateCardNumber() {
-        StringBuilder cardNumber = new StringBuilder();
-        for (int i = 0; i < 16; i++) {
-            if (i > 0 && i % 4 == 0) {
-                cardNumber.append(" ");
-            }
-            cardNumber.append(random.nextInt(10));
-        }
-        return cardNumber.toString().replace(" ", "");
+        return java.util.stream.IntStream.range(0, 16)
+                .map(i -> random.nextInt(10))
+                .mapToObj(String::valueOf)
+                .collect(java.util.stream.Collectors.joining());
     }
     
     public static String generateCVV() {

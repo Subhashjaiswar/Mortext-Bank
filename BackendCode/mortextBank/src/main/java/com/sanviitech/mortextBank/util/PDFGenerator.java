@@ -6,6 +6,7 @@ import com.itextpdf.text.*;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
+import com.sanviitech.mortextBank.constants.ValidationConstants;
 import com.sanviitech.mortextBank.entity.Transaction;
 import org.springframework.stereotype.Component;
 
@@ -16,7 +17,7 @@ import java.util.List;
 @Component
 public class PDFGenerator {
     
-    public byte[] generateStatement(List<Transaction> transactions, String accountNumber, String accountHolder) throws DocumentException {
+    public byte[] generateStatement(List<Transaction> transactions, String accountNumber, String accountHolder) {
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
         Document document = new Document(PageSize.A4);
         
@@ -61,20 +62,21 @@ public class PDFGenerator {
             
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
             
-            for (Transaction transaction : transactions) {
-                table.addCell(new PdfPCell(new Phrase(transaction.getTransactionId(), normalFont)));
-                table.addCell(new PdfPCell(new Phrase(transaction.getTransactionDate().format(formatter), normalFont)));
-                table.addCell(new PdfPCell(new Phrase(transaction.getTransactionType().name(), normalFont)));
-                table.addCell(new PdfPCell(new Phrase(transaction.getAmount().toString(), normalFont)));
-                table.addCell(new PdfPCell(new Phrase(transaction.getBalanceAfter().toString(), normalFont)));
-                table.addCell(new PdfPCell(new Phrase(transaction.getStatus().name(), normalFont)));
-            }
+            transactions.stream()
+                    .forEach(transaction -> {
+                        table.addCell(new PdfPCell(new Phrase(transaction.getTransactionId(), normalFont)));
+                        table.addCell(new PdfPCell(new Phrase(transaction.getTransactionDate().format(formatter), normalFont)));
+                        table.addCell(new PdfPCell(new Phrase(transaction.getTransactionType().name(), normalFont)));
+                        table.addCell(new PdfPCell(new Phrase(transaction.getAmount().toString(), normalFont)));
+                        table.addCell(new PdfPCell(new Phrase(transaction.getBalanceAfter().toString(), normalFont)));
+                        table.addCell(new PdfPCell(new Phrase(transaction.getStatus().name(), normalFont)));
+                    });
             
             document.add(table);
             document.close();
             
         } catch (DocumentException e) {
-            throw e;
+            throw new RuntimeException(ValidationConstants.PDF_GENERATION_FAILED, e);
         }
         
         return outputStream.toByteArray();

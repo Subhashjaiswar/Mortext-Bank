@@ -1,8 +1,8 @@
 package com.sanviitech.mortextBank.controller;
 
+import com.sanviitech.mortextBank.dto.AccountResponse;
 import com.sanviitech.mortextBank.dto.ApiResponse;
-import com.sanviitech.mortextBank.entity.Account;
-import com.sanviitech.mortextBank.entity.Transaction;
+import com.sanviitech.mortextBank.dto.TransactionResponse;
 import com.sanviitech.mortextBank.service.AccountService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -28,39 +28,39 @@ public class AccountController {
     
     @GetMapping
     @Operation(summary = "Get all user accounts")
-    public ResponseEntity<ApiResponse<List<Account>>> getUserAccounts(Authentication authentication) {
-        List<Account> accounts = accountService.getUserAccounts(authentication);
+    public ResponseEntity<ApiResponse<List<AccountResponse>>> getUserAccounts(Authentication authentication) {
+        List<AccountResponse> accounts = accountService.getUserAccounts(authentication);
         return ResponseEntity.ok(ApiResponse.success("Accounts retrieved successfully", accounts));
     }
     
     @GetMapping("/{accountId}")
     @Operation(summary = "Get account by ID")
-    public ResponseEntity<ApiResponse<Account>> getAccountById(@PathVariable Long accountId, Authentication authentication) {
-        Account account = accountService.getAccountById(accountId, authentication);
+    public ResponseEntity<ApiResponse<AccountResponse>> getAccountById(@PathVariable Long accountId, Authentication authentication) {
+        AccountResponse account = accountService.getAccountById(accountId, authentication);
         return ResponseEntity.ok(ApiResponse.success("Account retrieved successfully", account));
     }
     
     @GetMapping("/{accountId}/statement")
     @Operation(summary = "Get account statement")
-    public ResponseEntity<ApiResponse<List<Transaction>>> getAccountStatement(@PathVariable Long accountId, Authentication authentication) {
-        List<Transaction> transactions = accountService.getAccountStatement(accountId, authentication);
+    public ResponseEntity<ApiResponse<List<TransactionResponse>>> getAccountStatement(@PathVariable Long accountId, Authentication authentication) {
+        List<TransactionResponse> transactions = accountService.getAccountStatement(accountId, authentication);
         return ResponseEntity.ok(ApiResponse.success("Statement retrieved successfully", transactions));
     }
     
     @GetMapping("/{accountId}/statement/range")
     @Operation(summary = "Get account statement by date range")
-    public ResponseEntity<ApiResponse<List<Transaction>>> getAccountStatementByDateRange(
+    public ResponseEntity<ApiResponse<List<TransactionResponse>>> getAccountStatementByDateRange(
             @PathVariable Long accountId,
             @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime startDate,
             @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime endDate,
             Authentication authentication) {
-        List<Transaction> transactions = accountService.getAccountStatementByDateRange(accountId, startDate, endDate, authentication);
+        List<TransactionResponse> transactions = accountService.getAccountStatementByDateRange(accountId, startDate, endDate, authentication);
         return ResponseEntity.ok(ApiResponse.success("Statement retrieved successfully", transactions));
     }
     
     @GetMapping("/{accountId}/statement/download")
     @Operation(summary = "Download account statement as PDF")
-    public ResponseEntity<byte[]> downloadStatementPDF(@PathVariable Long accountId, Authentication authentication) throws Exception {
+    public ResponseEntity<byte[]> downloadStatementPDF(@PathVariable Long accountId, Authentication authentication) {
         byte[] pdfBytes = accountService.downloadStatementPDF(accountId, authentication);
         
         HttpHeaders headers = new HttpHeaders();
@@ -73,15 +73,15 @@ public class AccountController {
     
     @GetMapping("/savings/balance")
     @Operation(summary = "Get savings account balance")
-    public ResponseEntity<ApiResponse<Account>> getSavingsAccountBalance(Authentication authentication) {
-        Account account = accountService.getSavingsAccountBalance(authentication);
+    public ResponseEntity<ApiResponse<AccountResponse>> getSavingsAccountBalance(Authentication authentication) {
+        AccountResponse account = accountService.getSavingsAccountBalance(authentication);
         return ResponseEntity.ok(ApiResponse.success("Savings account balance retrieved successfully", account));
     }
     
     @GetMapping("/savings/balance/{userId}")
     @Operation(summary = "Get savings account balance by user ID")
-    public ResponseEntity<ApiResponse<Account>> getSavingsAccountBalanceByUserId(@PathVariable Long userId) {
-        Account account = accountService.getSavingsAccountBalanceByUserId(userId);
+    public ResponseEntity<ApiResponse<AccountResponse>> getSavingsAccountBalanceByUserId(@PathVariable Long userId) {
+        AccountResponse account = accountService.getSavingsAccountBalanceByUserId(userId);
         return ResponseEntity.ok(ApiResponse.success("Savings account balance retrieved successfully", account));
     }
 }

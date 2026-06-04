@@ -1,6 +1,7 @@
 package com.sanviitech.mortextBank.controller;
 
 import com.sanviitech.mortextBank.dto.ApiResponse;
+import com.sanviitech.mortextBank.dto.TransactionResponse;
 import com.sanviitech.mortextBank.entity.Transaction;
 import com.sanviitech.mortextBank.service.TransactionService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -26,38 +27,38 @@ public class TransactionController {
     
     @GetMapping
     @Operation(summary = "Get all user transactions with pagination")
-    public ResponseEntity<ApiResponse<Page<Transaction>>> getUserTransactions(Authentication authentication, Pageable pageable) {
-        Page<Transaction> transactions = transactionService.getUserTransactions(authentication, pageable);
+    public ResponseEntity<ApiResponse<Page<TransactionResponse>>> getUserTransactions(Authentication authentication, Pageable pageable) {
+        Page<TransactionResponse> transactions = transactionService.getUserTransactions(authentication, pageable);
         return ResponseEntity.ok(ApiResponse.success("Transactions retrieved successfully", transactions));
     }
     
     @GetMapping("/range")
     @Operation(summary = "Get transactions by date range")
-    public ResponseEntity<ApiResponse<List<Transaction>>> getTransactionsByDateRange(
+    public ResponseEntity<ApiResponse<List<TransactionResponse>>> getTransactionsByDateRange(
             @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime startDate,
             @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime endDate,
             Authentication authentication) {
-        List<Transaction> transactions = transactionService.getTransactionsByDateRange(startDate, endDate, authentication);
+        List<TransactionResponse> transactions = transactionService.getTransactionsByDateRange(startDate, endDate, authentication);
         return ResponseEntity.ok(ApiResponse.success("Transactions retrieved successfully", transactions));
     }
     
     @GetMapping("/type/{transactionType}")
     @Operation(summary = "Get transactions by type")
-    public ResponseEntity<ApiResponse<Page<Transaction>>> getTransactionsByType(
+    public ResponseEntity<ApiResponse<Page<TransactionResponse>>> getTransactionsByType(
             @PathVariable Transaction.TransactionType transactionType,
             Authentication authentication,
             Pageable pageable) {
-        Page<Transaction> transactions = transactionService.getTransactionsByType(transactionType, authentication, pageable);
+        Page<TransactionResponse> transactions = transactionService.getTransactionsByType(transactionType, authentication, pageable);
         return ResponseEntity.ok(ApiResponse.success("Transactions retrieved successfully", transactions));
     }
     
     @GetMapping("/status/{status}")
     @Operation(summary = "Get transactions by status")
-    public ResponseEntity<ApiResponse<Page<Transaction>>> getTransactionsByStatus(
+    public ResponseEntity<ApiResponse<Page<TransactionResponse>>> getTransactionsByStatus(
             @PathVariable Transaction.TransactionStatus status,
             Authentication authentication,
             Pageable pageable) {
-        Page<Transaction> transactions = transactionService.getTransactionsByStatus(status, authentication, pageable);
+        Page<TransactionResponse> transactions = transactionService.getTransactionsByStatus(status, authentication, pageable);
         return ResponseEntity.ok(ApiResponse.success("Transactions retrieved successfully", transactions));
     }
 }

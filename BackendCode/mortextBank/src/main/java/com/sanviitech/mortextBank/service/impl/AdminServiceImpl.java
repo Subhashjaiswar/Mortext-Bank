@@ -1,8 +1,7 @@
 package com.sanviitech.mortextBank.service.impl;
 
 import com.sanviitech.mortextBank.entity.*;
-import com.sanviitech.mortextBank.exception.BadRequestException;
-import com.sanviitech.mortextBank.exception.ResourceNotFoundException;
+import com.sanviitech.mortextBank.util.GlobalException;
 import com.sanviitech.mortextBank.repository.*;
 import com.sanviitech.mortextBank.service.AdminService;
 import lombok.RequiredArgsConstructor;
@@ -13,7 +12,6 @@ import org.springframework.stereotype.Service;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 @Service
@@ -33,7 +31,7 @@ public class AdminServiceImpl implements AdminService {
     @Override
     public User getUserById(Long userId) {
         return userRepository.findById(userId)
-                .orElseThrow(() -> new ResourceNotFoundException("User", "id", userId));
+                .orElseThrow(() -> GlobalException.resourceNotFound("User", "id", userId));
     }
 
     @Override
@@ -56,7 +54,7 @@ public class AdminServiceImpl implements AdminService {
     @Override
     public Transaction markTransactionAsFraudulent(Long transactionId, String reason) {
         Transaction transaction = transactionRepository.findById(transactionId)
-                .orElseThrow(() -> new ResourceNotFoundException("Transaction", "id", transactionId));
+                .orElseThrow(() -> GlobalException.resourceNotFound("Transaction", "id", transactionId));
 
         transaction.setIsFraudulent(true);
         transaction.setFraudReason(reason);
@@ -76,7 +74,7 @@ public class AdminServiceImpl implements AdminService {
     @Override
     public KYC approveKYC(Long kycId) {
         KYC kyc = kycRepository.findById(kycId)
-                .orElseThrow(() -> new ResourceNotFoundException("KYC", "id", kycId));
+                .orElseThrow(() -> GlobalException.resourceNotFound("KYC", "id", kycId));
 
         kyc.setStatus(KYC.KYCStatus.APPROVED);
         kyc.setVerifiedAt(LocalDateTime.now());
@@ -86,7 +84,7 @@ public class AdminServiceImpl implements AdminService {
     @Override
     public KYC rejectKYC(Long kycId, String reason) {
         KYC kyc = kycRepository.findById(kycId)
-                .orElseThrow(() -> new ResourceNotFoundException("KYC", "id", kycId));
+                .orElseThrow(() -> GlobalException.resourceNotFound("KYC", "id", kycId));
 
         kyc.setStatus(KYC.KYCStatus.REJECTED);
         kyc.setRejectionReason(reason);

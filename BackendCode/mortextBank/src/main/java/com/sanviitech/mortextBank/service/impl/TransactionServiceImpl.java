@@ -1,8 +1,10 @@
 package com.sanviitech.mortextBank.service.impl;
 
+import com.sanviitech.mortextBank.dto.TransactionResponse;
 import com.sanviitech.mortextBank.entity.Transaction;
 import com.sanviitech.mortextBank.entity.User;
-import com.sanviitech.mortextBank.exception.ResourceNotFoundException;
+import com.sanviitech.mortextBank.util.GlobalException;
+import com.sanviitech.mortextBank.mapper.TransactionMapper;
 import com.sanviitech.mortextBank.repository.TransactionRepository;
 import com.sanviitech.mortextBank.repository.UserRepository;
 import com.sanviitech.mortextBank.service.TransactionService;
@@ -14,6 +16,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -21,32 +24,39 @@ public class TransactionServiceImpl implements TransactionService {
 
     private final UserRepository userRepository;
     private final TransactionRepository transactionRepository;
+    private final TransactionMapper transactionMapper;
 
     @Override
-    public Page<Transaction> getUserTransactions(Authentication authentication, Pageable pageable) {
+    public Page<TransactionResponse> getUserTransactions(Authentication authentication, Pageable pageable) {
         User user = userRepository.findByEmail(authentication.getName())
-                .orElseThrow(() -> new ResourceNotFoundException("User", "email", authentication.getName()));
-        return transactionRepository.findByUserId(user.getId(), pageable);
+                .orElseThrow(() -> GlobalException.resourceNotFound("User", "email", authentication.getName()));
+        Page<Transaction> transactions = transactionRepository.findByUserId(user.getId(), pageable);
+        return transactions.map(transactionMapper::toResponse);
     }
 
     @Override
-    public List<Transaction> getTransactionsByDateRange(LocalDateTime startDate, LocalDateTime endDate, Authentication authentication) {
+    public List<TransactionResponse> getTransactionsByDateRange(LocalDateTime startDate, LocalDateTime endDate, Authentication authentication) {
         User user = userRepository.findByEmail(authentication.getName())
-                .orElseThrow(() -> new ResourceNotFoundException("User", "email", authentication.getName()));
-        return transactionRepository.findByUserIdAndTransactionDateBetween(user.getId(), startDate, endDate);
+                .orElseThrow(() -> GlobalException.resourceNotFound("User", "email", authentication.getName()));
+        List<Transaction> transactions = transactionRepository.findByUserIdAndTransactionDateBetween(user.getId(), startDate, endDate);
+        return transactions.stream()
+                .map(transactionMapper::toResponse)
+                .collect(Collectors.toList());
     }
 
     @Override
-    public Page<Transaction> getTransactionsByType(Transaction.TransactionType transactionType, Authentication authentication, Pageable pageable) {
+    public Page<TransactionResponse> getTransactionsByType(Transaction.TransactionType transactionType, Authentication authentication, Pageable pageable) {
         User user = userRepository.findByEmail(authentication.getName())
-                .orElseThrow(() -> new ResourceNotFoundException("User", "email", authentication.getName()));
-        return transactionRepository.findByUserIdAndTransactionType(user.getId(), transactionType, pageable);
+                .orElseThrow(() -> GlobalException.resourceNotFound("User", "email", authentication.getName()));
+        Page<Transaction> transactions = transactionRepository.findByUserIdAndTransactionType(user.getId(), transactionType, pageable);
+        return transactions.map(transactionMapper::toResponse);
     }
 
     @Override
-    public Page<Transaction> getTransactionsByStatus(Transaction.TransactionStatus status, Authentication authentication, Pageable pageable) {
+    public Page<TransactionResponse> getTransactionsByStatus(Transaction.TransactionStatus status, Authentication authentication, Pageable pageable) {
         User user = userRepository.findByEmail(authentication.getName())
-                .orElseThrow(() -> new ResourceNotFoundException("User", "email", authentication.getName()));
-        return transactionRepository.findByUserIdAndStatus(user.getId(), status, pageable);
+                .orElseThrow(() -> GlobalException.resourceNotFound("User", "email", authentication.getName()));
+        Page<Transaction> transactions = transactionRepository.findByUserIdAndStatus(user.getId(), status, pageable);
+        return transactions.map(transactionMapper::toResponse);
     }
 }

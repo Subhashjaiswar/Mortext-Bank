@@ -8,8 +8,6 @@ export const useProfileViewModel = () => {
     user: globalUser,
     theme,
     toggleTheme,
-    language,
-    setLanguage,
     kycStatus: globalKycStatus,
     triggerGlobalRefresh
   } = useAuth();
@@ -157,8 +155,6 @@ export const useProfileViewModel = () => {
     user,
     theme,
     toggleTheme,
-    language,
-    setLanguage,
     kycStatus,
     profileName,
     setProfileName,

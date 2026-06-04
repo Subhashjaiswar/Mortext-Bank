@@ -1,9 +1,14 @@
 package com.sanviitech.mortextBank.service.impl;
 
+import com.sanviitech.mortextBank.dto.AccountResponse;
+import com.sanviitech.mortextBank.dto.TransactionResponse;
 import com.sanviitech.mortextBank.entity.Account;
 import com.sanviitech.mortextBank.entity.Transaction;
 import com.sanviitech.mortextBank.entity.User;
-import com.sanviitech.mortextBank.exception.ResourceNotFoundException;
+import com.sanviitech.mortextBank.constants.ValidationConstants;
+import com.sanviitech.mortextBank.util.GlobalException;
+import com.sanviitech.mortextBank.mapper.AccountMapper;
+import com.sanviitech.mortextBank.mapper.TransactionMapper;
 import com.sanviitech.mortextBank.repository.AccountRepository;
 import com.sanviitech.mortextBank.repository.TransactionRepository;
 import com.sanviitech.mortextBank.repository.UserRepository;
@@ -15,6 +20,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -24,64 +30,80 @@ public class AccountServiceImpl implements AccountService {
     private final AccountRepository accountRepository;
     private final TransactionRepository transactionRepository;
     private final PDFGenerator pdfGenerator;
+    private final AccountMapper accountMapper;
+    private final TransactionMapper transactionMapper;
 
     @Override
-    public List<Account> getUserAccounts(Authentication authentication) {
+    public List<AccountResponse> getUserAccounts(Authentication authentication) {
         User user = userRepository.findByEmail(authentication.getName())
-                .orElseThrow(() -> new ResourceNotFoundException("User", "email", authentication.getName()));
-        return accountRepository.findByUserId(user.getId());
+                .orElseThrow(() -> GlobalException.resourceNotFound("User", "email", authentication.getName()));
+        List<Account> accounts = accountRepository.findByUserId(user.getId());
+        return accounts.stream()
+                .map(accountMapper::toResponse)
+                .collect(Collectors.toList());
     }
 
     @Override
-    public Account getAccountById(Long accountId, Authentication authentication) {
+    public AccountResponse getAccountById(Long accountId, Authentication authentication) {
         User user = userRepository.findByEmail(authentication.getName())
-                .orElseThrow(() -> new ResourceNotFoundException("User", "email", authentication.getName()));
+                .orElseThrow(() -> GlobalException.resourceNotFound("User", "email", authentication.getName()));
 
         Account account = accountRepository.findById(accountId)
-                .orElseThrow(() -> new ResourceNotFoundException("Account", "id", accountId));
+                .orElseThrow(() -> GlobalException.resourceNotFound("Account", "id", accountId));
 
         if (!account.getUser().getId().equals(user.getId())) {
-            throw new RuntimeException("Unauthorized access to account");
+            throw new RuntimeException(ValidationConstants.UNAUTHORIZED_ACCESS_TO_ACCOUNT);
         }
 
-        return account;
+        return accountMapper.toResponse(account);
     }
 
     @Override
-    public List<Transaction> getAccountStatement(Long accountId, Authentication authentication) {
-        Account account = getAccountById(accountId, authentication);
-        return transactionRepository.findByAccountId(accountId);
+    public List<TransactionResponse> getAccountStatement(Long accountId, Authentication authentication) {
+        Account account = accountRepository.findById(accountId)
+                .orElseThrow(() -> GlobalException.resourceNotFound("Account", "id", accountId));
+        List<Transaction> transactions = transactionRepository.findByAccountId(accountId);
+        return transactions.stream()
+                .map(transactionMapper::toResponse)
+                .collect(Collectors.toList());
     }
 
     @Override
-    public List<Transaction> getAccountStatementByDateRange(Long accountId, LocalDateTime startDate, LocalDateTime endDate, Authentication authentication) {
-        Account account = getAccountById(accountId, authentication);
-        return transactionRepository.findByAccountIdAndTransactionDateBetween(accountId, startDate, endDate);
+    public List<TransactionResponse> getAccountStatementByDateRange(Long accountId, LocalDateTime startDate, LocalDateTime endDate, Authentication authentication) {
+        Account account = accountRepository.findById(accountId)
+                .orElseThrow(() -> GlobalException.resourceNotFound("Account", "id", accountId));
+        List<Transaction> transactions = transactionRepository.findByAccountIdAndTransactionDateBetween(accountId, startDate, endDate);
+        return transactions.stream()
+                .map(transactionMapper::toResponse)
+                .collect(Collectors.toList());
     }
 
     @Override
-    public byte[] downloadStatementPDF(Long accountId, Authentication authentication) throws Exception {
-        Account account = getAccountById(accountId, authentication);
+    public byte[] downloadStatementPDF(Long accountId, Authentication authentication) {
+        Account account = accountRepository.findById(accountId)
+                .orElseThrow(() -> GlobalException.resourceNotFound("Account", "id", accountId));
         List<Transaction> transactions = transactionRepository.findByAccountId(accountId);
         return pdfGenerator.generateStatement(transactions, account.getAccountNumber(),
                 account.getUser().getFullName());
     }
 
     @Override
-    public Account getSavingsAccountBalance(Authentication authentication) {
+    public AccountResponse getSavingsAccountBalance(Authentication authentication) {
         User user = userRepository.findByEmail(authentication.getName())
-                .orElseThrow(() -> new ResourceNotFoundException("User", "email", authentication.getName()));
+                .orElseThrow(() -> GlobalException.resourceNotFound("User", "email", authentication.getName()));
 
-        return accountRepository.findByUserIdAndAccountType(user.getId(), Account.AccountType.SAVINGS)
-                .orElseThrow(() -> new ResourceNotFoundException("Savings Account", "user_id", user.getId()));
+        Account account = accountRepository.findByUserIdAndAccountType(user.getId(), Account.AccountType.SAVINGS)
+                .orElseThrow(() -> GlobalException.resourceNotFound("Savings Account", "user_id", user.getId()));
+        return accountMapper.toResponse(account);
     }
 
     @Override
-    public Account getSavingsAccountBalanceByUserId(Long userId) {
+    public AccountResponse getSavingsAccountBalanceByUserId(Long userId) {
         User user = userRepository.findById(userId)
-                .orElseThrow(() -> new ResourceNotFoundException("User", "id", userId));
+                .orElseThrow(() -> GlobalException.resourceNotFound("User", "id", userId));
 
-        return accountRepository.findByUserIdAndAccountType(userId, Account.AccountType.SAVINGS)
-                .orElseThrow(() -> new ResourceNotFoundException("Savings Account", "user_id", userId));
+        Account account = accountRepository.findByUserIdAndAccountType(userId, Account.AccountType.SAVINGS)
+                .orElseThrow(() -> GlobalException.resourceNotFound("Savings Account", "user_id", userId));
+        return accountMapper.toResponse(account);
     }
 }

@@ -7,7 +7,9 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class ForgotPasswordRequest {
+public class UserResponse {
     
+    private Long id;
+    private String fullName;
     private String email;
 }

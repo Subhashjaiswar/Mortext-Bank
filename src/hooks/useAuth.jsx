@@ -31,7 +31,7 @@ export const AuthProvider = ({ children }) => {
   const [kycStatus, setKycStatus] = useState('Pending');
   const [kycDocument, setKycDocument] = useState(null);
 
-  // Sync state with mockDb or live APIs
+  // Sync state with mockDb or live APIs 
   const syncWithDb = async () => {
     if (apiClient.isMock()) {
       setAccounts(mockDb.getAccounts());

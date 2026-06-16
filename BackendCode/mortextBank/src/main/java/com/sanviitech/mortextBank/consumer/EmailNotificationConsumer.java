@@ -14,7 +14,7 @@ public class EmailNotificationConsumer {
 
     private final EmailService emailService;
 
-    @KafkaListener(topics = "${kafka.topic.transaction}", groupId = "${spring.kafka.consumer.group-id}")
+    @KafkaListener(topics = "${kafka.topic.transaction}", groupId = "email-notification-group")
     public void consumeTransactionEvent(TransactionEvent event) {
         try {
             log.info("Received transaction event for email notification - Transaction ID: {}, User: {}, Amount: {}", 

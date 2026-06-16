@@ -17,8 +17,8 @@ public class DashboardUpdateConsumer {
             log.info("Received transaction event for dashboard update - Transaction ID: {}, User ID: {}, Amount: {}", 
                     event.getTransactionId(), event.getUserId(), event.getAmount());
             
-            // Here you can implement dashboard update logic
-            // For example:
+            // - Here you can implement dashboard update logic
+            // - For example:
             // - Update user's transaction statistics
             // - Update real-time dashboard cache
             // - Push notification to frontend via WebSocket

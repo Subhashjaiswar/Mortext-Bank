@@ -107,4 +107,13 @@ public class AdminController {
         Map<String, Object> analytics = adminService.getAnalytics();
         return ResponseEntity.ok(ApiResponse.success("Analytics retrieved successfully", analytics));
     }
+    
+    @PostMapping("/users/{userId}/assign-role")
+    @Operation(summary = "Assign role to user")
+    public ResponseEntity<ApiResponse<User>> assignRole(
+            @PathVariable Long userId,
+            @RequestParam String role) {
+        User user = adminService.assignRole(userId, role);
+        return ResponseEntity.ok(ApiResponse.success("Role assigned successfully", user));
+    }
 }

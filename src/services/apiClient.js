@@ -28,11 +28,15 @@ const logResponse = (method, url, status, data) => {
 
 const getAuthHeaders = () => {
   const token = localStorage.getItem('mortext_token');
+  const appliedIp = localStorage.getItem('applied_client_ip');
   const headers = {
     'Content-Type': 'application/json',
   };
   if (token) {
     headers['Authorization'] = `Bearer ${token}`;
+  }
+  if (appliedIp) {
+    headers['X-Forwarded-For'] = appliedIp;
   }
   return headers;
 };
@@ -51,6 +55,9 @@ const request = async (method, path, body = null, isMultipart = false) => {
     const headers = isMultipart ? {} : getAuthHeaders();
     if (localStorage.getItem('mortext_token') && isMultipart) {
       headers['Authorization'] = `Bearer ${localStorage.getItem('mortext_token')}`;
+    }
+    if (localStorage.getItem('applied_client_ip') && isMultipart) {
+      headers['X-Forwarded-For'] = localStorage.getItem('applied_client_ip');
     }
 
     const options = {

@@ -20,4 +20,5 @@ public interface AdminService {
     public KYC approveKYC(Long kycId);
     public KYC rejectKYC(Long kycId, String reason);
     public Map<String, Object> getAnalytics();
+    public User assignRole(Long userId, String role);
 }

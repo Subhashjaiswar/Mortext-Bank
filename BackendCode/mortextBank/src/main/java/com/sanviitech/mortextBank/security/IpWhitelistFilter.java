@@ -1,9 +1,11 @@
 package com.sanviitech.mortextBank.security;
 
+import com.sanviitech.mortextBank.service.IpWhitelistService;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
@@ -20,6 +22,9 @@ public class IpWhitelistFilter extends OncePerRequestFilter {
 
     @Value("${security.ip.whitelist.allowed-ips:}")
     private String allowedIps;
+
+    @Autowired(required = false)
+    private IpWhitelistService ipWhitelistService;
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, 
@@ -68,12 +73,25 @@ public class IpWhitelistFilter extends OncePerRequestFilter {
     }
 
     private boolean isIpAllowed(String clientIp) {
+        // First check database if service is available
+        if (ipWhitelistService != null) {
+            List<String> dbAllowedIps = ipWhitelistService.getAllWhitelistedIpAddresses();
+            if (!dbAllowedIps.isEmpty()) {
+                return checkIpAgainstList(clientIp, dbAllowedIps);
+            }
+        }
+        
+        // Fallback to properties if database is empty or service not available
         if (allowedIps == null || allowedIps.trim().isEmpty()) {
             return false;
         }
         
-        boolean isClientIpv6 = isIPv6(clientIp);
         List<String> allowedIpList = Arrays.asList(allowedIps.split(","));
+        return checkIpAgainstList(clientIp, allowedIpList);
+    }
+    
+    private boolean checkIpAgainstList(String clientIp, List<String> allowedIpList) {
+        boolean isClientIpv6 = isIPv6(clientIp);
         
         for (String allowedIp : allowedIpList) {
             allowedIp = allowedIp.trim();

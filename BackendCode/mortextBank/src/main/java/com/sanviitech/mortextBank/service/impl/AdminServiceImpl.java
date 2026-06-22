@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Service
@@ -121,5 +122,22 @@ public class AdminServiceImpl implements AdminService {
         analytics.put("fraudulentTransactions", fraudulentTransactions);
 
         return analytics;
+    }
+
+    @Override
+    public User assignRole(Long userId, String role) {
+        User user = getUserById(userId);
+        
+        if (user.getRoles() == null) {
+            user.setRoles(List.of(role));
+        } else {
+            List<String> updatedRoles = new java.util.ArrayList<>(user.getRoles());
+            if (!updatedRoles.contains(role)) {
+                updatedRoles.add(role);
+            }
+            user.setRoles(updatedRoles);
+        }
+        
+        return userRepository.save(user);
     }
 }

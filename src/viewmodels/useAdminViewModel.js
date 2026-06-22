@@ -16,7 +16,7 @@ export const useAdminViewModel = () => {
     try {
       const data = await adminService.getUsers(1, 100);
       setAdminUsers(data.users || globalAdminUsers);
-      
+
       const analyticData = await adminService.getAnalytics();
       setAnalytics(analyticData);
     } catch (err) {

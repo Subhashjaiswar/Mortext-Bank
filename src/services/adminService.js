@@ -300,6 +300,17 @@ export const adminService = {
       apiClient.logResponse('DELETE', `/api/admin/ip-whitelist/${id}`, 200, { success: true });
       return { success: true };
     }
-    return await apiClient.delete(`/api/admin/ip-whitelist/${id}`);
+    return await apiClient.delete(`/admin/ip-whitelist/${id}`);
+  },
+
+  applyIpWhitelist: async () => {
+    if (apiClient.isMock()) {
+      await apiClient.sleep(500);
+      const localSaved = JSON.parse(localStorage.getItem('mortext_saved_ips') || '[]');
+      const activeIps = localSaved.map(item => item.ip);
+      apiClient.logResponse('POST', '/api/admin/ip-whitelist/apply', 200, activeIps);
+      return activeIps;
+    }
+    return await apiClient.post('/admin/ip-whitelist/apply');
   }
 };

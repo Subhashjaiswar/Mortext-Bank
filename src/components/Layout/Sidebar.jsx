@@ -23,6 +23,9 @@ import {
 import { useAuth } from '../../hooks/useAuth';
 import { useToast } from '../UI/Toast';
 import { adminService } from '../../services/adminService';
+import Modal from '../UI/Modal';
+import Button from '../UI/Button';
+import Input from '../UI/Input';
 import './Sidebar.css';
 
 const Sidebar = ({ activeTab, setActiveTab, collapsed, setCollapsed }) => {
@@ -35,34 +38,130 @@ const Sidebar = ({ activeTab, setActiveTab, collapsed, setCollapsed }) => {
   const [appliedIp, setAppliedIp] = useState(() => {
     return localStorage.getItem('applied_client_ip') || '';
   });
+  const [isIpModalOpen, setIsIpModalOpen] = useState(false);
+  const [modalIpAddress, setModalIpAddress] = useState('');
+  const [modalIpDescription, setModalIpDescription] = useState('');
+  const [isDetectingIp, setIsDetectingIp] = useState(false);
+  const [modalIpType, setModalIpType] = useState(null);
+  const [isPromptModalOpen, setIsPromptModalOpen] = useState(false);
+
+  const checkIpType = (value) => {
+    if (!value) return null;
+    const ipv4Regex = /^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/;
+    const ipv6Regex = /^(([0-9a-fA-F]{1,4}:){7,7}[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,7}:|([0-9a-fA-F]{1,4}:){1,6}:[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,5}(:[0-9a-fA-F]{1,4}){1,2}|([0-9a-fA-F]{1,4}:){1,4}(:[0-9a-fA-F]{1,4}){1,3}|([0-9a-fA-F]{1,4}:){1,3}(:[0-9a-fA-F]{1,4}){1,4}|([0-9a-fA-F]{1,4}:){1,2}(:[0-9a-fA-F]{1,4}){1,5}|[0-9a-fA-F]{1,4}:((:[0-9a-fA-F]{1,4}){1,6})|:((:[0-9a-fA-F]{1,4}){1,7}|:)|fe80:(:[0-9a-fA-F]{0,4}){0,4}%[0-9a-zA-Z]{1,}|::(ffff(:0{1,4}){0,1}:){0,1}((25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])\.){3,3}(25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])|([0-9a-fA-F]{1,4}:){1,4}:((25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])\.){3,3}(25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9]))$/;
+
+    if (ipv4Regex.test(value)) return 'IPv4';
+    if (ipv6Regex.test(value)) return 'IPv6';
+    return 'invalid';
+  };
 
   const fetchActiveIps = async () => {
     try {
       const data = await adminService.getActiveIpWhitelist();
       setWhitelistedIps(data || []);
+      return data || [];
     } catch (err) {
       console.error('Failed to load whitelisted IPs', err);
+      return [];
     }
   };
 
   useEffect(() => {
-    fetchActiveIps();
+    const initIpCheck = async () => {
+      const activeIps = await fetchActiveIps();
+      try {
+        const response = await fetch('https://api64.ipify.org?format=json');
+        if (!response.ok) throw new Error();
+        const data = await response.json();
+        const currentNetworkIp = data.ip;
+
+        const isWhitelisted = activeIps.some(item => item.ipAddress === currentNetworkIp);
+        if (!isWhitelisted) {
+          if (localStorage.getItem('applied_client_ip') === currentNetworkIp) {
+            localStorage.removeItem('applied_client_ip');
+            setAppliedIp('');
+          }
+          setModalIpAddress(currentNetworkIp);
+          setModalIpType(checkIpType(currentNetworkIp));
+          setModalIpDescription('My Current Network');
+          setIsPromptModalOpen(true);
+        }
+      } catch (err) {
+        console.warn('Could not auto-detect network IP on load:', err);
+      }
+    };
+    initIpCheck();
   }, []);
 
   const validateIP = (value) => {
-    if (!value) {
-      setIpType(null);
-      return;
-    }
-    const ipv4Regex = /^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/;
-    const ipv6Regex = /^(([0-9a-fA-F]{1,4}:){7,7}[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,7}:|([0-9a-fA-F]{1,4}:){1,6}:[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,5}(:[0-9a-fA-F]{1,4}){1,2}|([0-9a-fA-F]{1,4}:){1,4}(:[0-9a-fA-F]{1,4}){1,3}|([0-9a-fA-F]{1,4}:){1,3}(:[0-9a-fA-F]{1,4}){1,4}|([0-9a-fA-F]{1,4}:){1,2}(:[0-9a-fA-F]{1,4}){1,5}|[0-9a-fA-F]{1,4}:((:[0-9a-fA-F]{1,4}){1,6})|:((:[0-9a-fA-F]{1,4}){1,7}|:)|fe80:(:[0-9a-fA-F]{0,4}){0,4}%[0-9a-zA-Z]{1,}|::(ffff(:0{1,4}){0,1}:){0,1}((25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])\.){3,3}(25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])|([0-9a-fA-F]{1,4}:){1,4}:((25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])\.){3,3}(25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9]))$/;
+    setIpType(checkIpType(value));
+  };
 
-    if (ipv4Regex.test(value)) {
-      setIpType('IPv4');
-    } else if (ipv6Regex.test(value)) {
-      setIpType('IPv6');
-    } else {
-      setIpType('invalid');
+  const handleOpenModal = () => {
+    setModalIpAddress('');
+    setModalIpDescription('');
+    setModalIpType(null);
+    setIsIpModalOpen(true);
+    detectNetworkIp();
+  };
+
+  const detectNetworkIp = async () => {
+    setIsDetectingIp(true);
+    try {
+      const response = await fetch('https://api64.ipify.org?format=json');
+      if (!response.ok) throw new Error('Network error');
+      const data = await response.json();
+      setModalIpAddress(data.ip);
+      setModalIpType(checkIpType(data.ip));
+    } catch (err) {
+      console.warn('Could not auto-detect network IP, using local fallback:', err);
+      const mockIp = '49.43.2.248';
+      setModalIpAddress(mockIp);
+      setModalIpType(checkIpType(mockIp));
+      toast.warning('Auto-detection failed. Using local fallback network IP.');
+    } finally {
+      setIsDetectingIp(false);
+    }
+  };
+
+  const handleAddModalIp = async () => {
+    if (modalIpType === 'IPv4' || modalIpType === 'IPv6') {
+      if (whitelistedIps.some(item => item.ipAddress === modalIpAddress)) {
+        toast.error('This IP address is already saved.');
+        return;
+      }
+
+      try {
+        await adminService.addIpToWhitelist(modalIpAddress, modalIpDescription || 'Network IP');
+        toast.success(`IP ${modalIpAddress} whitelisted successfully!`);
+
+        const localSaved = JSON.parse(localStorage.getItem('mortext_saved_ips') || '[]');
+        localSaved.push({ ip: modalIpAddress, type: modalIpType, addedAt: new Date().toLocaleDateString(), description: modalIpDescription || 'Network IP' });
+        localStorage.setItem('mortext_saved_ips', JSON.stringify(localSaved));
+
+        setIsIpModalOpen(false);
+        fetchActiveIps();
+      } catch (err) {
+        console.error(err);
+        toast.error(err.message || 'Failed to add IP address to backend whitelist.');
+      }
+    }
+  };
+
+  const handleAddPromptIp = async () => {
+    try {
+      await adminService.addIpToWhitelist(modalIpAddress, modalIpDescription || 'My Current Network');
+      toast.success(`IP ${modalIpAddress} whitelisted successfully!`);
+
+      const localSaved = JSON.parse(localStorage.getItem('mortext_saved_ips') || '[]');
+      localSaved.push({ ip: modalIpAddress, type: modalIpType || 'IPv4', addedAt: new Date().toLocaleDateString(), description: modalIpDescription || 'My Current Network' });
+      localStorage.setItem('mortext_saved_ips', JSON.stringify(localSaved));
+
+      setIsPromptModalOpen(false);
+      fetchActiveIps();
+    } catch (err) {
+      console.error(err);
+      toast.error(err.message || 'Failed to add IP address to backend whitelist.');
     }
   };
 
@@ -78,10 +177,19 @@ const Sidebar = ({ activeTab, setActiveTab, collapsed, setCollapsed }) => {
     setIpType(null);
   };
 
-  const handleApplyIp = (ipToApply) => {
-    localStorage.setItem('applied_client_ip', ipToApply);
-    setAppliedIp(ipToApply);
-    toast.success(`Client IP ${ipToApply} applied to request headers.`);
+  const handleApplyIp = async (ipToApply) => {
+    try {
+      localStorage.setItem('applied_client_ip', ipToApply);
+      setAppliedIp(ipToApply);
+      await adminService.applyIpWhitelist();
+      toast.success(`Client IP ${ipToApply} applied to request headers.`);
+    } catch (err) {
+      console.error(err);
+      toast.error(err.message || 'Failed to apply IP whitelist changes on the server.');
+      // Revert if API call fails
+      localStorage.removeItem('applied_client_ip');
+      setAppliedIp('');
+    }
   };
 
   const handleUnapplyIp = () => {
@@ -117,6 +225,9 @@ const Sidebar = ({ activeTab, setActiveTab, collapsed, setCollapsed }) => {
   };
 
   const handleDeleteIp = async (id, ipToDelete) => {
+    if (!window.confirm("Do you want to delete IP Address")) {
+      return;
+    }
     try {
       await adminService.removeIpFromWhitelist(id);
       toast.success('IP address removed.');
@@ -205,6 +316,15 @@ const Sidebar = ({ activeTab, setActiveTab, collapsed, setCollapsed }) => {
               <Globe size={14} className="logo-icon" />
               <span>IP Validator</span>
             </div>
+            <button 
+              type="button"
+              className="ip-validator-add-btn animate-scale-in" 
+              onClick={handleOpenModal}
+              style={{ marginTop: '2px', marginBottom: '4px' }}
+            >
+              <Globe size={14} />
+              <span>Get Network IP</span>
+            </button>
             <div className="ip-validator-input-wrapper">
               <input
                 type="text"
@@ -324,6 +444,126 @@ const Sidebar = ({ activeTab, setActiveTab, collapsed, setCollapsed }) => {
           </div>
         )}
       </div>
+
+      <Modal
+        isOpen={isIpModalOpen}
+        onClose={() => setIsIpModalOpen(false)}
+        title="Add IP from Network"
+        size="md"
+        footer={
+          <div style={{ display: 'flex', justifyContent: 'flex-end', gap: '12px', width: '100%' }}>
+            <Button variant="secondary" onClick={() => setIsIpModalOpen(false)}>
+              Cancel
+            </Button>
+            <Button 
+              variant="primary" 
+              onClick={handleAddModalIp} 
+              disabled={isDetectingIp || !modalIpAddress || modalIpType === 'invalid'}
+            >
+              Add IP
+            </Button>
+          </div>
+        }
+      >
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', padding: '8px 0' }}>
+          {isDetectingIp ? (
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: '24px 0', gap: '12px' }}>
+              <span className="btn-spinner" style={{ display: 'inline-block', margin: '0 auto', width: '28px', height: '28px' }}></span>
+              <span style={{ fontSize: '0.9rem', color: 'var(--text-secondary)' }}>Detecting public network IP...</span>
+            </div>
+          ) : (
+            <>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
+                <label style={{ fontSize: '0.85rem', fontWeight: '600', color: 'var(--text-secondary)' }}>Detected IP Address</label>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                  <Input
+                    placeholder="Auto-detected IP"
+                    value={modalIpAddress}
+                    onChange={(e) => {
+                      setModalIpAddress(e.target.value);
+                      setModalIpType(checkIpType(e.target.value));
+                    }}
+                    style={{ flex: 1, marginBottom: 0 }}
+                  />
+                  <Button variant="outline" size="md" onClick={detectNetworkIp} title="Detect Again">
+                    <Globe size={16} />
+                  </Button>
+                </div>
+                {modalIpType && (
+                  <div style={{ 
+                    display: 'flex', 
+                    alignItems: 'center', 
+                    gap: '6px', 
+                    fontSize: '0.75rem', 
+                    fontWeight: '600', 
+                    color: modalIpType === 'invalid' ? 'var(--danger)' : 'var(--success)', 
+                    marginTop: '4px' 
+                  }}>
+                    {modalIpType === 'invalid' ? (
+                      <>
+                        <AlertCircle size={14} />
+                        <span>Invalid IP Address</span>
+                      </>
+                    ) : (
+                      <>
+                        <CheckCircle2 size={14} />
+                        <span>Valid {modalIpType} Address</span>
+                      </>
+                    )}
+                  </div>
+                )}
+              </div>
+
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
+                <label style={{ fontSize: '0.85rem', fontWeight: '600', color: 'var(--text-secondary)' }}>Description</label>
+                <Input
+                  placeholder="e.g. Office Connection, Home Wi-Fi"
+                  value={modalIpDescription}
+                  onChange={(e) => setModalIpDescription(e.target.value)}
+                />
+              </div>
+            </>
+          )}
+        </div>
+      </Modal>
+
+      <Modal
+        isOpen={isPromptModalOpen}
+        onClose={() => setIsPromptModalOpen(false)}
+        title="Unlisted Network Detected"
+        size="md"
+        footer={
+          <div style={{ display: 'flex', justifyContent: 'flex-end', gap: '12px', width: '100%' }}>
+            <Button variant="secondary" onClick={() => setIsPromptModalOpen(false)}>
+              No, Cancel
+            </Button>
+            <Button 
+              variant="primary" 
+              onClick={handleAddPromptIp}
+            >
+              Yes, Add IP
+            </Button>
+          </div>
+        }
+      >
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', padding: '8px 0' }}>
+          <p style={{ fontSize: '0.95rem', color: 'var(--text-secondary)', lineHeight: '1.5' }}>
+            We detected that your current public network IP address <strong>{modalIpAddress}</strong> is not whitelisted in our database.
+          </p>
+          <p style={{ fontSize: '0.9rem', color: 'var(--text-muted)' }}>
+            Do you want to add this IP address to our database whitelist?
+          </p>
+          
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
+            <label style={{ fontSize: '0.85rem', fontWeight: '600', color: 'var(--text-secondary)' }}>Description</label>
+            <Input
+              placeholder="e.g. My Current Wifi Network"
+              value={modalIpDescription}
+              onChange={(e) => setModalIpDescription(e.target.value)}
+            />
+          </div>
+        </div>
+      </Modal>
     </aside>
   );
 };

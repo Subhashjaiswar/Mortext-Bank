@@ -7,21 +7,26 @@ import com.sanviitech.mortextBank.repository.IpWhitelistRepository;
 import com.sanviitech.mortextBank.service.IpWhitelistService;
 import com.sanviitech.mortextBank.util.GlobalException;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
 @Transactional
+@Slf4j
 public class IpWhitelistServiceImpl implements IpWhitelistService {
     
     private final IpWhitelistRepository ipWhitelistRepository;
     
+
     @Override
     public IpWhitelistResponse addIpToWhitelist(AddIpRequest request, String createdBy) {
         if (ipWhitelistRepository.existsByIpAddress(request.getIpAddress())) {
@@ -93,5 +98,30 @@ public class IpWhitelistServiceImpl implements IpWhitelistService {
         return ipWhitelistRepository.findByActiveTrue().stream()
             .map(IpWhitelist::getIpAddress)
             .collect(Collectors.toList());
+    }
+    
+    @Override
+    public int cleanupOldIpAddresses() {
+        LocalDateTime thirtyMinutesAgo = LocalDateTime.now().minusMinutes(30);
+        List<IpWhitelist> oldIpEntries = ipWhitelistRepository.findByCreatedAtBefore(thirtyMinutesAgo);
+        
+        if (oldIpEntries.isEmpty()) {
+            log.info("No IP addresses older than 30 minutes found for cleanup");
+            return 0;
+        }
+        
+        log.info("Found {} IP addresses older than 30 minutes, starting cleanup", oldIpEntries.size());
+        ipWhitelistRepository.deleteAll(oldIpEntries);
+        log.info("Successfully deleted {} old IP addresses", oldIpEntries.size());
+        
+        return oldIpEntries.size();
+    }
+    
+    @Scheduled(cron = "0 */30 * * * *")
+    @Transactional
+    public void scheduledCleanupOldIpAddresses() {
+        log.info("Starting scheduled cleanup of IP addresses older than 30 minutes");
+        int deletedCount = cleanupOldIpAddresses();
+        log.info("Scheduled cleanup completed. Total IP addresses deleted: {}", deletedCount);
     }
 }

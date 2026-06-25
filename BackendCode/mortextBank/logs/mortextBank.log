@@ -1,30 +1,30 @@
-2026-06-23 10:55:00 [main] INFO  c.s.m.MortextBankApplication - Starting MortextBankApplication using Java 22.0.2 with PID 4963 (/Users/acareindore/Desktop/React_Project/mortext-bank/BackendCode/mortextBank/target/classes started by acareindore in /Users/acareindore/Desktop/React_Project/mortext-bank/BackendCode/mortextBank)
-2026-06-23 10:55:00 [main] DEBUG c.s.m.MortextBankApplication - Running with Spring Boot v3.2.5, Spring v6.1.6
-2026-06-23 10:55:00 [main] INFO  c.s.m.MortextBankApplication - No active profile set, falling back to 1 default profile: "default"
-2026-06-23 10:55:01 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2026-06-23 10:55:01 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 79 ms. Found 9 JPA repository interfaces.
-2026-06-23 10:55:02 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
-2026-06-23 10:55:02 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
-2026-06-23 10:55:02 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.20]
-2026-06-23 10:55:02 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
-2026-06-23 10:55:02 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2044 ms
-2026-06-23 10:55:02 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
-2026-06-23 10:55:02 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.4.4.Final
-2026-06-23 10:55:02 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
-2026-06-23 10:55:03 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
-2026-06-23 10:55:03 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
-2026-06-23 10:55:03 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@4468fda8
-2026-06-23 10:55:03 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
-2026-06-23 10:55:03 [main] WARN  org.hibernate.orm.deprecation - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2026-06-23 10:55:04 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2026-06-23 10:55:04 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
-2026-06-23 10:55:05 [main] DEBUG c.s.m.s.JwtAuthenticationFilter - Filter 'jwtAuthenticationFilter' configured for use
-2026-06-23 10:55:05 [main] DEBUG c.s.m.security.IpWhitelistFilter - Filter 'ipWhitelistFilter' configured for use
-2026-06-23 10:55:05 [main] INFO  o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
-2026-06-23 10:55:06 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2026-06-23 10:55:06 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@16af0251, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@561b21b8, org.springframework.security.web.context.SecurityContextHolderFilter@1c1bb1e7, org.springframework.security.web.header.HeaderWriterFilter@4cd3e2f3, org.springframework.web.filter.CorsFilter@243c4ffe, org.springframework.security.web.authentication.logout.LogoutFilter@539a50ea, com.sanviitech.mortextBank.security.IpWhitelistFilter@7fda84cf, com.sanviitech.mortextBank.security.JwtAuthenticationFilter@40dd2cfe, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@7d60a62f, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@5a7e2f07, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@6c31ed81, org.springframework.security.web.session.SessionManagementFilter@aecfc07, org.springframework.security.web.access.ExceptionTranslationFilter@7940d27b, org.springframework.security.web.access.intercept.AuthorizationFilter@1c1b9de9]
-2026-06-23 10:55:07 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path ''
-2026-06-23 10:55:07 [main] INFO  o.a.k.c.consumer.ConsumerConfig - ConsumerConfig values: 
+2026-06-25 10:49:56 [main] INFO  c.s.m.MortextBankApplication - Starting MortextBankApplication using Java 22.0.2 with PID 2004 (/Users/acareindore/Desktop/React_Project/mortext-bank/BackendCode/mortextBank/target/classes started by acareindore in /Users/acareindore/Desktop/React_Project/mortext-bank/BackendCode/mortextBank)
+2026-06-25 10:49:56 [main] DEBUG c.s.m.MortextBankApplication - Running with Spring Boot v3.2.5, Spring v6.1.6
+2026-06-25 10:49:56 [main] INFO  c.s.m.MortextBankApplication - No active profile set, falling back to 1 default profile: "default"
+2026-06-25 10:49:57 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-06-25 10:49:57 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 72 ms. Found 9 JPA repository interfaces.
+2026-06-25 10:49:58 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2026-06-25 10:49:58 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-06-25 10:49:58 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.20]
+2026-06-25 10:49:58 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2026-06-25 10:49:58 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1681 ms
+2026-06-25 10:49:58 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-06-25 10:49:58 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.4.4.Final
+2026-06-25 10:49:58 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2026-06-25 10:49:58 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-06-25 10:49:58 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2026-06-25 10:49:59 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@76ffc17c
+2026-06-25 10:49:59 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2026-06-25 10:49:59 [main] WARN  org.hibernate.orm.deprecation - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-06-25 10:50:00 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-06-25 10:50:00 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-06-25 10:50:00 [main] DEBUG c.s.m.s.JwtAuthenticationFilter - Filter 'jwtAuthenticationFilter' configured for use
+2026-06-25 10:50:00 [main] DEBUG c.s.m.security.IpWhitelistFilter - Filter 'ipWhitelistFilter' configured for use
+2026-06-25 10:50:00 [main] INFO  o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-06-25 10:50:01 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-06-25 10:50:01 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@a9b5c85, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@fcecc45, org.springframework.security.web.context.SecurityContextHolderFilter@3e6f3ad5, org.springframework.security.web.header.HeaderWriterFilter@684138c5, org.springframework.web.filter.CorsFilter@47c163bb, org.springframework.security.web.authentication.logout.LogoutFilter@5fc3333f, com.sanviitech.mortextBank.security.IpWhitelistFilter@1722ede1, com.sanviitech.mortextBank.security.JwtAuthenticationFilter@7cddc50f, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@17563b82, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@2a70c8d5, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@f25176a, org.springframework.security.web.session.SessionManagementFilter@257ba195, org.springframework.security.web.access.ExceptionTranslationFilter@19a48bde, org.springframework.security.web.access.intercept.AuthorizationFilter@735ed1d2]
+2026-06-25 10:50:02 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path ''
+2026-06-25 10:50:02 [main] INFO  o.a.k.c.consumer.ConsumerConfig - ConsumerConfig values: 
 	allow.auto.create.topics = true
 	auto.commit.interval.ms = 5000
 	auto.include.jmx.reporter = true
@@ -118,11 +118,11 @@
 	ssl.truststore.type = JKS
 	value.deserializer = class org.springframework.kafka.support.serializer.JsonDeserializer
 
-2026-06-23 10:55:07 [main] INFO  o.a.kafka.common.utils.AppInfoParser - Kafka version: 3.6.2
-2026-06-23 10:55:07 [main] INFO  o.a.kafka.common.utils.AppInfoParser - Kafka commitId: c4deed513057c94e
-2026-06-23 10:55:07 [main] INFO  o.a.kafka.common.utils.AppInfoParser - Kafka startTimeMs: 1782192307239
-2026-06-23 10:55:07 [main] INFO  o.s.k.c.DefaultKafkaConsumerFactory$ExtendedKafkaConsumer - [Consumer clientId=consumer-mortext-bank-group-1, groupId=mortext-bank-group] Subscribed to topic(s): transaction-events
-2026-06-23 10:55:07 [main] INFO  o.a.k.c.consumer.ConsumerConfig - ConsumerConfig values: 
+2026-06-25 10:50:02 [main] INFO  o.a.kafka.common.utils.AppInfoParser - Kafka version: 3.6.2
+2026-06-25 10:50:02 [main] INFO  o.a.kafka.common.utils.AppInfoParser - Kafka commitId: c4deed513057c94e
+2026-06-25 10:50:02 [main] INFO  o.a.kafka.common.utils.AppInfoParser - Kafka startTimeMs: 1782364802305
+2026-06-25 10:50:02 [main] INFO  o.s.k.c.DefaultKafkaConsumerFactory$ExtendedKafkaConsumer - [Consumer clientId=consumer-mortext-bank-group-1, groupId=mortext-bank-group] Subscribed to topic(s): transaction-events
+2026-06-25 10:50:02 [main] INFO  o.a.k.c.consumer.ConsumerConfig - ConsumerConfig values: 
 	allow.auto.create.topics = true
 	auto.commit.interval.ms = 5000
 	auto.include.jmx.reporter = true
@@ -216,40 +216,791 @@
 	ssl.truststore.type = JKS
 	value.deserializer = class org.springframework.kafka.support.serializer.JsonDeserializer
 
-2026-06-23 10:55:07 [main] INFO  o.a.kafka.common.utils.AppInfoParser - Kafka version: 3.6.2
-2026-06-23 10:55:07 [main] INFO  o.a.kafka.common.utils.AppInfoParser - Kafka commitId: c4deed513057c94e
-2026-06-23 10:55:07 [main] INFO  o.a.kafka.common.utils.AppInfoParser - Kafka startTimeMs: 1782192307259
-2026-06-23 10:55:07 [main] INFO  o.s.k.c.DefaultKafkaConsumerFactory$ExtendedKafkaConsumer - [Consumer clientId=consumer-email-notification-group-2, groupId=email-notification-group] Subscribed to topic(s): transaction-events
-2026-06-23 10:55:07 [main] INFO  c.s.m.MortextBankApplication - Started MortextBankApplication in 7.451 seconds (process running for 8.011)
-2026-06-23 10:55:07 [http-nio-8080-exec-2] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
-2026-06-23 10:55:07 [http-nio-8080-exec-2] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
-2026-06-23 10:55:07 [http-nio-8080-exec-2] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 4 ms
-2026-06-23 10:55:08 [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] INFO  org.apache.kafka.clients.Metadata - [Consumer clientId=consumer-email-notification-group-2, groupId=email-notification-group] Cluster ID: RJxEQqfZR4y2vmhX3h5OqQ
-2026-06-23 10:55:08 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  org.apache.kafka.clients.Metadata - [Consumer clientId=consumer-mortext-bank-group-1, groupId=mortext-bank-group] Cluster ID: RJxEQqfZR4y2vmhX3h5OqQ
-2026-06-23 10:55:08 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-mortext-bank-group-1, groupId=mortext-bank-group] Discovered group coordinator localhost:9092 (id: 2147483646 rack: null)
-2026-06-23 10:55:08 [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-email-notification-group-2, groupId=email-notification-group] Discovered group coordinator localhost:9092 (id: 2147483646 rack: null)
-2026-06-23 10:55:08 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-mortext-bank-group-1, groupId=mortext-bank-group] (Re-)joining group
-2026-06-23 10:55:08 [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-email-notification-group-2, groupId=email-notification-group] (Re-)joining group
-2026-06-23 10:55:08 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-mortext-bank-group-1, groupId=mortext-bank-group] Request joining group due to: need to re-join with the given member-id: consumer-mortext-bank-group-1-5cc95eae-c695-43da-a2c9-4df41310e51c
-2026-06-23 10:55:08 [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-email-notification-group-2, groupId=email-notification-group] Request joining group due to: need to re-join with the given member-id: consumer-email-notification-group-2-fe1856ea-b235-4d92-931d-ac45186843d9
-2026-06-23 10:55:08 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-mortext-bank-group-1, groupId=mortext-bank-group] Request joining group due to: rebalance failed due to 'The group member needs to have a valid member id before actually entering a consumer group.' (MemberIdRequiredException)
-2026-06-23 10:55:08 [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-email-notification-group-2, groupId=email-notification-group] Request joining group due to: rebalance failed due to 'The group member needs to have a valid member id before actually entering a consumer group.' (MemberIdRequiredException)
-2026-06-23 10:55:08 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-mortext-bank-group-1, groupId=mortext-bank-group] (Re-)joining group
-2026-06-23 10:55:08 [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-email-notification-group-2, groupId=email-notification-group] (Re-)joining group
-2026-06-23 10:55:11 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-mortext-bank-group-1, groupId=mortext-bank-group] Successfully joined group with generation Generation{generationId=81, memberId='consumer-mortext-bank-group-1-5cc95eae-c695-43da-a2c9-4df41310e51c', protocol='range'}
-2026-06-23 10:55:11 [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-email-notification-group-2, groupId=email-notification-group] Successfully joined group with generation Generation{generationId=49, memberId='consumer-email-notification-group-2-fe1856ea-b235-4d92-931d-ac45186843d9', protocol='range'}
-2026-06-23 10:55:11 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-mortext-bank-group-1, groupId=mortext-bank-group] Finished assignment for group at generation 81: {consumer-mortext-bank-group-1-5cc95eae-c695-43da-a2c9-4df41310e51c=Assignment(partitions=[transaction-events-0])}
-2026-06-23 10:55:11 [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-email-notification-group-2, groupId=email-notification-group] Finished assignment for group at generation 49: {consumer-email-notification-group-2-fe1856ea-b235-4d92-931d-ac45186843d9=Assignment(partitions=[transaction-events-0])}
-2026-06-23 10:55:11 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-mortext-bank-group-1, groupId=mortext-bank-group] Successfully synced group in generation Generation{generationId=81, memberId='consumer-mortext-bank-group-1-5cc95eae-c695-43da-a2c9-4df41310e51c', protocol='range'}
-2026-06-23 10:55:11 [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-email-notification-group-2, groupId=email-notification-group] Successfully synced group in generation Generation{generationId=49, memberId='consumer-email-notification-group-2-fe1856ea-b235-4d92-931d-ac45186843d9', protocol='range'}
-2026-06-23 10:55:11 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-mortext-bank-group-1, groupId=mortext-bank-group] Notifying assignor about the new Assignment(partitions=[transaction-events-0])
-2026-06-23 10:55:11 [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-email-notification-group-2, groupId=email-notification-group] Notifying assignor about the new Assignment(partitions=[transaction-events-0])
-2026-06-23 10:55:11 [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-email-notification-group-2, groupId=email-notification-group] Adding newly assigned partitions: transaction-events-0
-2026-06-23 10:55:11 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-mortext-bank-group-1, groupId=mortext-bank-group] Adding newly assigned partitions: transaction-events-0
-2026-06-23 10:55:11 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-mortext-bank-group-1, groupId=mortext-bank-group] Setting offset for partition transaction-events-0 to the committed offset FetchPosition{offset=18, offsetEpoch=Optional.empty, currentLeader=LeaderAndEpoch{leader=Optional[localhost:9092 (id: 1 rack: null)], epoch=24}}
-2026-06-23 10:55:11 [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-email-notification-group-2, groupId=email-notification-group] Setting offset for partition transaction-events-0 to the committed offset FetchPosition{offset=18, offsetEpoch=Optional.empty, currentLeader=LeaderAndEpoch{leader=Optional[localhost:9092 (id: 1 rack: null)], epoch=24}}
-2026-06-23 10:55:11 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.s.k.l.KafkaMessageListenerContainer - mortext-bank-group: partitions assigned: [transaction-events-0]
-2026-06-23 10:55:11 [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] INFO  o.s.k.l.KafkaMessageListenerContainer - email-notification-group: partitions assigned: [transaction-events-0]
-2026-06-23 11:00:41 [http-nio-8080-exec-10] INFO  c.s.m.service.impl.AuthServiceImpl - Login attempt started for email: subhashjaiswar12@gmail.com
-2026-06-23 11:00:41 [http-nio-8080-exec-10] DEBUG c.s.m.service.impl.AuthServiceImpl - JWT token generated for user: subhashjaiswar12@gmail.com
-2026-06-23 11:00:41 [http-nio-8080-exec-10] INFO  c.s.m.service.impl.AuthServiceImpl - Login successful for email: subhashjaiswar12@gmail.com in 21 ms
+2026-06-25 10:50:02 [main] INFO  o.a.kafka.common.utils.AppInfoParser - Kafka version: 3.6.2
+2026-06-25 10:50:02 [main] INFO  o.a.kafka.common.utils.AppInfoParser - Kafka commitId: c4deed513057c94e
+2026-06-25 10:50:02 [main] INFO  o.a.kafka.common.utils.AppInfoParser - Kafka startTimeMs: 1782364802321
+2026-06-25 10:50:02 [main] INFO  o.s.k.c.DefaultKafkaConsumerFactory$ExtendedKafkaConsumer - [Consumer clientId=consumer-email-notification-group-2, groupId=email-notification-group] Subscribed to topic(s): transaction-events
+2026-06-25 10:50:02 [main] INFO  c.s.m.MortextBankApplication - Started MortextBankApplication in 6.136 seconds (process running for 6.683)
+2026-06-25 10:50:02 [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] INFO  org.apache.kafka.clients.Metadata - [Consumer clientId=consumer-email-notification-group-2, groupId=email-notification-group] Cluster ID: RJxEQqfZR4y2vmhX3h5OqQ
+2026-06-25 10:50:02 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  org.apache.kafka.clients.Metadata - [Consumer clientId=consumer-mortext-bank-group-1, groupId=mortext-bank-group] Cluster ID: RJxEQqfZR4y2vmhX3h5OqQ
+2026-06-25 10:50:02 [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-email-notification-group-2, groupId=email-notification-group] Discovered group coordinator localhost:9092 (id: 2147483646 rack: null)
+2026-06-25 10:50:02 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-mortext-bank-group-1, groupId=mortext-bank-group] Discovered group coordinator localhost:9092 (id: 2147483646 rack: null)
+2026-06-25 10:50:02 [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-email-notification-group-2, groupId=email-notification-group] (Re-)joining group
+2026-06-25 10:50:02 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-mortext-bank-group-1, groupId=mortext-bank-group] (Re-)joining group
+2026-06-25 10:50:02 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-mortext-bank-group-1, groupId=mortext-bank-group] Request joining group due to: need to re-join with the given member-id: consumer-mortext-bank-group-1-b40e7cfb-6a5f-4ab7-bd96-cd92139185ac
+2026-06-25 10:50:02 [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-email-notification-group-2, groupId=email-notification-group] Request joining group due to: need to re-join with the given member-id: consumer-email-notification-group-2-1716fd13-931d-4c25-be3f-e10e1fab6774
+2026-06-25 10:50:02 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-mortext-bank-group-1, groupId=mortext-bank-group] Request joining group due to: rebalance failed due to 'The group member needs to have a valid member id before actually entering a consumer group.' (MemberIdRequiredException)
+2026-06-25 10:50:02 [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-email-notification-group-2, groupId=email-notification-group] Request joining group due to: rebalance failed due to 'The group member needs to have a valid member id before actually entering a consumer group.' (MemberIdRequiredException)
+2026-06-25 10:50:02 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-mortext-bank-group-1, groupId=mortext-bank-group] (Re-)joining group
+2026-06-25 10:50:02 [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-email-notification-group-2, groupId=email-notification-group] (Re-)joining group
+2026-06-25 10:50:05 [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-email-notification-group-2, groupId=email-notification-group] Successfully joined group with generation Generation{generationId=61, memberId='consumer-email-notification-group-2-1716fd13-931d-4c25-be3f-e10e1fab6774', protocol='range'}
+2026-06-25 10:50:05 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-mortext-bank-group-1, groupId=mortext-bank-group] Successfully joined group with generation Generation{generationId=93, memberId='consumer-mortext-bank-group-1-b40e7cfb-6a5f-4ab7-bd96-cd92139185ac', protocol='range'}
+2026-06-25 10:50:05 [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-email-notification-group-2, groupId=email-notification-group] Finished assignment for group at generation 61: {consumer-email-notification-group-2-1716fd13-931d-4c25-be3f-e10e1fab6774=Assignment(partitions=[transaction-events-0])}
+2026-06-25 10:50:05 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-mortext-bank-group-1, groupId=mortext-bank-group] Finished assignment for group at generation 93: {consumer-mortext-bank-group-1-b40e7cfb-6a5f-4ab7-bd96-cd92139185ac=Assignment(partitions=[transaction-events-0])}
+2026-06-25 10:50:05 [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-email-notification-group-2, groupId=email-notification-group] Successfully synced group in generation Generation{generationId=61, memberId='consumer-email-notification-group-2-1716fd13-931d-4c25-be3f-e10e1fab6774', protocol='range'}
+2026-06-25 10:50:05 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-mortext-bank-group-1, groupId=mortext-bank-group] Successfully synced group in generation Generation{generationId=93, memberId='consumer-mortext-bank-group-1-b40e7cfb-6a5f-4ab7-bd96-cd92139185ac', protocol='range'}
+2026-06-25 10:50:05 [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-email-notification-group-2, groupId=email-notification-group] Notifying assignor about the new Assignment(partitions=[transaction-events-0])
+2026-06-25 10:50:05 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-mortext-bank-group-1, groupId=mortext-bank-group] Notifying assignor about the new Assignment(partitions=[transaction-events-0])
+2026-06-25 10:50:05 [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-email-notification-group-2, groupId=email-notification-group] Adding newly assigned partitions: transaction-events-0
+2026-06-25 10:50:05 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-mortext-bank-group-1, groupId=mortext-bank-group] Adding newly assigned partitions: transaction-events-0
+2026-06-25 10:50:05 [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-email-notification-group-2, groupId=email-notification-group] Setting offset for partition transaction-events-0 to the committed offset FetchPosition{offset=18, offsetEpoch=Optional.empty, currentLeader=LeaderAndEpoch{leader=Optional[localhost:9092 (id: 1 rack: null)], epoch=28}}
+2026-06-25 10:50:05 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-mortext-bank-group-1, groupId=mortext-bank-group] Setting offset for partition transaction-events-0 to the committed offset FetchPosition{offset=18, offsetEpoch=Optional.empty, currentLeader=LeaderAndEpoch{leader=Optional[localhost:9092 (id: 1 rack: null)], epoch=28}}
+2026-06-25 10:50:05 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.s.k.l.KafkaMessageListenerContainer - mortext-bank-group: partitions assigned: [transaction-events-0]
+2026-06-25 10:50:05 [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] INFO  o.s.k.l.KafkaMessageListenerContainer - email-notification-group: partitions assigned: [transaction-events-0]
+2026-06-25 10:59:02 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.apache.kafka.clients.NetworkClient - [Consumer clientId=consumer-mortext-bank-group-1, groupId=mortext-bank-group] Node -1 disconnected.
+2026-06-25 10:59:02 [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] INFO  o.apache.kafka.clients.NetworkClient - [Consumer clientId=consumer-email-notification-group-2, groupId=email-notification-group] Node -1 disconnected.
+2026-06-25 11:00:00 [scheduling-1] INFO  c.s.m.s.impl.IpWhitelistServiceImpl - Starting scheduled cleanup of IP addresses older than 30 minutes
+2026-06-25 11:00:00 [scheduling-1] INFO  c.s.m.s.impl.IpWhitelistServiceImpl - No IP addresses older than 30 minutes found for cleanup
+2026-06-25 11:00:00 [scheduling-1] INFO  c.s.m.s.impl.IpWhitelistServiceImpl - Scheduled cleanup completed. Total IP addresses deleted: 0
+2026-06-25 11:01:53 [http-nio-8080-exec-2] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-06-25 11:01:53 [http-nio-8080-exec-2] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2026-06-25 11:01:53 [http-nio-8080-exec-2] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 6 ms
+2026-06-25 11:30:00 [scheduling-1] INFO  c.s.m.s.impl.IpWhitelistServiceImpl - Starting scheduled cleanup of IP addresses older than 30 minutes
+2026-06-25 11:30:00 [scheduling-1] INFO  c.s.m.s.impl.IpWhitelistServiceImpl - No IP addresses older than 30 minutes found for cleanup
+2026-06-25 11:30:00 [scheduling-1] INFO  c.s.m.s.impl.IpWhitelistServiceImpl - Scheduled cleanup completed. Total IP addresses deleted: 0
+2026-06-25 11:59:36 [http-nio-8080-exec-9] INFO  c.s.m.service.impl.AuthServiceImpl - Login attempt started for email: subhashjaiswar12@gmail.com
+2026-06-25 11:59:36 [http-nio-8080-exec-9] DEBUG c.s.m.service.impl.AuthServiceImpl - JWT token generated for user: subhashjaiswar12@gmail.com
+2026-06-25 11:59:36 [http-nio-8080-exec-9] INFO  c.s.m.service.impl.AuthServiceImpl - Login successful for email: subhashjaiswar12@gmail.com in 90 ms
+2026-06-25 12:00:00 [scheduling-1] INFO  c.s.m.s.impl.IpWhitelistServiceImpl - Starting scheduled cleanup of IP addresses older than 30 minutes
+2026-06-25 12:00:00 [scheduling-1] INFO  c.s.m.s.impl.IpWhitelistServiceImpl - Found 1 IP addresses older than 30 minutes, starting cleanup
+2026-06-25 12:00:00 [scheduling-1] INFO  c.s.m.s.impl.IpWhitelistServiceImpl - Successfully deleted 1 old IP addresses
+2026-06-25 12:00:00 [scheduling-1] INFO  c.s.m.s.impl.IpWhitelistServiceImpl - Scheduled cleanup completed. Total IP addresses deleted: 1
+2026-06-25 12:03:33 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-mortext-bank-group-1, groupId=mortext-bank-group] Revoke previously assigned partitions transaction-events-0
+2026-06-25 12:03:33 [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-email-notification-group-2, groupId=email-notification-group] Revoke previously assigned partitions transaction-events-0
+2026-06-25 12:03:33 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.s.k.l.KafkaMessageListenerContainer - mortext-bank-group: partitions revoked: [transaction-events-0]
+2026-06-25 12:03:33 [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] INFO  o.s.k.l.KafkaMessageListenerContainer - email-notification-group: partitions revoked: [transaction-events-0]
+2026-06-25 12:03:33 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-mortext-bank-group-1, groupId=mortext-bank-group] Member consumer-mortext-bank-group-1-b40e7cfb-6a5f-4ab7-bd96-cd92139185ac sending LeaveGroup request to coordinator localhost:9092 (id: 2147483646 rack: null) due to the consumer unsubscribed from all topics
+2026-06-25 12:03:33 [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-email-notification-group-2, groupId=email-notification-group] Member consumer-email-notification-group-2-1716fd13-931d-4c25-be3f-e10e1fab6774 sending LeaveGroup request to coordinator localhost:9092 (id: 2147483646 rack: null) due to the consumer unsubscribed from all topics
+2026-06-25 12:03:33 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-mortext-bank-group-1, groupId=mortext-bank-group] Resetting generation and member id due to: consumer pro-actively leaving the group
+2026-06-25 12:03:33 [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-email-notification-group-2, groupId=email-notification-group] Resetting generation and member id due to: consumer pro-actively leaving the group
+2026-06-25 12:03:33 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-mortext-bank-group-1, groupId=mortext-bank-group] Request joining group due to: consumer pro-actively leaving the group
+2026-06-25 12:03:33 [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-email-notification-group-2, groupId=email-notification-group] Request joining group due to: consumer pro-actively leaving the group
+2026-06-25 12:03:33 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.s.k.c.DefaultKafkaConsumerFactory$ExtendedKafkaConsumer - [Consumer clientId=consumer-mortext-bank-group-1, groupId=mortext-bank-group] Unsubscribed all topics or patterns and assigned partitions
+2026-06-25 12:03:33 [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] INFO  o.s.k.c.DefaultKafkaConsumerFactory$ExtendedKafkaConsumer - [Consumer clientId=consumer-email-notification-group-2, groupId=email-notification-group] Unsubscribed all topics or patterns and assigned partitions
+2026-06-25 12:03:33 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-mortext-bank-group-1, groupId=mortext-bank-group] Resetting generation and member id due to: consumer pro-actively leaving the group
+2026-06-25 12:03:33 [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-email-notification-group-2, groupId=email-notification-group] Resetting generation and member id due to: consumer pro-actively leaving the group
+2026-06-25 12:03:33 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-mortext-bank-group-1, groupId=mortext-bank-group] Request joining group due to: consumer pro-actively leaving the group
+2026-06-25 12:03:33 [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-email-notification-group-2, groupId=email-notification-group] Request joining group due to: consumer pro-actively leaving the group
+2026-06-25 12:03:33 [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] INFO  o.a.kafka.common.metrics.Metrics - Metrics scheduler closed
+2026-06-25 12:03:33 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.kafka.common.metrics.Metrics - Metrics scheduler closed
+2026-06-25 12:03:33 [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] INFO  o.a.kafka.common.metrics.Metrics - Closing reporter org.apache.kafka.common.metrics.JmxReporter
+2026-06-25 12:03:33 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.kafka.common.metrics.Metrics - Closing reporter org.apache.kafka.common.metrics.JmxReporter
+2026-06-25 12:03:33 [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] INFO  o.a.kafka.common.metrics.Metrics - Metrics reporters closed
+2026-06-25 12:03:33 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.kafka.common.metrics.Metrics - Metrics reporters closed
+2026-06-25 12:03:33 [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] INFO  o.a.kafka.common.utils.AppInfoParser - App info kafka.consumer for consumer-email-notification-group-2 unregistered
+2026-06-25 12:03:33 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.kafka.common.utils.AppInfoParser - App info kafka.consumer for consumer-mortext-bank-group-1 unregistered
+2026-06-25 12:03:33 [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] INFO  o.s.k.l.KafkaMessageListenerContainer - email-notification-group: Consumer stopped
+2026-06-25 12:03:33 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.s.k.l.KafkaMessageListenerContainer - mortext-bank-group: Consumer stopped
+2026-06-25 12:03:33 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-06-25 12:03:33 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2026-06-25 12:03:33 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2026-06-25 12:03:38 [main] INFO  c.s.m.MortextBankApplication - Starting MortextBankApplication using Java 22.0.2 with PID 5546 (/Users/acareindore/Desktop/React_Project/mortext-bank/BackendCode/mortextBank/target/classes started by acareindore in /Users/acareindore/Desktop/React_Project/mortext-bank/BackendCode/mortextBank)
+2026-06-25 12:03:38 [main] DEBUG c.s.m.MortextBankApplication - Running with Spring Boot v3.2.5, Spring v6.1.6
+2026-06-25 12:03:38 [main] INFO  c.s.m.MortextBankApplication - No active profile set, falling back to 1 default profile: "default"
+2026-06-25 12:03:39 [main] WARN  o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.support.BeanDefinitionOverrideException: Invalid bean definition with name 'jpaAuditingHandler' defined in null: Cannot register bean definition [Root bean: class [org.springframework.data.auditing.AuditingHandler]; scope=; abstract=false; lazyInit=null; autowireMode=2; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=from; initMethodNames=null; destroyMethodNames=null] for bean 'jpaAuditingHandler' since there is already [Root bean: class [org.springframework.data.auditing.AuditingHandler]; scope=; abstract=false; lazyInit=null; autowireMode=2; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=from; initMethodNames=null; destroyMethodNames=null] bound.
+2026-06-25 12:03:39 [main] INFO  o.s.b.a.l.ConditionEvaluationReportLogger - 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2026-06-25 12:03:39 [main] ERROR o.s.b.d.LoggingFailureAnalysisReporter - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+The bean 'jpaAuditingHandler' could not be registered. A bean with that name has already been defined and overriding is disabled.
+
+Action:
+
+Consider renaming one of the beans or enabling overriding by setting spring.main.allow-bean-definition-overriding=true
+
+2026-06-25 12:17:47 [main] INFO  c.s.m.MortextBankApplication - Starting MortextBankApplication using Java 22.0.2 with PID 5656 (/Users/acareindore/Desktop/React_Project/mortext-bank/BackendCode/mortextBank/target/classes started by acareindore in /Users/acareindore/Desktop/React_Project/mortext-bank/BackendCode/mortextBank)
+2026-06-25 12:17:47 [main] DEBUG c.s.m.MortextBankApplication - Running with Spring Boot v3.2.5, Spring v6.1.6
+2026-06-25 12:17:47 [main] INFO  c.s.m.MortextBankApplication - No active profile set, falling back to 1 default profile: "default"
+2026-06-25 12:17:49 [main] WARN  o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.support.BeanDefinitionOverrideException: Invalid bean definition with name 'jpaAuditingHandler' defined in null: Cannot register bean definition [Root bean: class [org.springframework.data.auditing.AuditingHandler]; scope=; abstract=false; lazyInit=null; autowireMode=2; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=from; initMethodNames=null; destroyMethodNames=null] for bean 'jpaAuditingHandler' since there is already [Root bean: class [org.springframework.data.auditing.AuditingHandler]; scope=; abstract=false; lazyInit=null; autowireMode=2; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=from; initMethodNames=null; destroyMethodNames=null] bound.
+2026-06-25 12:17:49 [main] INFO  o.s.b.a.l.ConditionEvaluationReportLogger - 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2026-06-25 12:17:49 [main] ERROR o.s.b.d.LoggingFailureAnalysisReporter - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+The bean 'jpaAuditingHandler' could not be registered. A bean with that name has already been defined and overriding is disabled.
+
+Action:
+
+Consider renaming one of the beans or enabling overriding by setting spring.main.allow-bean-definition-overriding=true
+
+2026-06-25 12:18:54 [main] INFO  c.s.m.MortextBankApplication - Starting MortextBankApplication using Java 22.0.2 with PID 5684 (/Users/acareindore/Desktop/React_Project/mortext-bank/BackendCode/mortextBank/target/classes started by acareindore in /Users/acareindore/Desktop/React_Project/mortext-bank/BackendCode/mortextBank)
+2026-06-25 12:18:54 [main] DEBUG c.s.m.MortextBankApplication - Running with Spring Boot v3.2.5, Spring v6.1.6
+2026-06-25 12:18:54 [main] INFO  c.s.m.MortextBankApplication - No active profile set, falling back to 1 default profile: "default"
+2026-06-25 12:18:54 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-06-25 12:18:55 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 82 ms. Found 9 JPA repository interfaces.
+2026-06-25 12:18:55 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2026-06-25 12:18:55 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-06-25 12:18:55 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.20]
+2026-06-25 12:18:55 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2026-06-25 12:18:55 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1687 ms
+2026-06-25 12:18:55 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-06-25 12:18:56 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.4.4.Final
+2026-06-25 12:18:56 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2026-06-25 12:18:56 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-06-25 12:18:56 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2026-06-25 12:18:56 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@69ba72da
+2026-06-25 12:18:56 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2026-06-25 12:18:56 [main] WARN  org.hibernate.orm.deprecation - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-06-25 12:18:57 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-06-25 12:18:57 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-06-25 12:18:57 [main] DEBUG c.s.m.s.JwtAuthenticationFilter - Filter 'jwtAuthenticationFilter' configured for use
+2026-06-25 12:18:57 [main] DEBUG c.s.m.security.IpWhitelistFilter - Filter 'ipWhitelistFilter' configured for use
+2026-06-25 12:18:57 [main] INFO  o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-06-25 12:18:58 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-06-25 12:18:58 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@1026770d, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@5166f042, org.springframework.security.web.context.SecurityContextHolderFilter@7e1b96a7, org.springframework.security.web.header.HeaderWriterFilter@70f446c, org.springframework.web.filter.CorsFilter@616549c, org.springframework.security.web.authentication.logout.LogoutFilter@1e7edfb2, com.sanviitech.mortextBank.security.IpWhitelistFilter@650997b0, com.sanviitech.mortextBank.security.JwtAuthenticationFilter@307ba188, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@63c8a30e, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@26e199ed, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@45a824d, org.springframework.security.web.session.SessionManagementFilter@5b9815b6, org.springframework.security.web.access.ExceptionTranslationFilter@6cddb04c, org.springframework.security.web.access.intercept.AuthorizationFilter@5a637c4f]
+2026-06-25 12:18:59 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path ''
+2026-06-25 12:18:59 [main] INFO  o.a.k.c.consumer.ConsumerConfig - ConsumerConfig values: 
+	allow.auto.create.topics = true
+	auto.commit.interval.ms = 5000
+	auto.include.jmx.reporter = true
+	auto.offset.reset = earliest
+	bootstrap.servers = [localhost:9092]
+	check.crcs = true
+	client.dns.lookup = use_all_dns_ips
+	client.id = consumer-mortext-bank-group-1
+	client.rack = 
+	connections.max.idle.ms = 540000
+	default.api.timeout.ms = 60000
+	enable.auto.commit = false
+	exclude.internal.topics = true
+	fetch.max.bytes = 52428800
+	fetch.max.wait.ms = 500
+	fetch.min.bytes = 1
+	group.id = mortext-bank-group
+	group.instance.id = null
+	heartbeat.interval.ms = 3000
+	interceptor.classes = []
+	internal.leave.group.on.close = true
+	internal.throw.on.fetch.stable.offset.unsupported = false
+	isolation.level = read_uncommitted
+	key.deserializer = class org.apache.kafka.common.serialization.StringDeserializer
+	max.partition.fetch.bytes = 1048576
+	max.poll.interval.ms = 300000
+	max.poll.records = 500
+	metadata.max.age.ms = 300000
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.recording.level = INFO
+	metrics.sample.window.ms = 30000
+	partition.assignment.strategy = [class org.apache.kafka.clients.consumer.RangeAssignor, class org.apache.kafka.clients.consumer.CooperativeStickyAssignor]
+	receive.buffer.bytes = 65536
+	reconnect.backoff.max.ms = 1000
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 30000
+	retry.backoff.ms = 100
+	sasl.client.callback.handler.class = null
+	sasl.jaas.config = null
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.login.callback.handler.class = null
+	sasl.login.class = null
+	sasl.login.connect.timeout.ms = null
+	sasl.login.read.timeout.ms = null
+	sasl.login.refresh.buffer.seconds = 300
+	sasl.login.refresh.min.period.seconds = 60
+	sasl.login.refresh.window.factor = 0.8
+	sasl.login.refresh.window.jitter = 0.05
+	sasl.login.retry.backoff.max.ms = 10000
+	sasl.login.retry.backoff.ms = 100
+	sasl.mechanism = GSSAPI
+	sasl.oauthbearer.clock.skew.seconds = 30
+	sasl.oauthbearer.expected.audience = null
+	sasl.oauthbearer.expected.issuer = null
+	sasl.oauthbearer.jwks.endpoint.refresh.ms = 3600000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.max.ms = 10000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.ms = 100
+	sasl.oauthbearer.jwks.endpoint.url = null
+	sasl.oauthbearer.scope.claim.name = scope
+	sasl.oauthbearer.sub.claim.name = sub
+	sasl.oauthbearer.token.endpoint.url = null
+	security.protocol = PLAINTEXT
+	security.providers = null
+	send.buffer.bytes = 131072
+	session.timeout.ms = 45000
+	socket.connection.setup.timeout.max.ms = 30000
+	socket.connection.setup.timeout.ms = 10000
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.3]
+	ssl.endpoint.identification.algorithm = https
+	ssl.engine.factory.class = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.certificate.chain = null
+	ssl.keystore.key = null
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLSv1.3
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.certificates = null
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	value.deserializer = class org.springframework.kafka.support.serializer.JsonDeserializer
+
+2026-06-25 12:18:59 [main] INFO  o.a.kafka.common.utils.AppInfoParser - Kafka version: 3.6.2
+2026-06-25 12:18:59 [main] INFO  o.a.kafka.common.utils.AppInfoParser - Kafka commitId: c4deed513057c94e
+2026-06-25 12:18:59 [main] INFO  o.a.kafka.common.utils.AppInfoParser - Kafka startTimeMs: 1782370139377
+2026-06-25 12:18:59 [main] INFO  o.s.k.c.DefaultKafkaConsumerFactory$ExtendedKafkaConsumer - [Consumer clientId=consumer-mortext-bank-group-1, groupId=mortext-bank-group] Subscribed to topic(s): transaction-events
+2026-06-25 12:18:59 [main] INFO  o.a.k.c.consumer.ConsumerConfig - ConsumerConfig values: 
+	allow.auto.create.topics = true
+	auto.commit.interval.ms = 5000
+	auto.include.jmx.reporter = true
+	auto.offset.reset = earliest
+	bootstrap.servers = [localhost:9092]
+	check.crcs = true
+	client.dns.lookup = use_all_dns_ips
+	client.id = consumer-email-notification-group-2
+	client.rack = 
+	connections.max.idle.ms = 540000
+	default.api.timeout.ms = 60000
+	enable.auto.commit = false
+	exclude.internal.topics = true
+	fetch.max.bytes = 52428800
+	fetch.max.wait.ms = 500
+	fetch.min.bytes = 1
+	group.id = email-notification-group
+	group.instance.id = null
+	heartbeat.interval.ms = 3000
+	interceptor.classes = []
+	internal.leave.group.on.close = true
+	internal.throw.on.fetch.stable.offset.unsupported = false
+	isolation.level = read_uncommitted
+	key.deserializer = class org.apache.kafka.common.serialization.StringDeserializer
+	max.partition.fetch.bytes = 1048576
+	max.poll.interval.ms = 300000
+	max.poll.records = 500
+	metadata.max.age.ms = 300000
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.recording.level = INFO
+	metrics.sample.window.ms = 30000
+	partition.assignment.strategy = [class org.apache.kafka.clients.consumer.RangeAssignor, class org.apache.kafka.clients.consumer.CooperativeStickyAssignor]
+	receive.buffer.bytes = 65536
+	reconnect.backoff.max.ms = 1000
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 30000
+	retry.backoff.ms = 100
+	sasl.client.callback.handler.class = null
+	sasl.jaas.config = null
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.login.callback.handler.class = null
+	sasl.login.class = null
+	sasl.login.connect.timeout.ms = null
+	sasl.login.read.timeout.ms = null
+	sasl.login.refresh.buffer.seconds = 300
+	sasl.login.refresh.min.period.seconds = 60
+	sasl.login.refresh.window.factor = 0.8
+	sasl.login.refresh.window.jitter = 0.05
+	sasl.login.retry.backoff.max.ms = 10000
+	sasl.login.retry.backoff.ms = 100
+	sasl.mechanism = GSSAPI
+	sasl.oauthbearer.clock.skew.seconds = 30
+	sasl.oauthbearer.expected.audience = null
+	sasl.oauthbearer.expected.issuer = null
+	sasl.oauthbearer.jwks.endpoint.refresh.ms = 3600000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.max.ms = 10000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.ms = 100
+	sasl.oauthbearer.jwks.endpoint.url = null
+	sasl.oauthbearer.scope.claim.name = scope
+	sasl.oauthbearer.sub.claim.name = sub
+	sasl.oauthbearer.token.endpoint.url = null
+	security.protocol = PLAINTEXT
+	security.providers = null
+	send.buffer.bytes = 131072
+	session.timeout.ms = 45000
+	socket.connection.setup.timeout.max.ms = 30000
+	socket.connection.setup.timeout.ms = 10000
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.3]
+	ssl.endpoint.identification.algorithm = https
+	ssl.engine.factory.class = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.certificate.chain = null
+	ssl.keystore.key = null
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLSv1.3
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.certificates = null
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	value.deserializer = class org.springframework.kafka.support.serializer.JsonDeserializer
+
+2026-06-25 12:18:59 [main] INFO  o.a.kafka.common.utils.AppInfoParser - Kafka version: 3.6.2
+2026-06-25 12:18:59 [main] INFO  o.a.kafka.common.utils.AppInfoParser - Kafka commitId: c4deed513057c94e
+2026-06-25 12:18:59 [main] INFO  o.a.kafka.common.utils.AppInfoParser - Kafka startTimeMs: 1782370139391
+2026-06-25 12:18:59 [main] INFO  o.s.k.c.DefaultKafkaConsumerFactory$ExtendedKafkaConsumer - [Consumer clientId=consumer-email-notification-group-2, groupId=email-notification-group] Subscribed to topic(s): transaction-events
+2026-06-25 12:18:59 [main] INFO  c.s.m.MortextBankApplication - Started MortextBankApplication in 6.014 seconds (process running for 6.55)
+2026-06-25 12:18:59 [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] INFO  org.apache.kafka.clients.Metadata - [Consumer clientId=consumer-email-notification-group-2, groupId=email-notification-group] Cluster ID: RJxEQqfZR4y2vmhX3h5OqQ
+2026-06-25 12:18:59 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  org.apache.kafka.clients.Metadata - [Consumer clientId=consumer-mortext-bank-group-1, groupId=mortext-bank-group] Cluster ID: RJxEQqfZR4y2vmhX3h5OqQ
+2026-06-25 12:18:59 [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-email-notification-group-2, groupId=email-notification-group] Discovered group coordinator localhost:9092 (id: 2147483646 rack: null)
+2026-06-25 12:18:59 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-mortext-bank-group-1, groupId=mortext-bank-group] Discovered group coordinator localhost:9092 (id: 2147483646 rack: null)
+2026-06-25 12:18:59 [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-email-notification-group-2, groupId=email-notification-group] (Re-)joining group
+2026-06-25 12:18:59 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-mortext-bank-group-1, groupId=mortext-bank-group] (Re-)joining group
+2026-06-25 12:18:59 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-mortext-bank-group-1, groupId=mortext-bank-group] Request joining group due to: need to re-join with the given member-id: consumer-mortext-bank-group-1-80fb8beb-b1ee-41d0-a2b6-4f4269a47945
+2026-06-25 12:18:59 [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-email-notification-group-2, groupId=email-notification-group] Request joining group due to: need to re-join with the given member-id: consumer-email-notification-group-2-426087b1-6be5-4039-9162-5ed6011b8d1a
+2026-06-25 12:18:59 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-mortext-bank-group-1, groupId=mortext-bank-group] Request joining group due to: rebalance failed due to 'The group member needs to have a valid member id before actually entering a consumer group.' (MemberIdRequiredException)
+2026-06-25 12:18:59 [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-email-notification-group-2, groupId=email-notification-group] Request joining group due to: rebalance failed due to 'The group member needs to have a valid member id before actually entering a consumer group.' (MemberIdRequiredException)
+2026-06-25 12:18:59 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-mortext-bank-group-1, groupId=mortext-bank-group] (Re-)joining group
+2026-06-25 12:18:59 [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-email-notification-group-2, groupId=email-notification-group] (Re-)joining group
+2026-06-25 12:19:02 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-mortext-bank-group-1, groupId=mortext-bank-group] Successfully joined group with generation Generation{generationId=95, memberId='consumer-mortext-bank-group-1-80fb8beb-b1ee-41d0-a2b6-4f4269a47945', protocol='range'}
+2026-06-25 12:19:02 [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-email-notification-group-2, groupId=email-notification-group] Successfully joined group with generation Generation{generationId=63, memberId='consumer-email-notification-group-2-426087b1-6be5-4039-9162-5ed6011b8d1a', protocol='range'}
+2026-06-25 12:19:02 [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-email-notification-group-2, groupId=email-notification-group] Finished assignment for group at generation 63: {consumer-email-notification-group-2-426087b1-6be5-4039-9162-5ed6011b8d1a=Assignment(partitions=[transaction-events-0])}
+2026-06-25 12:19:02 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-mortext-bank-group-1, groupId=mortext-bank-group] Finished assignment for group at generation 95: {consumer-mortext-bank-group-1-80fb8beb-b1ee-41d0-a2b6-4f4269a47945=Assignment(partitions=[transaction-events-0])}
+2026-06-25 12:19:02 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-mortext-bank-group-1, groupId=mortext-bank-group] Successfully synced group in generation Generation{generationId=95, memberId='consumer-mortext-bank-group-1-80fb8beb-b1ee-41d0-a2b6-4f4269a47945', protocol='range'}
+2026-06-25 12:19:02 [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-email-notification-group-2, groupId=email-notification-group] Successfully synced group in generation Generation{generationId=63, memberId='consumer-email-notification-group-2-426087b1-6be5-4039-9162-5ed6011b8d1a', protocol='range'}
+2026-06-25 12:19:02 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-mortext-bank-group-1, groupId=mortext-bank-group] Notifying assignor about the new Assignment(partitions=[transaction-events-0])
+2026-06-25 12:19:02 [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-email-notification-group-2, groupId=email-notification-group] Notifying assignor about the new Assignment(partitions=[transaction-events-0])
+2026-06-25 12:19:02 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-mortext-bank-group-1, groupId=mortext-bank-group] Adding newly assigned partitions: transaction-events-0
+2026-06-25 12:19:02 [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-email-notification-group-2, groupId=email-notification-group] Adding newly assigned partitions: transaction-events-0
+2026-06-25 12:19:02 [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-email-notification-group-2, groupId=email-notification-group] Setting offset for partition transaction-events-0 to the committed offset FetchPosition{offset=18, offsetEpoch=Optional.empty, currentLeader=LeaderAndEpoch{leader=Optional[localhost:9092 (id: 1 rack: null)], epoch=28}}
+2026-06-25 12:19:02 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-mortext-bank-group-1, groupId=mortext-bank-group] Setting offset for partition transaction-events-0 to the committed offset FetchPosition{offset=18, offsetEpoch=Optional.empty, currentLeader=LeaderAndEpoch{leader=Optional[localhost:9092 (id: 1 rack: null)], epoch=28}}
+2026-06-25 12:19:02 [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] INFO  o.s.k.l.KafkaMessageListenerContainer - email-notification-group: partitions assigned: [transaction-events-0]
+2026-06-25 12:19:02 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.s.k.l.KafkaMessageListenerContainer - mortext-bank-group: partitions assigned: [transaction-events-0]
+2026-06-25 12:19:07 [http-nio-8080-exec-2] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-06-25 12:19:07 [http-nio-8080-exec-2] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2026-06-25 12:19:07 [http-nio-8080-exec-2] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 5 ms
+2026-06-25 12:27:59 [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] INFO  o.apache.kafka.clients.NetworkClient - [Consumer clientId=consumer-email-notification-group-2, groupId=email-notification-group] Node -1 disconnected.
+2026-06-25 12:27:59 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.apache.kafka.clients.NetworkClient - [Consumer clientId=consumer-mortext-bank-group-1, groupId=mortext-bank-group] Node -1 disconnected.
+2026-06-25 12:30:00 [scheduling-1] INFO  c.s.m.s.impl.IpWhitelistServiceImpl - Starting scheduled cleanup of IP addresses older than 30 minutes
+2026-06-25 12:30:00 [scheduling-1] INFO  c.s.m.s.impl.IpWhitelistServiceImpl - Found 1 IP addresses older than 30 minutes, starting cleanup
+2026-06-25 12:30:00 [scheduling-1] INFO  c.s.m.s.impl.IpWhitelistServiceImpl - Successfully deleted 1 old IP addresses
+2026-06-25 12:30:00 [scheduling-1] INFO  c.s.m.s.impl.IpWhitelistServiceImpl - Scheduled cleanup completed. Total IP addresses deleted: 1
+2026-06-25 12:47:27 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.apache.kafka.clients.NetworkClient - [Consumer clientId=consumer-mortext-bank-group-1, groupId=mortext-bank-group] Disconnecting from node 1 due to request timeout.
+2026-06-25 12:47:27 [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] INFO  o.apache.kafka.clients.NetworkClient - [Consumer clientId=consumer-email-notification-group-2, groupId=email-notification-group] Disconnecting from node 1 due to request timeout.
+2026-06-25 12:47:28 [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] INFO  o.apache.kafka.clients.NetworkClient - [Consumer clientId=consumer-email-notification-group-2, groupId=email-notification-group] Cancelled in-flight FETCH request with correlation id 2201 due to node 1 being disconnected (elapsed time since creation: 695815ms, elapsed time since send: 695815ms, request timeout: 30000ms)
+2026-06-25 12:47:28 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.apache.kafka.clients.NetworkClient - [Consumer clientId=consumer-mortext-bank-group-1, groupId=mortext-bank-group] Cancelled in-flight FETCH request with correlation id 2201 due to node 1 being disconnected (elapsed time since creation: 695815ms, elapsed time since send: 695815ms, request timeout: 30000ms)
+2026-06-25 12:47:28 [kafka-coordinator-heartbeat-thread | email-notification-group] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-email-notification-group-2, groupId=email-notification-group] Group coordinator localhost:9092 (id: 2147483646 rack: null) is unavailable or invalid due to cause: session timed out without receiving a heartbeat response. isDisconnected: false. Rediscovery will be attempted.
+2026-06-25 12:47:28 [kafka-coordinator-heartbeat-thread | email-notification-group] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-email-notification-group-2, groupId=email-notification-group] Requesting disconnect from last known coordinator localhost:9092 (id: 2147483646 rack: null)
+2026-06-25 12:47:28 [kafka-coordinator-heartbeat-thread | mortext-bank-group] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-mortext-bank-group-1, groupId=mortext-bank-group] Group coordinator localhost:9092 (id: 2147483646 rack: null) is unavailable or invalid due to cause: session timed out without receiving a heartbeat response. isDisconnected: false. Rediscovery will be attempted.
+2026-06-25 12:47:28 [kafka-coordinator-heartbeat-thread | mortext-bank-group] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-mortext-bank-group-1, groupId=mortext-bank-group] Requesting disconnect from last known coordinator localhost:9092 (id: 2147483646 rack: null)
+2026-06-25 12:47:28 [kafka-coordinator-heartbeat-thread | mortext-bank-group] INFO  o.apache.kafka.clients.NetworkClient - [Consumer clientId=consumer-mortext-bank-group-1, groupId=mortext-bank-group] Client requested disconnect from node 2147483646
+2026-06-25 12:47:28 [kafka-coordinator-heartbeat-thread | email-notification-group] INFO  o.apache.kafka.clients.NetworkClient - [Consumer clientId=consumer-email-notification-group-2, groupId=email-notification-group] Client requested disconnect from node 2147483646
+2026-06-25 12:47:28 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.k.clients.FetchSessionHandler - [Consumer clientId=consumer-mortext-bank-group-1, groupId=mortext-bank-group] Error sending fetch request (sessionId=543611643, epoch=1853) to node 1:
+org.apache.kafka.common.errors.DisconnectException: null
+2026-06-25 12:47:28 [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] INFO  o.a.k.clients.FetchSessionHandler - [Consumer clientId=consumer-email-notification-group-2, groupId=email-notification-group] Error sending fetch request (sessionId=817295991, epoch=1853) to node 1:
+org.apache.kafka.common.errors.DisconnectException: null
+2026-06-25 12:47:28 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-mortext-bank-group-1, groupId=mortext-bank-group] Discovered group coordinator localhost:9092 (id: 2147483646 rack: null)
+2026-06-25 12:47:28 [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-email-notification-group-2, groupId=email-notification-group] Discovered group coordinator localhost:9092 (id: 2147483646 rack: null)
+2026-06-25 12:47:28 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-mortext-bank-group-1, groupId=mortext-bank-group] Group coordinator localhost:9092 (id: 2147483646 rack: null) is unavailable or invalid due to cause: coordinator unavailable. isDisconnected: false. Rediscovery will be attempted.
+2026-06-25 12:47:28 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-mortext-bank-group-1, groupId=mortext-bank-group] Requesting disconnect from last known coordinator localhost:9092 (id: 2147483646 rack: null)
+2026-06-25 12:47:28 [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-email-notification-group-2, groupId=email-notification-group] Discovered group coordinator localhost:9092 (id: 2147483646 rack: null)
+2026-06-25 12:47:28 [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-email-notification-group-2, groupId=email-notification-group] Group coordinator localhost:9092 (id: 2147483646 rack: null) is unavailable or invalid due to cause: coordinator unavailable. isDisconnected: false. Rediscovery will be attempted.
+2026-06-25 12:47:28 [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-email-notification-group-2, groupId=email-notification-group] Requesting disconnect from last known coordinator localhost:9092 (id: 2147483646 rack: null)
+2026-06-25 12:47:28 [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-email-notification-group-2, groupId=email-notification-group] Discovered group coordinator localhost:9092 (id: 2147483646 rack: null)
+2026-06-25 12:47:28 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-mortext-bank-group-1, groupId=mortext-bank-group] Discovered group coordinator localhost:9092 (id: 2147483646 rack: null)
+2026-06-25 12:47:29 [HikariPool-1 housekeeper] WARN  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=12m2s563ms).
+2026-06-25 13:11:32 [scheduling-1] INFO  c.s.m.s.impl.IpWhitelistServiceImpl - Starting scheduled cleanup of IP addresses older than 30 minutes
+2026-06-25 13:11:32 [scheduling-1] INFO  c.s.m.s.impl.IpWhitelistServiceImpl - Found 1 IP addresses older than 30 minutes, starting cleanup
+2026-06-25 13:11:32 [scheduling-1] INFO  c.s.m.s.impl.IpWhitelistServiceImpl - Successfully deleted 1 old IP addresses
+2026-06-25 13:11:32 [scheduling-1] INFO  c.s.m.s.impl.IpWhitelistServiceImpl - Scheduled cleanup completed. Total IP addresses deleted: 1
+2026-06-25 13:30:00 [scheduling-1] INFO  c.s.m.s.impl.IpWhitelistServiceImpl - Starting scheduled cleanup of IP addresses older than 30 minutes
+2026-06-25 13:30:00 [scheduling-1] INFO  c.s.m.s.impl.IpWhitelistServiceImpl - No IP addresses older than 30 minutes found for cleanup
+2026-06-25 13:30:00 [scheduling-1] INFO  c.s.m.s.impl.IpWhitelistServiceImpl - Scheduled cleanup completed. Total IP addresses deleted: 0
+2026-06-25 13:35:03 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-mortext-bank-group-1, groupId=mortext-bank-group] Revoke previously assigned partitions transaction-events-0
+2026-06-25 13:35:03 [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-email-notification-group-2, groupId=email-notification-group] Revoke previously assigned partitions transaction-events-0
+2026-06-25 13:35:03 [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] INFO  o.s.k.l.KafkaMessageListenerContainer - email-notification-group: partitions revoked: [transaction-events-0]
+2026-06-25 13:35:03 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.s.k.l.KafkaMessageListenerContainer - mortext-bank-group: partitions revoked: [transaction-events-0]
+2026-06-25 13:35:03 [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-email-notification-group-2, groupId=email-notification-group] Member consumer-email-notification-group-2-426087b1-6be5-4039-9162-5ed6011b8d1a sending LeaveGroup request to coordinator localhost:9092 (id: 2147483646 rack: null) due to the consumer unsubscribed from all topics
+2026-06-25 13:35:03 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-mortext-bank-group-1, groupId=mortext-bank-group] Member consumer-mortext-bank-group-1-80fb8beb-b1ee-41d0-a2b6-4f4269a47945 sending LeaveGroup request to coordinator localhost:9092 (id: 2147483646 rack: null) due to the consumer unsubscribed from all topics
+2026-06-25 13:35:03 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-mortext-bank-group-1, groupId=mortext-bank-group] Resetting generation and member id due to: consumer pro-actively leaving the group
+2026-06-25 13:35:03 [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-email-notification-group-2, groupId=email-notification-group] Resetting generation and member id due to: consumer pro-actively leaving the group
+2026-06-25 13:35:03 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-mortext-bank-group-1, groupId=mortext-bank-group] Request joining group due to: consumer pro-actively leaving the group
+2026-06-25 13:35:03 [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-email-notification-group-2, groupId=email-notification-group] Request joining group due to: consumer pro-actively leaving the group
+2026-06-25 13:35:03 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.s.k.c.DefaultKafkaConsumerFactory$ExtendedKafkaConsumer - [Consumer clientId=consumer-mortext-bank-group-1, groupId=mortext-bank-group] Unsubscribed all topics or patterns and assigned partitions
+2026-06-25 13:35:03 [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] INFO  o.s.k.c.DefaultKafkaConsumerFactory$ExtendedKafkaConsumer - [Consumer clientId=consumer-email-notification-group-2, groupId=email-notification-group] Unsubscribed all topics or patterns and assigned partitions
+2026-06-25 13:35:03 [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-email-notification-group-2, groupId=email-notification-group] Resetting generation and member id due to: consumer pro-actively leaving the group
+2026-06-25 13:35:03 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-mortext-bank-group-1, groupId=mortext-bank-group] Resetting generation and member id due to: consumer pro-actively leaving the group
+2026-06-25 13:35:03 [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-email-notification-group-2, groupId=email-notification-group] Request joining group due to: consumer pro-actively leaving the group
+2026-06-25 13:35:03 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-mortext-bank-group-1, groupId=mortext-bank-group] Request joining group due to: consumer pro-actively leaving the group
+2026-06-25 13:35:04 [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] INFO  o.a.kafka.common.metrics.Metrics - Metrics scheduler closed
+2026-06-25 13:35:04 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.kafka.common.metrics.Metrics - Metrics scheduler closed
+2026-06-25 13:35:04 [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] INFO  o.a.kafka.common.metrics.Metrics - Closing reporter org.apache.kafka.common.metrics.JmxReporter
+2026-06-25 13:35:04 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.kafka.common.metrics.Metrics - Closing reporter org.apache.kafka.common.metrics.JmxReporter
+2026-06-25 13:35:04 [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] INFO  o.a.kafka.common.metrics.Metrics - Metrics reporters closed
+2026-06-25 13:35:04 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.kafka.common.metrics.Metrics - Metrics reporters closed
+2026-06-25 13:35:04 [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] INFO  o.a.kafka.common.utils.AppInfoParser - App info kafka.consumer for consumer-email-notification-group-2 unregistered
+2026-06-25 13:35:04 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.kafka.common.utils.AppInfoParser - App info kafka.consumer for consumer-mortext-bank-group-1 unregistered
+2026-06-25 13:35:04 [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] INFO  o.s.k.l.KafkaMessageListenerContainer - email-notification-group: Consumer stopped
+2026-06-25 13:35:04 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.s.k.l.KafkaMessageListenerContainer - mortext-bank-group: Consumer stopped
+2026-06-25 13:35:04 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-06-25 13:35:04 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2026-06-25 13:35:04 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2026-06-25 14:34:03 [main] INFO  c.s.m.MortextBankApplication - Starting MortextBankApplication using Java 22.0.2 with PID 6433 (/Users/acareindore/Desktop/React_Project/mortext-bank/BackendCode/mortextBank/target/classes started by acareindore in /Users/acareindore/Desktop/React_Project/mortext-bank/BackendCode/mortextBank)
+2026-06-25 14:34:03 [main] DEBUG c.s.m.MortextBankApplication - Running with Spring Boot v3.2.5, Spring v6.1.6
+2026-06-25 14:34:03 [main] INFO  c.s.m.MortextBankApplication - No active profile set, falling back to 1 default profile: "default"
+2026-06-25 14:34:05 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-06-25 14:34:05 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 74 ms. Found 9 JPA repository interfaces.
+2026-06-25 14:34:05 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2026-06-25 14:34:05 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-06-25 14:34:05 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.20]
+2026-06-25 14:34:05 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2026-06-25 14:34:05 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2577 ms
+2026-06-25 14:34:06 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-06-25 14:34:06 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.4.4.Final
+2026-06-25 14:34:06 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2026-06-25 14:34:06 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-06-25 14:34:06 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2026-06-25 14:34:06 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@fd87c22
+2026-06-25 14:34:06 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2026-06-25 14:34:06 [main] WARN  org.hibernate.orm.deprecation - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-06-25 14:34:07 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-06-25 14:34:07 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-06-25 14:34:08 [main] DEBUG c.s.m.s.JwtAuthenticationFilter - Filter 'jwtAuthenticationFilter' configured for use
+2026-06-25 14:34:08 [main] DEBUG c.s.m.security.IpWhitelistFilter - Filter 'ipWhitelistFilter' configured for use
+2026-06-25 14:34:08 [main] INFO  o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-06-25 14:34:08 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-06-25 14:34:09 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@40afa4f1, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@233b5c71, org.springframework.security.web.context.SecurityContextHolderFilter@4e2f6452, org.springframework.security.web.header.HeaderWriterFilter@243c4ffe, org.springframework.web.filter.CorsFilter@1e7edfb2, org.springframework.security.web.authentication.logout.LogoutFilter@58c48b92, com.sanviitech.mortextBank.security.IpWhitelistFilter@686ace1f, com.sanviitech.mortextBank.security.JwtAuthenticationFilter@3bfead8d, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@38c464df, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@45957b8f, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@6d26b068, org.springframework.security.web.session.SessionManagementFilter@6cddb04c, org.springframework.security.web.access.ExceptionTranslationFilter@16af0251, org.springframework.security.web.access.intercept.AuthorizationFilter@3f4b9792]
+2026-06-25 14:34:09 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path ''
+2026-06-25 14:34:09 [main] INFO  o.a.k.c.consumer.ConsumerConfig - ConsumerConfig values: 
+	allow.auto.create.topics = true
+	auto.commit.interval.ms = 5000
+	auto.include.jmx.reporter = true
+	auto.offset.reset = earliest
+	bootstrap.servers = [localhost:9092]
+	check.crcs = true
+	client.dns.lookup = use_all_dns_ips
+	client.id = consumer-mortext-bank-group-1
+	client.rack = 
+	connections.max.idle.ms = 540000
+	default.api.timeout.ms = 60000
+	enable.auto.commit = false
+	exclude.internal.topics = true
+	fetch.max.bytes = 52428800
+	fetch.max.wait.ms = 500
+	fetch.min.bytes = 1
+	group.id = mortext-bank-group
+	group.instance.id = null
+	heartbeat.interval.ms = 3000
+	interceptor.classes = []
+	internal.leave.group.on.close = true
+	internal.throw.on.fetch.stable.offset.unsupported = false
+	isolation.level = read_uncommitted
+	key.deserializer = class org.apache.kafka.common.serialization.StringDeserializer
+	max.partition.fetch.bytes = 1048576
+	max.poll.interval.ms = 300000
+	max.poll.records = 500
+	metadata.max.age.ms = 300000
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.recording.level = INFO
+	metrics.sample.window.ms = 30000
+	partition.assignment.strategy = [class org.apache.kafka.clients.consumer.RangeAssignor, class org.apache.kafka.clients.consumer.CooperativeStickyAssignor]
+	receive.buffer.bytes = 65536
+	reconnect.backoff.max.ms = 1000
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 30000
+	retry.backoff.ms = 100
+	sasl.client.callback.handler.class = null
+	sasl.jaas.config = null
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.login.callback.handler.class = null
+	sasl.login.class = null
+	sasl.login.connect.timeout.ms = null
+	sasl.login.read.timeout.ms = null
+	sasl.login.refresh.buffer.seconds = 300
+	sasl.login.refresh.min.period.seconds = 60
+	sasl.login.refresh.window.factor = 0.8
+	sasl.login.refresh.window.jitter = 0.05
+	sasl.login.retry.backoff.max.ms = 10000
+	sasl.login.retry.backoff.ms = 100
+	sasl.mechanism = GSSAPI
+	sasl.oauthbearer.clock.skew.seconds = 30
+	sasl.oauthbearer.expected.audience = null
+	sasl.oauthbearer.expected.issuer = null
+	sasl.oauthbearer.jwks.endpoint.refresh.ms = 3600000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.max.ms = 10000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.ms = 100
+	sasl.oauthbearer.jwks.endpoint.url = null
+	sasl.oauthbearer.scope.claim.name = scope
+	sasl.oauthbearer.sub.claim.name = sub
+	sasl.oauthbearer.token.endpoint.url = null
+	security.protocol = PLAINTEXT
+	security.providers = null
+	send.buffer.bytes = 131072
+	session.timeout.ms = 45000
+	socket.connection.setup.timeout.max.ms = 30000
+	socket.connection.setup.timeout.ms = 10000
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.3]
+	ssl.endpoint.identification.algorithm = https
+	ssl.engine.factory.class = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.certificate.chain = null
+	ssl.keystore.key = null
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLSv1.3
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.certificates = null
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	value.deserializer = class org.springframework.kafka.support.serializer.JsonDeserializer
+
+2026-06-25 14:34:09 [main] INFO  o.a.kafka.common.utils.AppInfoParser - Kafka version: 3.6.2
+2026-06-25 14:34:09 [main] INFO  o.a.kafka.common.utils.AppInfoParser - Kafka commitId: c4deed513057c94e
+2026-06-25 14:34:09 [main] INFO  o.a.kafka.common.utils.AppInfoParser - Kafka startTimeMs: 1782378249669
+2026-06-25 14:34:09 [main] INFO  o.s.k.c.DefaultKafkaConsumerFactory$ExtendedKafkaConsumer - [Consumer clientId=consumer-mortext-bank-group-1, groupId=mortext-bank-group] Subscribed to topic(s): transaction-events
+2026-06-25 14:34:09 [main] INFO  o.a.k.c.consumer.ConsumerConfig - ConsumerConfig values: 
+	allow.auto.create.topics = true
+	auto.commit.interval.ms = 5000
+	auto.include.jmx.reporter = true
+	auto.offset.reset = earliest
+	bootstrap.servers = [localhost:9092]
+	check.crcs = true
+	client.dns.lookup = use_all_dns_ips
+	client.id = consumer-email-notification-group-2
+	client.rack = 
+	connections.max.idle.ms = 540000
+	default.api.timeout.ms = 60000
+	enable.auto.commit = false
+	exclude.internal.topics = true
+	fetch.max.bytes = 52428800
+	fetch.max.wait.ms = 500
+	fetch.min.bytes = 1
+	group.id = email-notification-group
+	group.instance.id = null
+	heartbeat.interval.ms = 3000
+	interceptor.classes = []
+	internal.leave.group.on.close = true
+	internal.throw.on.fetch.stable.offset.unsupported = false
+	isolation.level = read_uncommitted
+	key.deserializer = class org.apache.kafka.common.serialization.StringDeserializer
+	max.partition.fetch.bytes = 1048576
+	max.poll.interval.ms = 300000
+	max.poll.records = 500
+	metadata.max.age.ms = 300000
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.recording.level = INFO
+	metrics.sample.window.ms = 30000
+	partition.assignment.strategy = [class org.apache.kafka.clients.consumer.RangeAssignor, class org.apache.kafka.clients.consumer.CooperativeStickyAssignor]
+	receive.buffer.bytes = 65536
+	reconnect.backoff.max.ms = 1000
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 30000
+	retry.backoff.ms = 100
+	sasl.client.callback.handler.class = null
+	sasl.jaas.config = null
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.login.callback.handler.class = null
+	sasl.login.class = null
+	sasl.login.connect.timeout.ms = null
+	sasl.login.read.timeout.ms = null
+	sasl.login.refresh.buffer.seconds = 300
+	sasl.login.refresh.min.period.seconds = 60
+	sasl.login.refresh.window.factor = 0.8
+	sasl.login.refresh.window.jitter = 0.05
+	sasl.login.retry.backoff.max.ms = 10000
+	sasl.login.retry.backoff.ms = 100
+	sasl.mechanism = GSSAPI
+	sasl.oauthbearer.clock.skew.seconds = 30
+	sasl.oauthbearer.expected.audience = null
+	sasl.oauthbearer.expected.issuer = null
+	sasl.oauthbearer.jwks.endpoint.refresh.ms = 3600000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.max.ms = 10000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.ms = 100
+	sasl.oauthbearer.jwks.endpoint.url = null
+	sasl.oauthbearer.scope.claim.name = scope
+	sasl.oauthbearer.sub.claim.name = sub
+	sasl.oauthbearer.token.endpoint.url = null
+	security.protocol = PLAINTEXT
+	security.providers = null
+	send.buffer.bytes = 131072
+	session.timeout.ms = 45000
+	socket.connection.setup.timeout.max.ms = 30000
+	socket.connection.setup.timeout.ms = 10000
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.3]
+	ssl.endpoint.identification.algorithm = https
+	ssl.engine.factory.class = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.certificate.chain = null
+	ssl.keystore.key = null
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLSv1.3
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.certificates = null
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	value.deserializer = class org.springframework.kafka.support.serializer.JsonDeserializer
+
+2026-06-25 14:34:09 [main] INFO  o.a.kafka.common.utils.AppInfoParser - Kafka version: 3.6.2
+2026-06-25 14:34:09 [main] INFO  o.a.kafka.common.utils.AppInfoParser - Kafka commitId: c4deed513057c94e
+2026-06-25 14:34:09 [main] INFO  o.a.kafka.common.utils.AppInfoParser - Kafka startTimeMs: 1782378249682
+2026-06-25 14:34:09 [main] INFO  o.s.k.c.DefaultKafkaConsumerFactory$ExtendedKafkaConsumer - [Consumer clientId=consumer-email-notification-group-2, groupId=email-notification-group] Subscribed to topic(s): transaction-events
+2026-06-25 14:34:09 [main] INFO  c.s.m.MortextBankApplication - Started MortextBankApplication in 6.984 seconds (process running for 7.632)
+2026-06-25 14:34:09 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  org.apache.kafka.clients.Metadata - [Consumer clientId=consumer-mortext-bank-group-1, groupId=mortext-bank-group] Cluster ID: RJxEQqfZR4y2vmhX3h5OqQ
+2026-06-25 14:34:09 [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] INFO  org.apache.kafka.clients.Metadata - [Consumer clientId=consumer-email-notification-group-2, groupId=email-notification-group] Cluster ID: RJxEQqfZR4y2vmhX3h5OqQ
+2026-06-25 14:34:09 [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-email-notification-group-2, groupId=email-notification-group] Discovered group coordinator localhost:9092 (id: 2147483646 rack: null)
+2026-06-25 14:34:09 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-mortext-bank-group-1, groupId=mortext-bank-group] Discovered group coordinator localhost:9092 (id: 2147483646 rack: null)
+2026-06-25 14:34:09 [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-email-notification-group-2, groupId=email-notification-group] (Re-)joining group
+2026-06-25 14:34:09 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-mortext-bank-group-1, groupId=mortext-bank-group] (Re-)joining group
+2026-06-25 14:34:09 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-mortext-bank-group-1, groupId=mortext-bank-group] Request joining group due to: need to re-join with the given member-id: consumer-mortext-bank-group-1-4f6ff6e6-86db-456f-9b30-dbe7458f2c71
+2026-06-25 14:34:09 [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-email-notification-group-2, groupId=email-notification-group] Request joining group due to: need to re-join with the given member-id: consumer-email-notification-group-2-ef6b3833-2b8a-48e2-8189-7a4852b88a9a
+2026-06-25 14:34:09 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-mortext-bank-group-1, groupId=mortext-bank-group] Request joining group due to: rebalance failed due to 'The group member needs to have a valid member id before actually entering a consumer group.' (MemberIdRequiredException)
+2026-06-25 14:34:09 [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-email-notification-group-2, groupId=email-notification-group] Request joining group due to: rebalance failed due to 'The group member needs to have a valid member id before actually entering a consumer group.' (MemberIdRequiredException)
+2026-06-25 14:34:09 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-mortext-bank-group-1, groupId=mortext-bank-group] (Re-)joining group
+2026-06-25 14:34:09 [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-email-notification-group-2, groupId=email-notification-group] (Re-)joining group
+2026-06-25 14:34:13 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-mortext-bank-group-1, groupId=mortext-bank-group] Successfully joined group with generation Generation{generationId=97, memberId='consumer-mortext-bank-group-1-4f6ff6e6-86db-456f-9b30-dbe7458f2c71', protocol='range'}
+2026-06-25 14:34:13 [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-email-notification-group-2, groupId=email-notification-group] Successfully joined group with generation Generation{generationId=65, memberId='consumer-email-notification-group-2-ef6b3833-2b8a-48e2-8189-7a4852b88a9a', protocol='range'}
+2026-06-25 14:34:13 [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-email-notification-group-2, groupId=email-notification-group] Finished assignment for group at generation 65: {consumer-email-notification-group-2-ef6b3833-2b8a-48e2-8189-7a4852b88a9a=Assignment(partitions=[transaction-events-0])}
+2026-06-25 14:34:13 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-mortext-bank-group-1, groupId=mortext-bank-group] Finished assignment for group at generation 97: {consumer-mortext-bank-group-1-4f6ff6e6-86db-456f-9b30-dbe7458f2c71=Assignment(partitions=[transaction-events-0])}
+2026-06-25 14:34:13 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-mortext-bank-group-1, groupId=mortext-bank-group] Successfully synced group in generation Generation{generationId=97, memberId='consumer-mortext-bank-group-1-4f6ff6e6-86db-456f-9b30-dbe7458f2c71', protocol='range'}
+2026-06-25 14:34:13 [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-email-notification-group-2, groupId=email-notification-group] Successfully synced group in generation Generation{generationId=65, memberId='consumer-email-notification-group-2-ef6b3833-2b8a-48e2-8189-7a4852b88a9a', protocol='range'}
+2026-06-25 14:34:13 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-mortext-bank-group-1, groupId=mortext-bank-group] Notifying assignor about the new Assignment(partitions=[transaction-events-0])
+2026-06-25 14:34:13 [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-email-notification-group-2, groupId=email-notification-group] Notifying assignor about the new Assignment(partitions=[transaction-events-0])
+2026-06-25 14:34:13 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-mortext-bank-group-1, groupId=mortext-bank-group] Adding newly assigned partitions: transaction-events-0
+2026-06-25 14:34:13 [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-email-notification-group-2, groupId=email-notification-group] Adding newly assigned partitions: transaction-events-0
+2026-06-25 14:34:13 [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-email-notification-group-2, groupId=email-notification-group] Setting offset for partition transaction-events-0 to the committed offset FetchPosition{offset=18, offsetEpoch=Optional.empty, currentLeader=LeaderAndEpoch{leader=Optional[localhost:9092 (id: 1 rack: null)], epoch=28}}
+2026-06-25 14:34:13 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-mortext-bank-group-1, groupId=mortext-bank-group] Setting offset for partition transaction-events-0 to the committed offset FetchPosition{offset=18, offsetEpoch=Optional.empty, currentLeader=LeaderAndEpoch{leader=Optional[localhost:9092 (id: 1 rack: null)], epoch=28}}
+2026-06-25 14:34:13 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.s.k.l.KafkaMessageListenerContainer - mortext-bank-group: partitions assigned: [transaction-events-0]
+2026-06-25 14:34:13 [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] INFO  o.s.k.l.KafkaMessageListenerContainer - email-notification-group: partitions assigned: [transaction-events-0]
+2026-06-25 14:35:24 [http-nio-8080-exec-2] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-06-25 14:35:24 [http-nio-8080-exec-2] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2026-06-25 14:35:24 [http-nio-8080-exec-2] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 6 ms
+2026-06-25 14:42:29 [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] INFO  o.apache.kafka.clients.NetworkClient - [Consumer clientId=consumer-email-notification-group-2, groupId=email-notification-group] Disconnecting from node 1 due to request timeout.
+2026-06-25 14:42:29 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.apache.kafka.clients.NetworkClient - [Consumer clientId=consumer-mortext-bank-group-1, groupId=mortext-bank-group] Disconnecting from node 1 due to request timeout.
+2026-06-25 14:42:29 [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] INFO  o.apache.kafka.clients.NetworkClient - [Consumer clientId=consumer-email-notification-group-2, groupId=email-notification-group] Cancelled in-flight FETCH request with correlation id 559 due to node 1 being disconnected (elapsed time since creation: 242037ms, elapsed time since send: 242037ms, request timeout: 30000ms)
+2026-06-25 14:42:29 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.apache.kafka.clients.NetworkClient - [Consumer clientId=consumer-mortext-bank-group-1, groupId=mortext-bank-group] Cancelled in-flight FETCH request with correlation id 559 due to node 1 being disconnected (elapsed time since creation: 242037ms, elapsed time since send: 242037ms, request timeout: 30000ms)
+2026-06-25 14:42:29 [kafka-coordinator-heartbeat-thread | email-notification-group] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-email-notification-group-2, groupId=email-notification-group] Group coordinator localhost:9092 (id: 2147483646 rack: null) is unavailable or invalid due to cause: session timed out without receiving a heartbeat response. isDisconnected: false. Rediscovery will be attempted.
+2026-06-25 14:42:29 [kafka-coordinator-heartbeat-thread | mortext-bank-group] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-mortext-bank-group-1, groupId=mortext-bank-group] Group coordinator localhost:9092 (id: 2147483646 rack: null) is unavailable or invalid due to cause: session timed out without receiving a heartbeat response. isDisconnected: false. Rediscovery will be attempted.
+2026-06-25 14:42:29 [kafka-coordinator-heartbeat-thread | mortext-bank-group] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-mortext-bank-group-1, groupId=mortext-bank-group] Requesting disconnect from last known coordinator localhost:9092 (id: 2147483646 rack: null)
+2026-06-25 14:42:29 [kafka-coordinator-heartbeat-thread | email-notification-group] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-email-notification-group-2, groupId=email-notification-group] Requesting disconnect from last known coordinator localhost:9092 (id: 2147483646 rack: null)
+2026-06-25 14:42:29 [kafka-coordinator-heartbeat-thread | mortext-bank-group] INFO  o.apache.kafka.clients.NetworkClient - [Consumer clientId=consumer-mortext-bank-group-1, groupId=mortext-bank-group] Client requested disconnect from node 2147483646
+2026-06-25 14:42:29 [kafka-coordinator-heartbeat-thread | email-notification-group] INFO  o.apache.kafka.clients.NetworkClient - [Consumer clientId=consumer-email-notification-group-2, groupId=email-notification-group] Client requested disconnect from node 2147483646
+2026-06-25 14:42:29 [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] INFO  o.a.k.clients.FetchSessionHandler - [Consumer clientId=consumer-email-notification-group-2, groupId=email-notification-group] Error sending fetch request (sessionId=2013761930, epoch=466) to node 1:
+org.apache.kafka.common.errors.DisconnectException: null
+2026-06-25 14:42:29 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.k.clients.FetchSessionHandler - [Consumer clientId=consumer-mortext-bank-group-1, groupId=mortext-bank-group] Error sending fetch request (sessionId=1758137036, epoch=466) to node 1:
+org.apache.kafka.common.errors.DisconnectException: null
+2026-06-25 14:42:29 [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-email-notification-group-2, groupId=email-notification-group] Discovered group coordinator localhost:9092 (id: 2147483646 rack: null)
+2026-06-25 14:42:29 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-mortext-bank-group-1, groupId=mortext-bank-group] Discovered group coordinator localhost:9092 (id: 2147483646 rack: null)
+2026-06-25 14:42:29 [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-email-notification-group-2, groupId=email-notification-group] Group coordinator localhost:9092 (id: 2147483646 rack: null) is unavailable or invalid due to cause: coordinator unavailable. isDisconnected: false. Rediscovery will be attempted.
+2026-06-25 14:42:29 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-mortext-bank-group-1, groupId=mortext-bank-group] Group coordinator localhost:9092 (id: 2147483646 rack: null) is unavailable or invalid due to cause: coordinator unavailable. isDisconnected: false. Rediscovery will be attempted.
+2026-06-25 14:42:29 [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-email-notification-group-2, groupId=email-notification-group] Requesting disconnect from last known coordinator localhost:9092 (id: 2147483646 rack: null)
+2026-06-25 14:42:29 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-mortext-bank-group-1, groupId=mortext-bank-group] Requesting disconnect from last known coordinator localhost:9092 (id: 2147483646 rack: null)
+2026-06-25 14:42:29 [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-email-notification-group-2, groupId=email-notification-group] Discovered group coordinator localhost:9092 (id: 2147483646 rack: null)
+2026-06-25 14:42:29 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-mortext-bank-group-1, groupId=mortext-bank-group] Discovered group coordinator localhost:9092 (id: 2147483646 rack: null)
+2026-06-25 14:42:35 [HikariPool-1 housekeeper] WARN  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=4m28s510ms).
+2026-06-25 14:47:08 [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] INFO  o.apache.kafka.clients.NetworkClient - [Consumer clientId=consumer-email-notification-group-2, groupId=email-notification-group] Node -1 disconnected.
+2026-06-25 14:47:08 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.apache.kafka.clients.NetworkClient - [Consumer clientId=consumer-mortext-bank-group-1, groupId=mortext-bank-group] Node -1 disconnected.
+2026-06-25 15:03:58 [scheduling-1] INFO  c.s.m.s.impl.IpWhitelistServiceImpl - Starting scheduled cleanup of IP addresses older than 30 minutes
+2026-06-25 15:03:58 [scheduling-1] INFO  c.s.m.s.impl.IpWhitelistServiceImpl - No IP addresses older than 30 minutes found for cleanup
+2026-06-25 15:03:58 [scheduling-1] INFO  c.s.m.s.impl.IpWhitelistServiceImpl - Scheduled cleanup completed. Total IP addresses deleted: 0
+2026-06-25 15:29:59 [scheduling-1] INFO  c.s.m.s.impl.IpWhitelistServiceImpl - Starting scheduled cleanup of IP addresses older than 30 minutes
+2026-06-25 15:29:59 [scheduling-1] INFO  c.s.m.s.impl.IpWhitelistServiceImpl - Found 1 IP addresses older than 30 minutes, starting cleanup
+2026-06-25 15:30:00 [scheduling-1] INFO  c.s.m.s.impl.IpWhitelistServiceImpl - Successfully deleted 1 old IP addresses
+2026-06-25 15:30:00 [scheduling-1] INFO  c.s.m.s.impl.IpWhitelistServiceImpl - Scheduled cleanup completed. Total IP addresses deleted: 1
+2026-06-25 16:00:00 [scheduling-1] INFO  c.s.m.s.impl.IpWhitelistServiceImpl - Starting scheduled cleanup of IP addresses older than 30 minutes
+2026-06-25 16:00:00 [scheduling-1] INFO  c.s.m.s.impl.IpWhitelistServiceImpl - No IP addresses older than 30 minutes found for cleanup
+2026-06-25 16:00:00 [scheduling-1] INFO  c.s.m.s.impl.IpWhitelistServiceImpl - Scheduled cleanup completed. Total IP addresses deleted: 0
+2026-06-25 16:27:46 [http-nio-8080-exec-4] INFO  c.s.m.s.impl.AccountServiceImpl - Fetching user accounts for email: subhashjaiswar12@gmail.com
+2026-06-25 16:27:46 [http-nio-8080-exec-4] INFO  c.s.m.s.impl.AccountServiceImpl - Successfully fetched 1 accounts for user: subhashjaiswar12@gmail.com in 8 ms
+2026-06-25 16:27:46 [http-nio-8080-exec-5] INFO  c.s.m.s.impl.AccountServiceImpl - Fetching account statement for account ID: 2
+2026-06-25 16:27:46 [http-nio-8080-exec-5] INFO  c.s.m.s.impl.AccountServiceImpl - Successfully fetched 0 transactions for account: 2 in 19 ms
+2026-06-25 16:27:49 [http-nio-8080-exec-8] INFO  c.s.m.s.impl.AccountServiceImpl - Fetching user accounts for email: subhashjaiswar12@gmail.com
+2026-06-25 16:27:49 [http-nio-8080-exec-10] INFO  c.s.m.s.impl.TransferServiceImpl - Fetching beneficiaries for user: subhashjaiswar12@gmail.com
+2026-06-25 16:27:49 [http-nio-8080-exec-8] INFO  c.s.m.s.impl.AccountServiceImpl - Successfully fetched 1 accounts for user: subhashjaiswar12@gmail.com in 4 ms
+2026-06-25 16:27:49 [http-nio-8080-exec-10] INFO  c.s.m.s.impl.TransferServiceImpl - Successfully fetched 0 beneficiaries for user: subhashjaiswar12@gmail.com in 14 ms
+2026-06-25 16:30:00 [scheduling-1] INFO  c.s.m.s.impl.IpWhitelistServiceImpl - Starting scheduled cleanup of IP addresses older than 30 minutes
+2026-06-25 16:30:00 [scheduling-1] INFO  c.s.m.s.impl.IpWhitelistServiceImpl - Found 1 IP addresses older than 30 minutes, starting cleanup
+2026-06-25 16:30:00 [scheduling-1] INFO  c.s.m.s.impl.IpWhitelistServiceImpl - Successfully deleted 1 old IP addresses
+2026-06-25 16:30:00 [scheduling-1] INFO  c.s.m.s.impl.IpWhitelistServiceImpl - Scheduled cleanup completed. Total IP addresses deleted: 1
+2026-06-25 16:46:22 [http-nio-8080-exec-8] INFO  c.s.m.s.impl.AccountServiceImpl - Fetching user accounts for email: subhashjaiswar12@gmail.com
+2026-06-25 16:46:22 [http-nio-8080-exec-8] INFO  c.s.m.s.impl.AccountServiceImpl - Successfully fetched 1 accounts for user: subhashjaiswar12@gmail.com in 7 ms
+2026-06-25 16:46:22 [http-nio-8080-exec-1] INFO  c.s.m.s.impl.AccountServiceImpl - Fetching account statement for account ID: 2
+2026-06-25 16:46:22 [http-nio-8080-exec-1] INFO  c.s.m.s.impl.AccountServiceImpl - Successfully fetched 0 transactions for account: 2 in 4 ms
+2026-06-25 16:46:26 [http-nio-8080-exec-2] INFO  c.s.m.s.impl.AccountServiceImpl - Fetching user accounts for email: subhashjaiswar12@gmail.com
+2026-06-25 16:46:26 [http-nio-8080-exec-9] INFO  c.s.m.s.impl.TransferServiceImpl - Fetching beneficiaries for user: subhashjaiswar12@gmail.com
+2026-06-25 16:46:26 [http-nio-8080-exec-9] INFO  c.s.m.s.impl.TransferServiceImpl - Successfully fetched 0 beneficiaries for user: subhashjaiswar12@gmail.com in 7 ms
+2026-06-25 16:46:26 [http-nio-8080-exec-2] INFO  c.s.m.s.impl.AccountServiceImpl - Successfully fetched 1 accounts for user: subhashjaiswar12@gmail.com in 7 ms
+2026-06-25 16:46:28 [http-nio-8080-exec-4] INFO  c.s.m.s.impl.TransactionServiceImpl - Fetching user transactions for email: subhashjaiswar12@gmail.com with pagination
+2026-06-25 16:46:28 [http-nio-8080-exec-4] INFO  c.s.m.s.impl.TransactionServiceImpl - Successfully fetched 0 transactions for user: subhashjaiswar12@gmail.com in 7 ms
+2026-06-25 17:00:00 [scheduling-1] INFO  c.s.m.s.impl.IpWhitelistServiceImpl - Starting scheduled cleanup of IP addresses older than 30 minutes
+2026-06-25 17:00:00 [scheduling-1] INFO  c.s.m.s.impl.IpWhitelistServiceImpl - No IP addresses older than 30 minutes found for cleanup
+2026-06-25 17:00:00 [scheduling-1] INFO  c.s.m.s.impl.IpWhitelistServiceImpl - Scheduled cleanup completed. Total IP addresses deleted: 0
+2026-06-25 17:02:37 [http-nio-8080-exec-10] INFO  c.s.m.service.impl.CardServiceImpl - Fetching user cards for email: subhashjaiswar12@gmail.com
+2026-06-25 17:02:37 [http-nio-8080-exec-10] INFO  c.s.m.service.impl.CardServiceImpl - Successfully fetched 0 cards for user: subhashjaiswar12@gmail.com in 11 ms
+2026-06-25 17:29:59 [scheduling-1] INFO  c.s.m.s.impl.IpWhitelistServiceImpl - Starting scheduled cleanup of IP addresses older than 30 minutes
+2026-06-25 17:29:59 [scheduling-1] INFO  c.s.m.s.impl.IpWhitelistServiceImpl - Found 1 IP addresses older than 30 minutes, starting cleanup
+2026-06-25 17:29:59 [scheduling-1] INFO  c.s.m.s.impl.IpWhitelistServiceImpl - Successfully deleted 1 old IP addresses
+2026-06-25 17:29:59 [scheduling-1] INFO  c.s.m.s.impl.IpWhitelistServiceImpl - Scheduled cleanup completed. Total IP addresses deleted: 1
+2026-06-25 18:00:00 [scheduling-1] INFO  c.s.m.s.impl.IpWhitelistServiceImpl - Starting scheduled cleanup of IP addresses older than 30 minutes
+2026-06-25 18:00:00 [scheduling-1] INFO  c.s.m.s.impl.IpWhitelistServiceImpl - No IP addresses older than 30 minutes found for cleanup
+2026-06-25 18:00:00 [scheduling-1] INFO  c.s.m.s.impl.IpWhitelistServiceImpl - Scheduled cleanup completed. Total IP addresses deleted: 0
+2026-06-25 18:02:06 [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-email-notification-group-2, groupId=email-notification-group] Revoke previously assigned partitions transaction-events-0
+2026-06-25 18:02:06 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-mortext-bank-group-1, groupId=mortext-bank-group] Revoke previously assigned partitions transaction-events-0
+2026-06-25 18:02:06 [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] INFO  o.s.k.l.KafkaMessageListenerContainer - email-notification-group: partitions revoked: [transaction-events-0]
+2026-06-25 18:02:06 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.s.k.l.KafkaMessageListenerContainer - mortext-bank-group: partitions revoked: [transaction-events-0]
+2026-06-25 18:02:06 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-mortext-bank-group-1, groupId=mortext-bank-group] Member consumer-mortext-bank-group-1-4f6ff6e6-86db-456f-9b30-dbe7458f2c71 sending LeaveGroup request to coordinator localhost:9092 (id: 2147483646 rack: null) due to the consumer unsubscribed from all topics
+2026-06-25 18:02:06 [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-email-notification-group-2, groupId=email-notification-group] Member consumer-email-notification-group-2-ef6b3833-2b8a-48e2-8189-7a4852b88a9a sending LeaveGroup request to coordinator localhost:9092 (id: 2147483646 rack: null) due to the consumer unsubscribed from all topics
+2026-06-25 18:02:06 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-mortext-bank-group-1, groupId=mortext-bank-group] Resetting generation and member id due to: consumer pro-actively leaving the group
+2026-06-25 18:02:06 [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-email-notification-group-2, groupId=email-notification-group] Resetting generation and member id due to: consumer pro-actively leaving the group
+2026-06-25 18:02:06 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-mortext-bank-group-1, groupId=mortext-bank-group] Request joining group due to: consumer pro-actively leaving the group
+2026-06-25 18:02:06 [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-email-notification-group-2, groupId=email-notification-group] Request joining group due to: consumer pro-actively leaving the group
+2026-06-25 18:02:06 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.s.k.c.DefaultKafkaConsumerFactory$ExtendedKafkaConsumer - [Consumer clientId=consumer-mortext-bank-group-1, groupId=mortext-bank-group] Unsubscribed all topics or patterns and assigned partitions
+2026-06-25 18:02:06 [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] INFO  o.s.k.c.DefaultKafkaConsumerFactory$ExtendedKafkaConsumer - [Consumer clientId=consumer-email-notification-group-2, groupId=email-notification-group] Unsubscribed all topics or patterns and assigned partitions
+2026-06-25 18:02:06 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-mortext-bank-group-1, groupId=mortext-bank-group] Resetting generation and member id due to: consumer pro-actively leaving the group
+2026-06-25 18:02:06 [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-email-notification-group-2, groupId=email-notification-group] Resetting generation and member id due to: consumer pro-actively leaving the group
+2026-06-25 18:02:06 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-mortext-bank-group-1, groupId=mortext-bank-group] Request joining group due to: consumer pro-actively leaving the group
+2026-06-25 18:02:06 [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-email-notification-group-2, groupId=email-notification-group] Request joining group due to: consumer pro-actively leaving the group
+2026-06-25 18:02:07 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.kafka.common.metrics.Metrics - Metrics scheduler closed
+2026-06-25 18:02:07 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.kafka.common.metrics.Metrics - Closing reporter org.apache.kafka.common.metrics.JmxReporter
+2026-06-25 18:02:07 [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] INFO  o.a.kafka.common.metrics.Metrics - Metrics scheduler closed
+2026-06-25 18:02:07 [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] INFO  o.a.kafka.common.metrics.Metrics - Closing reporter org.apache.kafka.common.metrics.JmxReporter
+2026-06-25 18:02:07 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.kafka.common.metrics.Metrics - Metrics reporters closed
+2026-06-25 18:02:07 [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] INFO  o.a.kafka.common.metrics.Metrics - Metrics reporters closed
+2026-06-25 18:02:07 [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] INFO  o.a.kafka.common.utils.AppInfoParser - App info kafka.consumer for consumer-email-notification-group-2 unregistered
+2026-06-25 18:02:07 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.kafka.common.utils.AppInfoParser - App info kafka.consumer for consumer-mortext-bank-group-1 unregistered
+2026-06-25 18:02:07 [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] INFO  o.s.k.l.KafkaMessageListenerContainer - email-notification-group: Consumer stopped
+2026-06-25 18:02:07 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.s.k.l.KafkaMessageListenerContainer - mortext-bank-group: Consumer stopped
+2026-06-25 18:02:07 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-06-25 18:02:07 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2026-06-25 18:02:07 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.

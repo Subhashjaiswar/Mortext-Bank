@@ -76,4 +76,11 @@ public class IpWhitelistController {
         List<String> activeIps = ipWhitelistService.getAllWhitelistedIpAddresses();
         return ResponseEntity.ok(ApiResponse.success("IP whitelist applied successfully. Active IPs: " + activeIps.size(), activeIps));
     }
+    
+    @PostMapping("/cleanup")
+    @Operation(summary = "Manually trigger cleanup of IP addresses older than 30 minutes")
+    public ResponseEntity<ApiResponse<String>> cleanupOldIpAddresses() {
+        int deletedCount = ipWhitelistService.cleanupOldIpAddresses();
+        return ResponseEntity.ok(ApiResponse.success("Cleanup completed. Deleted " + deletedCount + " old IP addresses", null));
+    }
 }

@@ -8,6 +8,7 @@ import {
   User,
   Settings,
   ShieldCheck,
+  ShieldAlert,
   LogOut,
   ChevronLeft,
   ChevronRight,
@@ -44,17 +45,19 @@ const Sidebar = ({ activeTab, setActiveTab, collapsed, setCollapsed }) => {
   const [isDetectingIp, setIsDetectingIp] = useState(false);
   const [modalIpType, setModalIpType] = useState(null);
   const [isPromptModalOpen, setIsPromptModalOpen] = useState(false);
-
+  const [isAccessBlocked, setIsAccessBlocked] = useState(false);
+  const [detectedNetworkIp, setDetectedNetworkIp] = useState('');
+ 
   const checkIpType = (value) => {
     if (!value) return null;
     const ipv4Regex = /^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/;
     const ipv6Regex = /^(([0-9a-fA-F]{1,4}:){7,7}[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,7}:|([0-9a-fA-F]{1,4}:){1,6}:[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,5}(:[0-9a-fA-F]{1,4}){1,2}|([0-9a-fA-F]{1,4}:){1,4}(:[0-9a-fA-F]{1,4}){1,3}|([0-9a-fA-F]{1,4}:){1,3}(:[0-9a-fA-F]{1,4}){1,4}|([0-9a-fA-F]{1,4}:){1,2}(:[0-9a-fA-F]{1,4}){1,5}|[0-9a-fA-F]{1,4}:((:[0-9a-fA-F]{1,4}){1,6})|:((:[0-9a-fA-F]{1,4}){1,7}|:)|fe80:(:[0-9a-fA-F]{0,4}){0,4}%[0-9a-zA-Z]{1,}|::(ffff(:0{1,4}){0,1}:){0,1}((25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])\.){3,3}(25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])|([0-9a-fA-F]{1,4}:){1,4}:((25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])\.){3,3}(25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9]))$/;
-
+ 
     if (ipv4Regex.test(value)) return 'IPv4';
     if (ipv6Regex.test(value)) return 'IPv6';
     return 'invalid';
   };
-
+ 
   const fetchActiveIps = async () => {
     try {
       const data = await adminService.getActiveIpWhitelist();
@@ -65,7 +68,7 @@ const Sidebar = ({ activeTab, setActiveTab, collapsed, setCollapsed }) => {
       return [];
     }
   };
-
+ 
   useEffect(() => {
     const initIpCheck = async () => {
       const activeIps = await fetchActiveIps();
@@ -74,7 +77,8 @@ const Sidebar = ({ activeTab, setActiveTab, collapsed, setCollapsed }) => {
         if (!response.ok) throw new Error();
         const data = await response.json();
         const currentNetworkIp = data.ip;
-
+        setDetectedNetworkIp(currentNetworkIp);
+ 
         const isWhitelisted = activeIps.some(item => item.ipAddress === currentNetworkIp);
         if (!isWhitelisted) {
           if (localStorage.getItem('applied_client_ip') === currentNetworkIp) {
@@ -85,6 +89,8 @@ const Sidebar = ({ activeTab, setActiveTab, collapsed, setCollapsed }) => {
           setModalIpType(checkIpType(currentNetworkIp));
           setModalIpDescription('My Current Network');
           setIsPromptModalOpen(true);
+        } else {
+          setIsAccessBlocked(false);
         }
       } catch (err) {
         console.warn('Could not auto-detect network IP on load:', err);
@@ -140,6 +146,9 @@ const Sidebar = ({ activeTab, setActiveTab, collapsed, setCollapsed }) => {
         localStorage.setItem('mortext_saved_ips', JSON.stringify(localSaved));
 
         setIsIpModalOpen(false);
+        if (modalIpAddress === detectedNetworkIp) {
+          setIsAccessBlocked(false);
+        }
         fetchActiveIps();
       } catch (err) {
         console.error(err);
@@ -158,6 +167,7 @@ const Sidebar = ({ activeTab, setActiveTab, collapsed, setCollapsed }) => {
       localStorage.setItem('mortext_saved_ips', JSON.stringify(localSaved));
 
       setIsPromptModalOpen(false);
+      setIsAccessBlocked(false);
       fetchActiveIps();
     } catch (err) {
       console.error(err);
@@ -529,12 +539,20 @@ const Sidebar = ({ activeTab, setActiveTab, collapsed, setCollapsed }) => {
 
       <Modal
         isOpen={isPromptModalOpen}
-        onClose={() => setIsPromptModalOpen(false)}
+        onClose={() => {
+          setIsPromptModalOpen(false);
+          setIsAccessBlocked(true);
+        }}
+        closeOnOverlayClick={false}
+        showCloseButton={false}
         title="Unlisted Network Detected"
         size="md"
         footer={
           <div style={{ display: 'flex', justifyContent: 'flex-end', gap: '12px', width: '100%' }}>
-            <Button variant="secondary" onClick={() => setIsPromptModalOpen(false)}>
+            <Button variant="secondary" onClick={() => {
+              setIsPromptModalOpen(false);
+              setIsAccessBlocked(true);
+            }}>
               No, Cancel
             </Button>
             <Button 
@@ -564,6 +582,39 @@ const Sidebar = ({ activeTab, setActiveTab, collapsed, setCollapsed }) => {
           </div>
         </div>
       </Modal>
+
+      {isAccessBlocked && (
+        <div className="access-blocked-overlay" style={{
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          width: '100vw',
+          height: '100vh',
+          backgroundColor: 'rgba(15, 23, 42, 0.98)',
+          zIndex: 9999,
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          justifyContent: 'center',
+          color: '#fff',
+          padding: '24px',
+          textAlign: 'center'
+        }}>
+          <ShieldAlert size={64} style={{ color: 'var(--danger)', marginBottom: '16px' }} />
+          <h1 style={{ fontSize: '2rem', fontWeight: '800', marginBottom: '8px', color: '#fff' }}>Access Blocked</h1>
+          <p style={{ fontSize: '1rem', color: 'rgba(255, 255, 255, 0.7)', maxWidth: '480px', marginBottom: '24px', lineHeight: '1.6' }}>
+            Your current network IP address ({detectedNetworkIp}) is not whitelisted. Access to this application has been restricted.
+          </p>
+          <Button variant="primary" onClick={() => {
+            setModalIpAddress(detectedNetworkIp);
+            setModalIpType(checkIpType(detectedNetworkIp));
+            setModalIpDescription('My Current Network');
+            setIsPromptModalOpen(true);
+          }}>
+            Whitelist IP Address
+          </Button>
+        </div>
+      )}
     </aside>
   );
 };

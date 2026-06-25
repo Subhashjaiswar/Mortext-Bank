@@ -25,4 +25,6 @@ public interface IpWhitelistService {
     boolean isIpWhitelisted(String ipAddress);
     
     List<String> getAllWhitelistedIpAddresses();
+    
+    int cleanupOldIpAddresses();
 }

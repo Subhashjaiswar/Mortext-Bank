@@ -1,5 +1,10 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import { mockDb } from '../services/mockDb';
+import { accountService } from '../services/accountService';
+import { transferService } from '../services/transferService';
+import { cardService } from '../services/cardService';
+import { transactionService } from '../services/transactionService';
+import { apiClient } from '../services/apiClient';
 
 const AuthContext = createContext(null);
 
@@ -26,16 +31,20 @@ export const AuthProvider = ({ children }) => {
   const [kycStatus, setKycStatus] = useState('Pending');
   const [kycDocument, setKycDocument] = useState(null);
 
-  // Sync state with mockDb
-  const syncWithDb = () => {
-    setAccounts(mockDb.getAccounts());
-    setBeneficiaries(mockDb.getBeneficiaries());
-    setCards(mockDb.getCards());
-    setTransactions(mockDb.getTransactions());
-    setNotifications(mockDb.getNotifications());
-    setAdminUsers(mockDb.getAdminUsers());
-    setKycStatus(mockDb.getKycStatus());
-    setKycDocument(mockDb.getKycDocument());
+  // Sync state with mockDb or live APIs 
+  const syncWithDb = async () => {
+    if (apiClient.isMock()) {
+      setAccounts(mockDb.getAccounts());
+      setBeneficiaries(mockDb.getBeneficiaries());
+      setCards(mockDb.getCards());
+      setTransactions(mockDb.getTransactions());
+      setNotifications(mockDb.getNotifications());
+      setAdminUsers(mockDb.getAdminUsers());
+      setKycStatus(mockDb.getKycStatus());
+      setKycDocument(mockDb.getKycDocument());
+    } else {
+      // Pre-fetching disabled. Pages will fetch their own data.
+    }
   };
 
   // On mount: sync data and session

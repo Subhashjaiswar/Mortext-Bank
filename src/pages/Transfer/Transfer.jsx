@@ -44,8 +44,8 @@ const Transfer = () => {
     setBenName,
     benAccNo,
     setBenAccNo,
-    benBank,
-    setBenBank,
+    benIfscCode,
+    setBenIfscCode,
     benNickname,
     setBenNickname,
     processing,
@@ -90,7 +90,7 @@ const Transfer = () => {
               >
                 {accounts.map(acc => (
                   <option key={acc.id} value={acc.id}>
-                    {acc.name} (Avail: ${acc.balance.toLocaleString()})
+                    {acc.accountName || acc.name} - {acc.accountNumber || acc.number} (Avail: ${(acc.balance || 0).toLocaleString()})
                   </option>
                 ))}
               </select>
@@ -116,11 +116,16 @@ const Transfer = () => {
                   required
                 >
                   <option value="">Choose Recipient...</option>
-                  {beneficiaries.map(ben => (
-                    <option key={ben.id} value={ben.name}>
-                      {ben.name} ({ben.bankName} - {ben.accountNo})
-                    </option>
-                  ))}
+                  {beneficiaries.map(ben => {
+                    const dispName = ben.beneficiaryName || ben.name;
+                    const dispAcc = ben.accountNumber || ben.accountNo;
+                    const dispBank = ben.bankName || ben.ifscCode;
+                    return (
+                      <option key={ben.id} value={dispName}>
+                        {dispName} ({dispBank} - {dispAcc})
+                      </option>
+                    );
+                  })}
                 </select>
               </div>
             )}
@@ -213,11 +218,11 @@ const Transfer = () => {
             required
           />
           <Input
-            label="Bank Name / IFSC"
-            id="ben-bank"
-            placeholder="e.g. Chase Bank, Mortext"
-            value={benBank}
-            onChange={(e) => setBenBank(e.target.value)}
+            label="IFSC Code"
+            id="ben-ifsc"
+            placeholder="e.g. HDFC0001234"
+            value={benIfscCode}
+            onChange={(e) => setBenIfscCode(e.target.value)}
             required
           />
           <Input

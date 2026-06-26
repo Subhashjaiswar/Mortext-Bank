@@ -33,9 +33,17 @@
   color: #ffffff;
 }
 
-.stat-icon-wrapper.blue { background-color: var(--primary); }
-.stat-icon-wrapper.green { background-color: var(--success); }
-.stat-icon-wrapper.accent { background-color: var(--accent); }
+.stat-icon-wrapper.blue {
+  background-color: var(--primary);
+}
+
+.stat-icon-wrapper.green {
+  background-color: var(--success);
+}
+
+.stat-icon-wrapper.accent {
+  background-color: var(--accent);
+}
 
 .stat-content {
   display: flex;
@@ -164,8 +172,13 @@
   border-color: rgba(245, 158, 11, 0.15);
 }
 
-.alert-critical-icon { color: var(--danger); }
-.alert-warning-icon { color: var(--warning); }
+.alert-critical-icon {
+  color: var(--danger);
+}
+
+.alert-warning-icon {
+  color: var(--warning);
+}
 
 .alert-details {
   display: flex;
@@ -315,8 +328,13 @@ body.dark-theme .admin-table th {
   font-weight: 700;
 }
 
-.user-status-dot-label.active { color: var(--success); }
-.user-status-dot-label.blocked { color: var(--danger); }
+.user-status-dot-label.active {
+  color: var(--success);
+}
+
+.user-status-dot-label.blocked {
+  color: var(--danger);
+}
 
 .user-status-dot-label .dot {
   width: 8px;
@@ -324,5 +342,10 @@ body.dark-theme .admin-table th {
   border-radius: var(--radius-full);
 }
 
-.user-status-dot-label.active .dot { background-color: var(--success); }
-.user-status-dot-label.blocked .dot { background-color: var(--danger); }
+.user-status-dot-label.active .dot {
+  background-color: var(--success);
+}
+
+.user-status-dot-label.blocked .dot {
+  background-color: var(--danger);
+}

@@ -100,7 +100,7 @@
 .history-table {
   width: 100%;
   border-collapse: collapse;
-  text-align: left;
+  text-align: center;
   font-size: 0.9rem;
 }
 
@@ -185,8 +185,13 @@ body.dark-theme .history-table th {
   font-weight: 800;
 }
 
-.h-amount-tag.credit { color: var(--success); }
-.h-amount-tag.debit { color: var(--text-primary); }
+.h-amount-tag.credit {
+  color: var(--success);
+}
+
+.h-amount-tag.debit {
+  color: var(--text-primary);
+}
 
 /* 3. Pagination footer */
 .history-pagination-footer {
@@ -197,4 +202,114 @@ body.dark-theme .history-table th {
   border-top: 1px solid var(--border);
   flex-wrap: wrap;
   gap: 16px;
+}
+
+/* 4. Loading State */
+.h-loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 64px 24px;
+  gap: 16px;
+}
+
+.h-loading-spinner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(var(--primary-rgb), 0.1), rgba(var(--primary-rgb), 0.05));
+}
+
+.h-spin-icon {
+  color: var(--primary);
+  animation: h-spin 1s linear infinite;
+}
+
+@keyframes h-spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.h-loading-text {
+  font-family: var(--font-primary);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.h-loading-subtext {
+  font-family: var(--font-primary);
+  font-size: 0.825rem;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+/* 5. Error State */
+.h-error-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 56px 24px;
+  gap: 12px;
+  text-align: center;
+}
+
+.h-error-icon-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(239, 68, 68, 0.12), rgba(239, 68, 68, 0.05));
+  color: #ef4444;
+}
+
+.h-error-title {
+  font-family: var(--font-primary);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 4px 0 0 0;
+}
+
+.h-error-message {
+  font-family: var(--font-primary);
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  margin: 0;
+  max-width: 420px;
+  line-height: 1.5;
+}
+
+.h-error-actions {
+  margin-top: 8px;
+}
+
+.h-error-hint {
+  font-family: var(--font-primary);
+  font-size: 0.775rem;
+  color: var(--text-muted);
+  margin: 8px 0 0 0;
+  opacity: 0.8;
+}
+
+.h-error-hint code {
+  background-color: var(--secondary-light);
+  padding: 2px 6px;
+  border-radius: var(--radius-xs);
+  font-size: 0.75rem;
+  font-family: var(--font-mono, monospace);
+  color: var(--primary);
 }

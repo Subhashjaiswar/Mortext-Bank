@@ -7,20 +7,28 @@ export const useAccountsViewModel = () => {
   const { accounts: globalAccounts, transactions: globalTransactions, fetchFinancialData } = useAuth();
   const toast = useToast();
 
-  const [accounts, setAccounts] = useState(globalAccounts);
-  const [selectedAccId, setSelectedAccId] = useState(globalAccounts[0]?.id || 'acc-1');
+  const filteredAccounts = globalAccounts.filter(acc => acc.type !== 'current');
+  const [accounts, setAccounts] = useState(filteredAccounts);
+  const [selectedAccId, setSelectedAccId] = useState(filteredAccounts[0]?.id || 'acc-1');
   const [searchTerm, setSearchTerm] = useState('');
   const [categoryFilter, setCategoryFilter] = useState('All');
   const [downloading, setDownloading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 4;
+  const [statement, setStatement] = useState([]);
+  const [loadingStatement, setLoadingStatement] = useState(false);
 
   // Re-fetch accounts on mount or sync with global state
   useEffect(() => {
     const fetchAccounts = async () => {
       try {
         const data = await accountService.getAccounts();
-        setAccounts(data);
+        const validAccounts = data.filter(acc => acc.type !== 'current');
+        setAccounts(validAccounts);
+        // If the selected ID is the initial mock 'acc-1', update it to a real account ID
+        if (validAccounts.length > 0 && selectedAccId === 'acc-1') {
+          setSelectedAccId(validAccounts[0].id);
+        }
       } catch (err) {
         console.error('Failed to load accounts via accountService', err);
       }
@@ -28,11 +36,28 @@ export const useAccountsViewModel = () => {
     fetchAccounts();
   }, [globalAccounts]);
 
+
+  useEffect(() => {
+    const fetchStatement = async () => {
+      if (!selectedAccId) return;
+      setLoadingStatement(true);
+      try {
+        const data = await accountService.getStatement(selectedAccId);
+        setStatement(data || []);
+      } catch (err) {
+        console.error('Failed to load statement via API', err);
+        setStatement(globalTransactions.filter(tx => tx.accountId === selectedAccId));
+      } finally {
+        setLoadingStatement(false);
+      }
+    };
+    fetchStatement();
+  }, [selectedAccId, globalTransactions]);
+
   const currentAccount = accounts.find((a) => a.id === selectedAccId) || accounts[0] || {};
 
-  // Filter transactions belonging to selected account
-  const filteredTxs = globalTransactions
-    .filter((tx) => tx.accountId === selectedAccId)
+  // Filter statement transactions
+  const filteredTxs = statement
     .filter((tx) => {
       const matchesSearch =
         tx.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -99,6 +124,7 @@ export const useAccountsViewModel = () => {
     categoryFilter,
     setCategoryFilter,
     downloading,
+    loadingStatement,
     currentPage,
     setCurrentPage,
     currentAccount,

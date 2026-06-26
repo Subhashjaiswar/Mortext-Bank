@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { useAuth } from '../hooks/useAuth';
 import { useToast } from '../components/UI/Toast';
 import { transactionService } from '../services/transactionService';
@@ -8,6 +8,8 @@ export const useHistoryViewModel = () => {
   const toast = useToast();
 
   const [transactions, setTransactions] = useState(globalTransactions);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
   const [query, setQuery] = useState('');
   const [typeFilter, setTypeFilter] = useState('all');
   const [categoryFilter, setCategoryFilter] = useState('all');
@@ -18,22 +20,49 @@ export const useHistoryViewModel = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 8;
 
-  useEffect(() => {
-    const fetchTransactions = async () => {
-      try {
-        const data = await transactionService.getTransactions(1, 100);
-        setTransactions(data.transactions || globalTransactions);
-      } catch (err) {
-        console.error('Failed to load transactions via transactionService', err);
+  const fetchTransactions = useCallback(async () => {
+    setLoading(true);
+    setError(null);
+    try {
+      const data = await transactionService.getTransactions(1, 100);
+      const list = data.transactions || data.content || data;
+      if (Array.isArray(list) && list.length > 0) {
+        setTransactions(list);
+      } else if (globalTransactions.length > 0) {
+        setTransactions(globalTransactions);
+      } else {
+        setTransactions([]);
       }
-    };
-    fetchTransactions();
+    } catch (err) {
+      console.error('Failed to load transactions via transactionService', err);
+      setError(err.message || 'Failed to load transactions');
+      // Fallback to global transactions from context
+      if (globalTransactions.length > 0) {
+        setTransactions(globalTransactions);
+        setError(null); // Clear error if we have fallback data
+      }
+    } finally {
+      setLoading(false);
+    }
   }, [globalTransactions]);
 
+  useEffect(() => {
+    fetchTransactions();
+  }, [fetchTransactions]);
+
+  // Dynamically extract unique categories from loaded transactions
+  const availableCategories = [...new Set(
+    transactions
+      .map(tx => tx.category)
+      .filter(Boolean)
+  )].sort();
+
   const filteredTxs = transactions.filter((tx) => {
-    const matchesSearch =
-      tx.title.toLowerCase().includes(query.toLowerCase()) ||
-      tx.description.toLowerCase().includes(query.toLowerCase());
+    const title = (tx.title || '').toLowerCase();
+    const description = (tx.description || '').toLowerCase();
+    const searchQuery = query.toLowerCase();
+
+    const matchesSearch = title.includes(searchQuery) || description.includes(searchQuery);
     const matchesType = typeFilter === 'all' || tx.type === typeFilter;
     const matchesCategory = categoryFilter === 'all' || tx.category === categoryFilter;
     const matchesDate = !dateFilter || tx.date === dateFilter;
@@ -99,6 +128,10 @@ export const useHistoryViewModel = () => {
     toast.success('Search filters reset successfully.');
   };
 
+  const handleRetry = () => {
+    fetchTransactions();
+  };
+
   return {
     query,
     setQuery,
@@ -109,13 +142,17 @@ export const useHistoryViewModel = () => {
     dateFilter,
     setDateFilter,
     exporting,
+    loading,
+    error,
     currentPage,
     setCurrentPage,
     filteredTxs,
     paginatedTxs,
     totalPages,
+    availableCategories,
     handleExportCSV,
     resetAllFilters,
     formatCurrency,
+    handleRetry,
   };
 };

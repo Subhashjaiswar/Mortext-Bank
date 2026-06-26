@@ -49,7 +49,7 @@ const Accounts = () => {
               <h3 className="acc-card-balance">{formatCurrency(acc.balance)}</h3>
               <div className="acc-card-footer">
                 <span className="acc-card-no">{acc.number}</span>
-                <span className="acc-card-badge-type">{acc.type.toUpperCase()}</span>
+                <span className="acc-card-badge-type">{(acc.type || acc.accountType || 'Account').toUpperCase()}</span>
               </div>
             </Card>
           );
@@ -58,7 +58,7 @@ const Accounts = () => {
 
       {/* 2. Selected Account Details Section */}
       <Card title="Account Statement Ledger" subtitle={`Detailed audit logs for ${currentAccount.name}`}>
-        
+
         {/* Filters and Searches Toolbar */}
         <div className="ledger-toolbar">
           <div className="toolbar-search-input">

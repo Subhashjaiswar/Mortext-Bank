@@ -52,7 +52,7 @@ const Cards = () => {
                     <div className="circle-2"></div>
                     <span className="card-logo-brand-text">Mortext</span>
                   </div>
-                  <span className="card-tier-label">{c.type.toUpperCase()}</span>
+                  <span className="card-tier-label">{(c.type || 'card').toUpperCase()}</span>
                 </div>
 
                 {/* Metallic smartchip */}
@@ -107,7 +107,7 @@ const Cards = () => {
           </Button>
           <div className="active-card-meta-badge">
             <span>Currently Editing: </span>
-            <Badge variant="primary">{selectedCard.name || `${selectedCard.type.toUpperCase()} Card`}</Badge>
+            <Badge variant="primary">{selectedCard.name || `${(selectedCard.type || 'card').toUpperCase()} Card`}</Badge>
           </div>
         </div>
       </div>
@@ -142,8 +142,8 @@ const Cards = () => {
                   <p>Slide to define the maximum transaction cap allowed in a 30-day window.</p>
                 </div>
                 <div className="slider-limit-indicator">
-                  <strong>${selectedCard.limit.toLocaleString()}</strong>
-                  <span className="text-muted">/ ${selectedCard.maxLimit.toLocaleString()}</span>
+                  <strong>${(selectedCard.limit || 0).toLocaleString()}</strong>
+                  <span className="text-muted">/ ${(selectedCard.maxLimit || 0).toLocaleString()}</span>
                 </div>
               </div>
               <div className="slider-input-wrapper">
@@ -159,7 +159,7 @@ const Cards = () => {
                 />
                 <div className="slider-caps-markers">
                   <span>Min: $500</span>
-                  <span>Max: ${selectedCard.maxLimit.toLocaleString()}</span>
+                  <span>Max: ${(selectedCard.maxLimit || 0).toLocaleString()}</span>
                 </div>
               </div>
             </div>

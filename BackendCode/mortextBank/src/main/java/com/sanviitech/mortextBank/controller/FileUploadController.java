@@ -28,47 +28,37 @@ public class FileUploadController {
     
     @PostMapping("/image")
     @Operation(summary = "Upload image file")
-    public ResponseEntity<ApiResponse<Map<String, String>>> uploadImage(@RequestParam("file") MultipartFile file) {
-        try {
-            String fileName = UUID.randomUUID().toString() + "_" + file.getOriginalFilename();
-            Path filePath = Paths.get(uploadDir, fileName);
-            
-            Files.createDirectories(filePath.getParent());
-            Files.copy(file.getInputStream(), filePath);
-            
-            String fileUrl = "/uploads/" + fileName;
-            
-            Map<String, String> response = new HashMap<>();
-            response.put("fileName", fileName);
-            response.put("fileUrl", fileUrl);
-            
-            return ResponseEntity.ok(ApiResponse.success("File uploaded successfully", response));
-        } catch (IOException e) {
-            return ResponseEntity.internalServerError()
-                    .body(ApiResponse.error("Failed to upload file: " + e.getMessage()));
-        }
+    public ResponseEntity<ApiResponse<Map<String, String>>> uploadImage(@RequestParam("file") MultipartFile file) throws IOException {
+        String fileName = UUID.randomUUID().toString() + "_" + file.getOriginalFilename();
+        Path filePath = Paths.get(uploadDir, fileName);
+        
+        Files.createDirectories(filePath.getParent());
+        Files.copy(file.getInputStream(), filePath);
+        
+        String fileUrl = "/uploads/" + fileName;
+        
+        Map<String, String> response = new HashMap<>();
+        response.put("fileName", fileName);
+        response.put("fileUrl", fileUrl);
+        
+        return ResponseEntity.ok(ApiResponse.success("File uploaded successfully", response));
     }
     
     @PostMapping("/document")
     @Operation(summary = "Upload document file")
-    public ResponseEntity<ApiResponse<Map<String, String>>> uploadDocument(@RequestParam("file") MultipartFile file) {
-        try {
-            String fileName = UUID.randomUUID().toString() + "_" + file.getOriginalFilename();
-            Path filePath = Paths.get(uploadDir, fileName);
-            
-            Files.createDirectories(filePath.getParent());
-            Files.copy(file.getInputStream(), filePath);
-            
-            String fileUrl = "/uploads/" + fileName;
-            
-            Map<String, String> response = new HashMap<>();
-            response.put("fileName", fileName);
-            response.put("fileUrl", fileUrl);
-            
-            return ResponseEntity.ok(ApiResponse.success("Document uploaded successfully", response));
-        } catch (IOException e) {
-            return ResponseEntity.internalServerError()
-                    .body(ApiResponse.error("Failed to upload document: " + e.getMessage()));
-        }
+    public ResponseEntity<ApiResponse<Map<String, String>>> uploadDocument(@RequestParam("file") MultipartFile file) throws IOException {
+        String fileName = UUID.randomUUID().toString() + "_" + file.getOriginalFilename();
+        Path filePath = Paths.get(uploadDir, fileName);
+        
+        Files.createDirectories(filePath.getParent());
+        Files.copy(file.getInputStream(), filePath);
+        
+        String fileUrl = "/uploads/" + fileName;
+        
+        Map<String, String> response = new HashMap<>();
+        response.put("fileName", fileName);
+        response.put("fileUrl", fileUrl);
+        
+        return ResponseEntity.ok(ApiResponse.success("Document uploaded successfully", response));
     }
 }

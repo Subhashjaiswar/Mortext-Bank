@@ -21,7 +21,7 @@ export const adminService = {
       apiClient.logResponse('GET', `/api/admin/users?page=${page}&limit=${limit}`, 200, responseData);
       return responseData;
     }
-    return await apiClient.get(`/admin/users?page=${page}&limit=${limit}`);
+    return await apiClient.get(`/admin/users?page=${page > 0 ? page - 1 : 0}&size=${limit}`);
   },
 
   getUserById: async (userId) => {
@@ -74,7 +74,7 @@ export const adminService = {
       apiClient.logResponse('GET', `/api/admin/transactions?page=${page}&limit=${limit}`, 200, responseData);
       return responseData;
     }
-    return await apiClient.get(`/admin/transactions?page=${page}&limit=${limit}`);
+    return await apiClient.get(`/admin/transactions?page=${page > 0 ? page - 1 : 0}&size=${limit}`);
   },
 
   getTransactionsByStatus: async (status, page = 1, limit = 10) => {
@@ -96,7 +96,7 @@ export const adminService = {
       apiClient.logResponse('GET', `/api/admin/transactions/status/${status}?page=${page}&limit=${limit}`, 200, responseData);
       return responseData;
     }
-    return await apiClient.get(`/admin/transactions/status/${status}?page=${page}&limit=${limit}`);
+    return await apiClient.get(`/admin/transactions/status/${status}?page=${page > 0 ? page - 1 : 0}&size=${limit}`);
   },
 
   markTransactionFraudulent: async (transactionId, reason) => {
@@ -135,7 +135,7 @@ export const adminService = {
       apiClient.logResponse('GET', `/api/admin/kyc?page=${page}&limit=${limit}`, 200, responseData);
       return responseData;
     }
-    return await apiClient.get(`/admin/kyc?page=${page}&limit=${limit}`);
+    return await apiClient.get(`/admin/kyc?page=${page > 0 ? page - 1 : 0}&size=${limit}`);
   },
 
   getPendingKycRequests: async (page = 1, limit = 10) => {
@@ -157,7 +157,7 @@ export const adminService = {
       apiClient.logResponse('GET', `/api/admin/kyc/pending?page=${page}&limit=${limit}`, 200, responseData);
       return responseData;
     }
-    return await apiClient.get(`/admin/kyc/pending?page=${page}&limit=${limit}`);
+    return await apiClient.get(`/admin/kyc/pending?page=${page > 0 ? page - 1 : 0}&size=${limit}`);
   },
 
   approveKyc: async (kycId) => {
@@ -258,5 +258,59 @@ export const adminService = {
       return analyticsData;
     }
     return await apiClient.get('/admin/analytics');
+  },
+
+  addIpToWhitelist: async (ipAddress, description) => {
+    if (apiClient.isMock()) {
+      await apiClient.sleep(500);
+      const entry = {
+        id: Date.now(),
+        ipAddress,
+        description,
+        active: true,
+        createdBy: 'Admin',
+        createdAt: new Date().toISOString(),
+        updatedAt: new Date().toISOString()
+      };
+      apiClient.logResponse('POST', '/api/admin/ip-whitelist', 200, entry);
+      return entry;
+    }
+    return await apiClient.post('/admin/ip-whitelist', { ipAddress, description });
+  },
+
+  getActiveIpWhitelist: async () => {
+    if (apiClient.isMock()) {
+      await apiClient.sleep(500);
+      const localSaved = JSON.parse(localStorage.getItem('mortext_saved_ips') || '[]');
+      const activeList = localSaved.map((item, idx) => ({
+        id: idx,
+        ipAddress: item.ip,
+        description: item.description || 'Saved IP',
+        active: true
+      }));
+      apiClient.logResponse('GET', '/api/admin/ip-whitelist/active', 200, activeList);
+      return activeList;
+    }
+    return await apiClient.get('/admin/ip-whitelist/active');
+  },
+
+  removeIpFromWhitelist: async (id) => {
+    if (apiClient.isMock()) {
+      await apiClient.sleep(500);
+      apiClient.logResponse('DELETE', `/api/admin/ip-whitelist/${id}`, 200, { success: true });
+      return { success: true };
+    }
+    return await apiClient.delete(`/admin/ip-whitelist/${id}`);
+  },
+
+  applyIpWhitelist: async () => {
+    if (apiClient.isMock()) {
+      await apiClient.sleep(500);
+      const localSaved = JSON.parse(localStorage.getItem('mortext_saved_ips') || '[]');
+      const activeIps = localSaved.map(item => item.ip);
+      apiClient.logResponse('POST', '/api/admin/ip-whitelist/apply', 200, activeIps);
+      return activeIps;
+    }
+    return await apiClient.post('/admin/ip-whitelist/apply');
   }
 };

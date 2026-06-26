@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Sun, Moon, Bell, Search, Globe, ChevronDown, CheckCheck } from 'lucide-react';
+import { Sun, Moon, Bell, Search, CheckCheck } from 'lucide-react';
 import { useAuth } from '../../hooks/useAuth';
 import './TopNavbar.css';
 
@@ -9,15 +9,11 @@ const TopNavbar = ({ title }) => {
     toggleTheme,
     notifications,
     markAllNotificationsAsRead,
-    language,
-    setLanguage
   } = useAuth();
 
   const [showNotifications, setShowNotifications] = useState(false);
-  const [showLangDropdown, setShowLangDropdown] = useState(false);
 
   const notifRef = useRef(null);
-  const langRef = useRef(null);
 
   const unreadCount = notifications.filter(n => !n.read).length;
 
@@ -27,9 +23,6 @@ const TopNavbar = ({ title }) => {
       if (notifRef.current && !notifRef.current.contains(event.target)) {
         setShowNotifications(false);
       }
-      if (langRef.current && !langRef.current.contains(event.target)) {
-        setShowLangDropdown(false);
-      }
     };
     document.addEventListener('mousedown', handleClickOutside);
     return () => document.removeEventListener('mousedown', handleClickOutside);
@@ -37,15 +30,6 @@ const TopNavbar = ({ title }) => {
 
   const handleMarkAllRead = () => {
     markAllNotificationsAsRead();
-  };
-
-  const getLanguageLabel = (langCode) => {
-    switch (langCode) {
-      case 'es': return 'Español';
-      case 'fr': return 'Français';
-      case 'en':
-      default: return 'English';
-    }
   };
 
   return (
@@ -61,22 +45,7 @@ const TopNavbar = ({ title }) => {
 
       {/* Action Controls */}
       <div className="navbar-right">
-        {/* Language Toggler */}
-        <div className="lang-picker-wrapper" ref={langRef}>
-          <button className="lang-picker-btn" onClick={() => setShowLangDropdown(!showLangDropdown)}>
-            <Globe size={18} />
-            <span className="lang-text-label">{getLanguageLabel(language)}</span>
-            <ChevronDown size={14} />
-          </button>
-          
-          {showLangDropdown && (
-            <ul className="lang-dropdown-menu animate-scale-in">
-              <li onClick={() => { setLanguage('en'); setShowLangDropdown(false); }} className={language === 'en' ? 'active' : ''}>English</li>
-              <li onClick={() => { setLanguage('es'); setShowLangDropdown(false); }} className={language === 'es' ? 'active' : ''}>Español</li>
-              <li onClick={() => { setLanguage('fr'); setShowLangDropdown(false); }} className={language === 'fr' ? 'active' : ''}>Français</li>
-            </ul>
-          )}
-        </div>
+
 
         {/* Theme Toggle Button */}
         <button

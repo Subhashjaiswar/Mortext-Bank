@@ -5,10 +5,10 @@
  * robust local Mock Mode fallback for local-only interactive execution.
  */
 
-const BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
+const BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:8080/api';
 
 // Toggle this to false when connecting to a real running backend
-const USE_MOCK_API = true;
+const USE_MOCK_API = false;
 
 // Helper to simulate network latency for Mock responses
 const sleep = (ms = 1000) => new Promise((resolve) => setTimeout(resolve, ms));
@@ -28,11 +28,15 @@ const logResponse = (method, url, status, data) => {
 
 const getAuthHeaders = () => {
   const token = localStorage.getItem('mortext_token');
+  const appliedIp = localStorage.getItem('applied_client_ip');
   const headers = {
     'Content-Type': 'application/json',
   };
   if (token) {
     headers['Authorization'] = `Bearer ${token}`;
+  }
+  if (appliedIp) {
+    headers['X-Forwarded-For'] = appliedIp;
   }
   return headers;
 };
@@ -51,6 +55,9 @@ const request = async (method, path, body = null, isMultipart = false) => {
     const headers = isMultipart ? {} : getAuthHeaders();
     if (localStorage.getItem('mortext_token') && isMultipart) {
       headers['Authorization'] = `Bearer ${localStorage.getItem('mortext_token')}`;
+    }
+    if (localStorage.getItem('applied_client_ip') && isMultipart) {
+      headers['X-Forwarded-For'] = localStorage.getItem('applied_client_ip');
     }
 
     const options = {
@@ -79,6 +86,9 @@ const request = async (method, path, body = null, isMultipart = false) => {
 
     const responseData = await response.json();
     logResponse(method, path, response.status, responseData);
+    if (responseData && responseData.hasOwnProperty('success') && responseData.hasOwnProperty('data')) {
+      return responseData.data;
+    }
     return responseData;
   } catch (error) {
     console.error(`%cAPI ERR%c [${method}] ${path}: ${error.message}`, 'background: #ef4444; color: white; padding: 2px 6px; border-radius: 4px; font-weight: bold;', 'color: #991b1b;', error);

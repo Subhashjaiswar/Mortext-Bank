@@ -1,5 +1,5 @@
 import React from 'react';
-import { User, Mail, ShieldAlert, Upload, KeyRound, Globe, Moon, Sun, CheckCircle } from 'lucide-react';
+import { User, Mail, ShieldAlert, Upload, KeyRound, Moon, Sun, CheckCircle } from 'lucide-react';
 import { useProfileViewModel } from '../../viewmodels/useProfileViewModel';
 import { useToast } from '../../components/UI/Toast';
 import Card from '../../components/UI/Card';
@@ -14,8 +14,6 @@ const Profile = () => {
     user,
     theme,
     toggleTheme,
-    language,
-    setLanguage,
     kycStatus,
     profileName,
     setProfileName,
@@ -139,7 +137,7 @@ const Profile = () => {
           <div className="preferences-options-list">
 
             {/* Theme settings */}
-            <div className="pref-row">
+            <div className="pref-row mb-none">
               <div className="pref-meta">
                 <h5>Application Display Theme</h5>
                 <p>Switch between modern Light theme or Slate Dark theme.</p>
@@ -152,23 +150,6 @@ const Profile = () => {
               >
                 {theme === 'light' ? 'Slate Dark Mode' : 'Clean Light Mode'}
               </Button>
-            </div>
-
-            {/* Language settings */}
-            <div className="pref-row mb-none">
-              <div className="pref-meta">
-                <h5>Locale Language</h5>
-                <p>Modify default application label translations.</p>
-              </div>
-              <select
-                value={language}
-                onChange={(e) => { setLanguage(e.target.value); toast.success(`Language set to ${e.target.value.toUpperCase()}`); }}
-                className="pref-language-select"
-              >
-                <option value="en">English (US)</option>
-                <option value="es">Español (ES)</option>
-                <option value="fr">Français (FR)</option>
-              </select>
             </div>
 
           </div>

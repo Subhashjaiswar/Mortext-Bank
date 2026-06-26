@@ -8,8 +8,6 @@ export const useProfileViewModel = () => {
     user: globalUser,
     theme,
     toggleTheme,
-    language,
-    setLanguage,
     kycStatus: globalKycStatus,
     triggerGlobalRefresh
   } = useAuth();
@@ -44,7 +42,19 @@ export const useProfileViewModel = () => {
   }, [globalUser]);
 
   useEffect(() => {
-    setKycStatus(globalKycStatus);
+    const fetchKyc = async () => {
+      try {
+        const data = await profileService.getKycStatus();
+        if (data && data.status) {
+          setKycStatus(data.status);
+        } else {
+          setKycStatus(globalKycStatus);
+        }
+      } catch (err) {
+        setKycStatus(globalKycStatus);
+      }
+    };
+    fetchKyc();
   }, [globalKycStatus]);
 
   const handleProfileSubmit = async (e) => {
@@ -145,8 +155,6 @@ export const useProfileViewModel = () => {
     user,
     theme,
     toggleTheme,
-    language,
-    setLanguage,
     kycStatus,
     profileName,
     setProfileName,

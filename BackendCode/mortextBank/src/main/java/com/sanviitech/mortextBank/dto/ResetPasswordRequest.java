@@ -1,8 +1,5 @@
 package com.sanviitech.mortextBank.dto;
 
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Pattern;
-import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -12,14 +9,9 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class ResetPasswordRequest {
     
-    @NotBlank(message = "Email is required")
     private String email;
     
-    @NotBlank(message = "OTP is required")
     private String otp;
     
-    @NotBlank(message = "New security pin is required")
-    @Size(min = 4, max = 6, message = "Security pin must be between 4 and 6 digits")
-    @Pattern(regexp = "^\\d{4,6}$", message = "Security pin must be numeric")
     private String newSecurityPin;
 }
